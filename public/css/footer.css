@@ -60,4 +60,7 @@
     .content-footer {
         margin: 60px;
     }
+    .social-links>a>i {
+        font-size: 30px;
+    }
 }
