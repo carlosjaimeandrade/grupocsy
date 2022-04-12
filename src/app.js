@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
 
-const routes = require('./routes');
+const HomeRoutes = require('./routes/home')
 
 const app = express();
 
@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use(routes);
+//rotas
+app.use(HomeRoutes)
 
 module.exports = app;
