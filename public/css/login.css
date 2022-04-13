@@ -73,3 +73,30 @@
 .login-create>a>span {
     color: #2493DE;
 }
+
+.login-banner {
+    height: 100vh;
+    width: 100%;
+    background-color: #09485d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #10f9bb;
+    overflow: hidden;
+}
+
+.login-entry {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .login-banner {
+        display: none
+    }
+    .login-entry {
+        width: 100%;
+    }
+}
