@@ -17,12 +17,17 @@
     margin: 0 auto;
     padding: .8rem 0;
     display: flex;
-    align-items: center;
+    align-items: center;    
     justify-content: space-between;    
 }
 
 .logo img {
     width: 10rem;
+}
+
+.logo .menuHamburger i {
+    font-size: 1.6rem;    
+    color: #2A303A;
 }
 
 .menuItems {
@@ -35,15 +40,74 @@
 }
 
 .menuItems .menuList {
+    position: relative;
     width: 80%;
     margin: 0 auto;
     padding: 1rem;
+    overflow: hidden;
+    z-index: 8;
+    border-radius: 0 0 .5rem .5rem;
     background-color: #F6F6F8;
     box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
 }
 
-.menuItems .menuList a {
+.menuItems {
+    display: none;
+}
+
+.menuItems.active {
+    display: block;
+}
+
+.menuItems .menuList li {
+    text-align: center;
     color: #333;
-    padding: 2rem 0; 
-    margin: 10px;
+    padding: .5rem 0;        
+}
+
+.menuItems .menuList li a {    
+    color: #333;    
+}
+
+.menuItems .menuList .clientArea {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #fff;
+}
+
+.menuItems .menuList .clientArea li {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: .3rem;
+    box-shadow: rgb(0 0 0 / 50%) 0 .0rem .2rem;
+}
+
+.menuItems .menuList .language {
+    margin-bottom: 3.5rem;
+}
+
+@media (max-width: 320px) {
+
+}
+
+@media (min-width: 321px) and (max-width: 481px) {
+    .menuItems .menuList {    
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+    
+}
+
+@media (max-width: 1025px) {
+    
+}
+
+@media (max-width: 1201px) {
+    
 }
