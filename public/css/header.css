@@ -1,0 +1,49 @@
+.menuContainer {
+    position: fixed;
+    width: 100%;       
+    top: 0;
+    left: 0;   
+    z-index: 9;
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+    background-color: #fff;
+}
+
+.menuContent {
+    position: relative;      
+}
+
+.logo {
+    width: 95%;
+    margin: 0 auto;
+    padding: .8rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.logo img {
+    width: 10rem;
+}
+
+.menuItems {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;        
+
+    display: flex;    
+    justify-content: center;    
+}
+
+.menuItems .menuList {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #F6F6F8;
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+}
+
+.menuItems .menuList a {
+    color: #333;
+    padding: 2rem 0; 
+    margin: 10px;
+}
