@@ -8,6 +8,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const HomeRoutes = require('./routes/home')
+const LoginRoutes = require('./routes/login')
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(cors());
 
 //rotas
 app.use(HomeRoutes)
+app.use(LoginRoutes)
 
 module.exports = app;
