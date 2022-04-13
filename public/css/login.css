@@ -77,13 +77,15 @@
 .login-banner {
     height: 100vh;
     width: 100%;
-    background-color: #09485d;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    color: #10f9bb;
     overflow: hidden;
+}
+
+.login-banner img {
+    height: 100%;
 }
 
 .login-entry {
