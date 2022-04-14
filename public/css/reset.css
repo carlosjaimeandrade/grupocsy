@@ -6,3 +6,16 @@
     list-style: none;
     font-family: 'Roboto', sans-serif;
 }
+
+body {
+    position: static !important;
+    top: 0 !important;
+}
+
+#google_translate_element {
+    display: none;
+}
+
+.goog-te-banner-frame {
+    display: none !important;
+}
