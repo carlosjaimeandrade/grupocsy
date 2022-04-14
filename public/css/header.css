@@ -32,20 +32,20 @@
 
 .menuItems {
     position: absolute;
-    width: 100%;
+    width: 100%;    
     margin: 0 auto;        
-
     display: flex;    
-    justify-content: center;    
+    justify-content: center;        
 }
 
 .menuItems .menuList {
     position: relative;
-    width: 80%;
+    width: 90%;    
     margin: 0 auto;
     padding: 1rem;
     overflow: hidden;
     z-index: 8;
+    transition: 6s;
     border-radius: 0 0 .5rem .5rem;
     background-color: #F6F6F8;
     box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
@@ -55,8 +55,35 @@
     display: none;
 }
 
+@keyframes shoMenu {       
+    from {
+        margin-top: -10rem;
+    }
+
+    to {
+        margin-top: 0rem;
+    } 
+}
+
+@keyframes shoMenuBG {       
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    } 
+}
+
 .menuItems.active {
-    display: block;
+    animation: shoMenuBG .6s linear;
+    height: 100vh;
+    display: block;        
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.menuItems.active .menuList {
+    animation: shoMenu .3s linear;
 }
 
 .menuItems .menuList li {
@@ -67,6 +94,19 @@
 
 .menuItems .menuList li a {    
     color: #333;    
+}
+
+.menuItems .menuList .menuListItem .list{
+    display: none;
+}
+
+.menuItems .menuList .menuListItem .list.active {
+    display: block;
+    animation: subMenu .6s linear;
+}
+
+.menuItems .menuList .menuListItem .list.active li {
+    animation: shoMenuBG .3s linear;
 }
 
 .menuItems .menuList .clientArea {
@@ -86,28 +126,101 @@
     box-shadow: rgb(0 0 0 / 50%) 0 .0rem .2rem;
 }
 
+.menuItems .menuList li a:hover {
+    color: #2493DE;  
+}
+
 .menuItems .menuList .language {
     margin-bottom: 3.5rem;
 }
 
-@media (max-width: 320px) {
-
+.menuItems .menuList .language ul { 
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
-@media (min-width: 321px) and (max-width: 481px) {
+.menuItems .menuList .language ul li {
+    width: 25px;    
+}
+
+.menuItems .menuList .language ul li img {
+    width: 100%;
+}
+
+@media (min-width: 321px) and (max-width: 480px) {
     .menuItems .menuList {    
-        width: 100%;
+        width: min(25rem, 90%);        
     }
 }
 
-@media (max-width: 769px) {
-    
+@media (min-width: 481px) and (max-width: 767px) {
+    .menuItems .menuList {    
+        width: min(25rem, 90%);        
+    }
 }
 
-@media (max-width: 1025px) {
-    
+@media (min-width: 768px) and (max-width: 1279px) {
+    .menuItems .menuList {    
+        width: min(25rem, 90%);
+    }
 }
 
-@media (max-width: 1201px) {
-    
+@media (min-width: 1280px) {
+
+    .menuContent {        
+        max-width: 100rem;
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;            
+    }
+
+    .menuContent .logo {
+        width: 12rem;                    
+    }
+
+    .menuContent .menuHamburger {
+        display: none;
+    }    
+
+    .menuItems {
+        width: 80%;        
+        position: relative;
+        display: block;     
+        background-color: #fff;   
+    }
+
+    .menuContent .menuItems .menuList {    
+        width: 100%;    
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: row;   
+        gap: 2rem;     
+        padding: 0.5rem;       
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .menuItems .menuList .clientArea {
+        position: relative;        
+        width: 10rem;
+        border-color: none;
+        padding: 0;
+        margin-top: 0;
+
+        background-color: transparent;
+    }    
+
+    .menuItems .menuList .clientArea li {
+        width: 100%;
+    }
+
+    .menuItems .menuList .language {
+        padding: 0;
+        margin: 0;
+    }
 }
