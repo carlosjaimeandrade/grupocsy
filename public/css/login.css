@@ -48,6 +48,19 @@
     outline: 0;
 }
 
+.login-input>select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.login-input select {
+    border: none;
+    padding: 8px 0px;
+    border-radius: 8px;
+    width: 100%;
+}
+
 .login-access {
     width: 100%;
 }
@@ -72,4 +85,45 @@
 
 .login-create>a>span {
     color: #2493DE;
+}
+
+.login-banner {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    overflow: hidden;
+}
+
+.login-banner img {
+    height: 100%;
+}
+
+.login-entry {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+}
+
+.login-content-create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.login-content-create>div {
+    margin: 5px;
+}
+
+@media (max-width: 1024px) {
+    .login-banner {
+        display: none
+    }
+    .login-entry {
+        width: 100%;
+    }
 }
