@@ -3,7 +3,7 @@ var comboGoogleTradutor = null; //Varialvel global
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: 'pt',
-        includedLanguages: 'en,es',
+        includedLanguages: 'en,es,pt',
         layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
     }, 'google_translate_element');
 
