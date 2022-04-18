@@ -1,8 +1,49 @@
 <%- include('../partials/header', {title: 'Soldiers Construções' }) %>
 
-    <div class="nome-content">
-
-
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="desc">
+                                            
+                </div>
+                <img src="/img/slide/slide01.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <div class="desc">
+                                            
+                </div>
+                <img src="/img/slide/slide02.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <div class="desc">
+                                            
+                </div>
+                <img src="/img/slide/slide03.png" alt="">
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
 
     <%- include('../partials/footer.ejs') %>
+
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
