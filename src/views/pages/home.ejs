@@ -5,22 +5,55 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="desc">
-                                            
+                    <div class="content">
+                        <div class="title">
+                            <p>Pouco investimento +</p>
+                            <p>sair do aluguel +</p>
+                            <p>casa própria =</p>
+                        </div>
+                        <div class="body">
+                            <p>Nosso objetivo</p>
+                        </div>                        
+                        <div class="button">
+                            <a href="/">Saiba mais</a>
+                        </div>
+                    </div>
                 </div>
                 <img src="/img/slide/slide01.png" alt="">
             </div>
             <div class="swiper-slide">
                 <div class="desc">
-                                            
+                    <div class="content">
+                        <div class="title">
+                            <p>Contruindo</p>
+                            <p>e realizando</p>                            
+                        </div>
+                        <div class="body sonhos">
+                            <p>Sonhos</p>
+                        </div>                                                
+                    </div>
                 </div>
                 <img src="/img/slide/slide02.png" alt="">
             </div>
             <div class="swiper-slide">
                 <div class="desc">
-                                            
+                    <div class="content">
+                        <div class="title">
+                            <p>Você sonha em sair <br>do aluguel?</p>
+                        </div>
+                        <div class="body">
+                            <p>A Soldiers contrói!</p>
+                        </div>
+                        <div class="history">
+                            <p>Conhecla mais sobre o empreendimento que vai mudar o seu estilo de vida.</p>
+                        </div>
+                        <div class="button">
+                            <a href="/">Saiba mais</a>
+                        </div>
+                    </div>
                 </div>
                 <img src="/img/slide/slide03.png" alt="">
-            </div>
+            </div>            
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -31,12 +64,13 @@
 
         <script>
             var swiper = new Swiper(".mySwiper", {
-                spaceBetween: 30,
+                spaceBetween: 10,
                 centeredSlides: true,
                 autoplay: {
                     delay: 2500,
                     disableOnInteraction: false,
                 },
+                loop: true,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
