@@ -41,7 +41,13 @@
                     </div>
                     <div class="login-input">
                         <i class="fa-solid fa-location-dot"></i>
-                        <select required import-city type="text" placeholder="Cidade" name="" id="">
+                        <select uf-select required import-city type="text" placeholder="uf" name="">
+                            <option value="">UF</option>
+                        </select>
+                    </div>
+                    <div city-select class="login-input display-none ">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <select city-select-import required import-city type="text" placeholder="Cidade" name="" id="">
                             <option value="">Cidade</option>
                         </select>
                     </div>

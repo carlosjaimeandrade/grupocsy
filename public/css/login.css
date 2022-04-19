@@ -119,6 +119,10 @@
     margin: 5px;
 }
 
+.display-none {
+    display: none;
+}
+
 @media (max-width: 1024px) {
     .login-banner {
         display: none
