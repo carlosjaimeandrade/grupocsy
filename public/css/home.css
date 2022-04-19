@@ -1,0 +1,8 @@
+.aboutCompany {
+    width: 100%;    
+    background-color: #F6F6F8;    
+}
+
+.aboutCompany .content {
+    padding: 4rem 0;
+}
