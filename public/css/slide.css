@@ -24,26 +24,27 @@
   -webkit-align-items: center;
   align-items: center;
 
-  height: 100%;  
+  height: 100%;
 }
 
 .swiper-slide img {
   width: 100%;
-  height: 100%;  
+  height: 100%;
   object-fit: cover;
 }
 
-.desc {  
-  position: absolute;  
+.desc {
+  position: absolute;
   width: 100%;
-  top: 0;
+  bottom: 0;
   left: 0;
   display: flex;
   text-align: left;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .desc .content {
+  max-width: 500px;
   width: 80%;
   margin: 2rem 0;
 
@@ -52,19 +53,23 @@
 }
 
 .desc .content .title p {
-  color: #fff;  
+  color: #fff;
   font-weight: 500;
   font-size: 1.5rem;
 }
 
+.desc .content.secondary .title p {
+  font-size: 2rem;
+}
+
 .desc .content .body p {
-  color: #0095E0;  
+  color: #0095E0;
   font-weight: 600;
   font-size: 1.8rem;
   margin-top: 1rem;
 }
 
-.desc .content .body.sonhos p {  
+.desc .content .body.sonhos p {
   font-family: 'Ms Madi', cursive;
   font-size: 4rem;
   margin: 0;
@@ -81,13 +86,13 @@
   width: 100%;
   margin-top: 1.5rem;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
 }
 
-.desc .content .button a {  
+.desc .content .button a {
   width: 60%;
   font-size: 1rem;
-  text-align:  center;
+  text-align: center;
   color: #fff;
   padding: 0.8rem;
   border-radius: .2rem;
@@ -97,16 +102,106 @@
 
 @media (max-width: 480px) {
 
-  .swiper-slide img {      
+  .swiper-slide img {
     height: 100%;
-    object-fit: cover;    
+    object-fit: cover;
     object-position: -550px 0px;
+  }
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  .desc {
+    top: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .desc .content {
+    width: 75%;
+    padding: 5rem;
+    display: flex;
+    align-items: left;
+    justify-content: flex-start;        
+  }
+
+  .desc .content .title.init p {
+    color: #0a0b2b;
+  }
+
+  .desc .content.secondary .body p {
+    font-size: 5rem;
+  }
+
+  .desc .content .button {
+    width: 60%;    
+  }
+
+  .desc .content .button a {
+    width: 100%;    
   }  
-    
+
+  .desc .content .button.init a {
+    background-color: #0a0b2b;;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .desc {
+    top: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .desc .content {
+    width: min(980px, 75%);
+    padding: 5rem;
+    display: flex;
+    align-items: left;
+    justify-content: flex-start;        
+  }
+
+  .desc .content .title.init p {
+    color: #0a0b2b;
+  }
+
+  .desc .content.secondary .body p {
+    font-size: 5rem;
+  }
+
+  .desc .content .button {
+    width: 60%;    
+  }
+
+  .desc .content .button a {
+    width: 100%;    
+  }  
+
+  .desc .content .button.init a {
+    background-color: #0a0b2b;;
+  }
+
 }
 
 @media (min-width: 1280px) {
   .swiper {
     height: 650px;
+  }
+
+  .desc {
+    top: 0;
+    margin-left: 10rem;
+    justify-content: flex-center;
+    align-items: center;
+  }
+
+  .desc .content {
+    width: 75%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;  
   }
 }
