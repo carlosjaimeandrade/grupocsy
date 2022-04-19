@@ -1,3 +1,58 @@
-main {
-    height: 100vh;
+.Subheader {
+    margin-top: 5rem;
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+}
+
+.Subheader img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sub-title-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.sub-title-content>div {
+    margin: 7px 80px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.sub-title {
+    font-size: 26px;
+}
+
+.sub-pagination {
+    font-size: 14px;
+}
+
+.sub-pagination>* {
+    margin-right: 6px;
+}
+
+.sub-pagination a {
+    color: #fff;
+}
+
+@media (max-width: 414px) {
+    .sub-title-content>div {
+        margin: 7px 50px;
+        color: #fff;
+        font-weight: 300;
+    }
+    .sub-title {
+        font-size: 20px;
+    }
+    .sub-pagination {
+        font-size: 13px;
+    }
 }
