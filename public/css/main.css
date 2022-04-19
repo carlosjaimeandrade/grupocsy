@@ -100,7 +100,7 @@
 
 .post-img-blog {
     overflow: hidden;
-    width: 500px;
+    width: 400px;
 }
 
 .post-img-blog img {
@@ -165,5 +165,17 @@
     }
     .blog-text {
         width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-post-blog {
+        flex-direction: column;
+    }
+    .blog-text {
+        width: 100%;
+    }
+    .post-img-blog {
+        width: 100%
     }
 }
