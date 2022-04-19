@@ -10,6 +10,9 @@ require('dotenv').config();
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')
 const AboutRoutes = require('./routes/about')
+const FutureProjectsRoutes = require('./routes/futureProjects')
+const EnterprisesRoutes = require('./routes/enterprises')
+const BlogRoutes = require('./routes/blog')
 
 const app = express();
 
@@ -27,5 +30,8 @@ app.use(cors());
 app.use(HomeRoutes)
 app.use(LoginRoutes)
 app.use(AboutRoutes)
+app.use(FutureProjectsRoutes)
+app.use(EnterprisesRoutes)
+app.use(BlogRoutes)
 
 module.exports = app;
