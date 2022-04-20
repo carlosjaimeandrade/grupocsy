@@ -120,6 +120,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 25px;
+            overflow: hidden;
         }
         .others-publication-title h2 {
             width: 200px;
@@ -130,12 +131,6 @@
     }
     
     @media (max-width: 414px) {
-        .others-publication>div {
-            flex-direction: column;
-        }
-        .others-publication-title h2 {
-            width: 160px;
-        }
         .publication-img {
             height: auto;
             width: auto;
@@ -144,5 +139,8 @@
             object-fit: cover;
             width: auto;
             height: 150px;
+        }
+        .others-publication>div {
+            overflow: hidden;
         }
     }
