@@ -83,6 +83,7 @@
 }
 
 .desc .content .button {
+  position: relative;
   width: 100%;
   margin-top: 1.5rem;
   display: flex;
@@ -97,8 +98,18 @@
   padding: 0.8rem;
   border-radius: .2rem;
   background-color: #0095E0;
+  animation: pulse 2s infinite;
 }
 
+@keyframes pulse {
+  0% {
+      box-shadow: 0 0 0 0px #fff;
+  }
+
+  100% {
+      box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.007);
+  }            
+}
 
 @media (max-width: 480px) {
 
