@@ -1,0 +1,148 @@
+    .publication-container {
+        margin-top: 5em;
+        padding: 0px 30px;
+        position: relative;
+    }
+    
+    .publication-content {
+        padding: 30px 40px;
+        width: 70%;
+    }
+    
+    .publication-title {
+        padding: 35px 0px;
+    }
+    
+    .publication-title>* {
+        margin: 15px 0px;
+    }
+    
+    .publication-title h2 {
+        font-weight: 400;
+        font-size: 30px;
+        color: #303030;
+    }
+    
+    .publication-title span {
+        color: #0095e0;
+        font-weight: 300;
+    }
+    
+    .publication-text {
+        margin: 15px 0px;
+    }
+    
+    .publication-text p {
+        text-align: justify;
+        line-height: 35px;
+        font-size: 17px;
+        color: #5a5a5a;
+        font-weight: 400;
+    }
+    
+    .publication-img {
+        height: 450px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+    
+    .publication-img img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .others-publication {
+        position: absolute;
+        right: 0;
+        top: 5%;
+    }
+    
+    .others-publication-img {
+        width: 100px;
+        height: 50px;
+        overflow: hidden;
+    }
+    
+    .others-publication-img img {
+        height: 100%;
+        width: 100px;
+        object-fit: cover;
+    }
+    
+    .others-publication-title h2 {
+        font-size: 15px;
+        width: 220px;
+        color: #3f3f3f;
+    }
+    
+    .others-publication-title span {
+        font-size: 12px;
+        color: #0095e0;
+    }
+    
+    .others-publication-content {
+        display: flex;
+        align-items: center;
+        margin-top: 55px;
+    }
+    
+    .others-publication-content>div {
+        margin: 5px;
+    }
+    
+    .others-publication>h1 {
+        font-size: 20px;
+        color: #3f3f3f;
+        font-weight: 300;
+        padding: 10px 0px;
+    }
+    
+    @media (max-width: 980px) {
+        .publication-content {
+            padding: 0px;
+            width: 100%;
+        }
+        .others-publication h3 {
+            margin: 0px;
+        }
+        .others-publication {
+            position: static;
+        }
+        .others-publication>div {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        .others-publication-title h2 {
+            width: 200px;
+        }
+        .others-publication-content {
+            margin-top: 30px;
+        }
+    }
+    
+    @media (max-width: 414px) {
+        .others-publication>div {
+            flex-direction: column;
+        }
+        .others-publication-title h2 {
+            width: 160px;
+        }
+        .publication-img {
+            height: auto;
+            width: auto;
+        }
+        .publication-img img {
+            object-fit: cover;
+            width: auto;
+            height: 150px;
+        }
+    }
