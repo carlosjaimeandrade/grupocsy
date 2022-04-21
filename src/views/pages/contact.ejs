@@ -1,0 +1,70 @@
+<%- include('../partials/header', {title: 'Soldiers Construções - Contato' }) %>
+    <div class="Subheader">
+        <div class="sub-title-content">
+            <div class="sub-title">
+                <h4>Contato</h4>
+            </div>
+            <div class="sub-pagination">
+                <a href="/">Home</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <span>Contato</span>
+            </div>
+        </div>
+        <img src="/img/slide/slide03.png" alt="">
+    </div>
+
+
+    <form method="post">
+        <div class="contact">
+            <div class="contact-direct">
+                <div class="direct">
+                    <span><i class="fa-solid fa-phone"></i> 35 9997 1107</span>
+                </div>
+                <div class="direct">
+                    <span><i class="fa-solid fa-envelope"></i>
+                        grupocsy@gmail.com</span>
+                </div>
+                <div class="direct">
+                    <span><i class="fa-brands fa-instagram-square"></i>
+                        /soldiersconstrutora</span>
+                </div>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-text">
+                    <h4>Fale conosco</h4>
+                    <p>Fique à vontade para nos mandar uma mensagem. Responderemos em breve</p>
+                </div>
+                <div class="contact-content">
+                    <div class="entry-value-contact">
+                        <i class="fa-solid fa-user"></i>
+                        <input required type="text" name="nome" placeholder="Nome">
+                    </div>
+                    <div class="entry-value-contact">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input required type="email" name="email" placeholder="E-mail">
+                    </div>
+                    <div class="entry-value-contact">
+                        <i class="fa-solid fa-phone"></i>
+                        <input onkeyup="mascara('(##) ####-####',this,event,false)" required type="telefone" name="telefone" placeholder="Telefone">
+                    </div>
+                    <div class="entry-value-contact">
+                        <textarea placeholder="Mensagem" name="mensagem" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="contact-send">
+                        <button onclick="loading(event)">  Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <% if(message != "") {%>
+        <div class="alert alert-<%= type %>">
+            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+        </div>
+        <% } %>
+
+
+            <%- include('../partials/footer.ejs') %>
