@@ -1,0 +1,133 @@
+    .contact {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+    }
+    
+    .contact-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: #282e3704;
+        padding: 70px;
+        border-radius: 3px;
+        box-shadow: 1px 0px 8px 1px rgba(0, 0, 0, 0.007);
+        margin: 5px;
+    }
+    
+    .contact-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .entry-value-contact {
+        border-radius: 3px;
+        border: solid 2px #d8dddb;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: .3rem;
+        margin: 5px;
+        background-color: #fff;
+    }
+    
+    .entry-value-contact i {
+        margin: 5px;
+        color: rgba(0, 0, 0, 0.329);
+    }
+    
+    .entry-value-contact>input {
+        border: none;
+        padding: 8px 0px;
+        border-radius: 8px;
+        width: 100%;
+        background-color: transparent;
+    }
+    
+    .entry-value-contact>input:focus {
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+    }
+    
+    .entry-value-contact>select:focus {
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+    }
+    
+    .entry-value-contact>textarea:focus {
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+    }
+    
+    .entry-value-contact select {
+        border: none;
+        padding: 8px 0px;
+        border-radius: 8px;
+        width: 100%;
+    }
+    
+    .entry-value-contact textarea {
+        border: none;
+        padding: 8px 0px;
+        border-radius: 8px;
+        width: 100%;
+    }
+    
+    .contact-text {
+        margin-bottom: 15px
+    }
+    
+    .contact-text>* {
+        margin-bottom: 15px
+    }
+    
+    .contact-text h4 {
+        font-size: 25px;
+        color: #303030;
+        font-weight: 500;
+    }
+    
+    .contact-text p {
+        color: #5a5a5a;
+        font-weight: 400;
+        font-size: 15px;
+    }
+    
+    .contact-send {
+        width: 100%;
+    }
+    
+    .contact-send button {
+        width: 100%;
+        background-color: #2493DE;
+        border: none;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 3px;
+        margin-top: 5px;
+    }
+    
+    .contact-direct {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 15px;
+    }
+    
+    .contact-direct>* {
+        margin: 18px;
+        color: #2493DE;
+    }
+    
+    @media (max-width: 414px) {
+        .contact-container {
+            padding: 25px;
+        }
+    }
