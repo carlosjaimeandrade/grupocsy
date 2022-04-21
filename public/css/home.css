@@ -24,7 +24,8 @@
     margin: 1rem 0;
 }
 
-.aboutCompany .content .title .titleQuestion p {
+.aboutCompany .content .title .titleQuestion p,
+.titleProjects p {
     font-size: 1.2rem;
     color: #0095E0;
     font-weight: 500;
@@ -46,7 +47,7 @@
     width: 100%;
     height: 1000px;
 
-    margin: 12rem 0;
+    margin: 12rem 0 8rem 0;
 
     display: flex;
     justify-content: center;
@@ -61,7 +62,7 @@
     gap: 2rem;
     display: grid;
     align-items: center;
-    justify-items: center;        
+    justify-items: center;
 }
 
 .card {
@@ -109,12 +110,187 @@
 }
 
 
+/* BENEFICTS */
+.benefits {
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.benefits .benefitsContainer {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.benefits .title {
+    width: 100%;
+    text-align: center;
+}
+
+.benefits .titleBenefits p {
+    font-size: 1.2rem;
+    color: #0095E0;
+    font-weight: 500;
+    margin-top: 1.5rem;
+}
+
+.benefits .descBenefits p,
+.descProjects p {
+    font-size: 1.5rem;
+    color: #2A303A;
+    font-weight: 700;
+}
+
+.benefits .benefitsCards {
+    margin: 4rem 0 2rem 0;
+    text-align: center;
+    color: #504F4F;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.benefits .benefitsCards .cardsList {
+    display: grid;
+    gap: 2rem;
+}
+
+.benefits .benefitsCards .cardsList .cardContainer {
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.benefits .benefitsCards .cardsList .cardItem {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background-color: #E1F0FB;
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+}
+
+.benefits .benefitsCards .cardsList .benefits-title p {
+    font-weight: 600;
+    padding: 0.5rem;
+    color: #2A303A;
+}
+
+.benefits .benefitsCards .cardsList .benefits-desc {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* INDICATE */
+.indicate {
+    width: 100%;
+    margin-bottom: 2rem;
+    background-color: #0095E0;
+}
+
+.indicate .indicateContainer {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.indicate .indicateContainer .indicateTitle {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3rem 0;
+}
+
+.indicate .indicateContainer .indicateTitle p {
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.btnAnimation {
+    max-width: 300px;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 1rem;
+    text-align: center;
+    color: #FFF;
+    padding: 0.8rem;
+    border-radius: .2rem;
+    background-color: #0a0b2b;
+    animation: pulse 2s infinite;
+}
+
+.indicate .indicateContainer .indicateImg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 2.5rem;
+    justify-content: center;
+}
+
+.indicate .indicateContainer .indicateImg img {
+    max-width: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Projects */
+.projects {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.projects .projectsContainer {
+    width: 90%;
+    text-align: center;
+    margin: 3rem auto;    
+}
+
+/* slide PROJECTS */
+.projects .swiper {
+    margin-top: 3rem;
+    height: 300px;
+}
+
+.projects .swiper img {
+    height: 300px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.projects .projectsContainer .btn-show {
+    padding: 2rem;    
+}
+
+.projects .projectsContainer .btn-show a {
+    background-color: #0095E0;
+}
+
+.projects .swiper .swiper-slide:hover {
+    transform: scale(1.1);
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+}
+
 @media (max-width: 480px) {}
 
 @media (min-width: 481px) and (max-width: 679px) {
-    
-    .container {    
-        width: 80%;        
+
+    .container {
+        width: 80%;
     }
 }
 
@@ -140,12 +316,24 @@
 
     .container {
         grid-template-columns: repeat(2, 6fr);
-    }    
+    }
+
+    .benefits .benefitsCards .cardsList {
+        grid-template-columns: repeat(2, 6fr);
+    }
+
+    .indicate .indicateContainer {
+        display: flex;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-    .container {    
-        width: 80%;        
+    .container {
+        width: 80%;
+    }
+
+    .benefits .benefitsCards .cardsList {
+        grid-template-columns: repeat(3, 4fr);
     }
 }
 
@@ -157,6 +345,25 @@
     }
 
     .aboutCompany .content .cards .container {
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+
+    .benefits .benefitsContainer {
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+
+    .benefits .benefitsCards .cardsList {
+        grid-template-columns: repeat(3, 4fr);
+    }
+
+    .indicate .indicateContainer {
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+
+    .projects .projectsContainer {
         max-width: 1280px;
         margin: 0 auto;
     }

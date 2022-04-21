@@ -53,7 +53,7 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
-    <!-- Swiper end -->
+    <!-- Company -->
     <div class="aboutCompany">
         <div class="content">
             <div class="content-title">
@@ -142,6 +142,136 @@
             </section>
         </div>
     </div>
+    <!-- Benefits -->
+    <div class="benefits">
+        <div class="benefitsContainer">
+            <div class="benefitsContent">
+                <div class="title">
+                    <div class="titleBenefits">
+                        <p>VANTAGENS</p>
+                    </div>
+                    <div class="descBenefits">
+                        <p>Investindo em um empreendimento Soldiers</p>
+                    </div>
+                </div>
+                <div class="benefitsCards">
+                    <div class="cardsList">
+                        <!-- CARD-ITEM -->
+                        <section class="cardContainer">
+                            <div class="cardItem">
+                                <div class="benefits-img-card">
+                                    <img src="/img/relogio.png" alt="">
+                                </div>
+                            </div>
+                            <div class="benefits-desc-card">
+                                <div class="benefits-title">
+                                    <p>Pontualidade</p>
+                                </div>
+                                <div class="benefits-desc">
+                                    <p>
+                                        Política de seriedade,
+                                        compromisso e pontualidade na
+                                        execução de entregas.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- CARD-ITEM -->
+                        <section class="cardContainer">
+                            <div class="cardItem">
+                                <div class="benefits-img-card">
+                                    <img src="/img/verific.png" alt="">
+                                </div>
+                            </div>
+                            <div class="benefits-desc-card">
+                                <div class="benefits-title">
+                                    <p>Segurança</p>
+                                </div>
+                                <div class="benefits-desc">
+                                    <p>
+                                        Toda negociação é feita com
+                                        segurança e esclarecimento de
+                                        dúvidas do cliente.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- CARD-ITEM -->
+                        <section class="cardContainer">
+                            <div class="cardItem">
+                                <div class="benefits-img-card">
+                                    <img src="/img/like.png" alt="">
+                                </div>
+                            </div>
+                            <div class="benefits-desc-card">
+                                <div class="benefits-title">
+                                    <p>Satisfação</p>
+                                </div>
+                                <div class="benefits-desc">
+                                    <p>
+                                        Trabalhamos com objetivos e
+                                        metas bem definidas, buscando
+                                        excelência na prestação de nossos
+                                        serviços para alcançar a satisfação
+                                        de nossos clientes.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Indicate -->
+    <div class="indicate">
+        <div class="indicateContainer">
+            <div class="indicateTitle">
+                <p>Participe do Programa Indique e Ganhe</p>
+                <a href="" class="btnAnimation">Clique pra indicar</a>
+            </div>
+            <div class="indicateImg">
+                <img src="/img/indicate.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Projects -->
+    <div class="projects">
+        <div class="projectsContainer">
+            <div class="titleProjects">
+                <p>NOSSOS PROJETOS</p>
+            </div>
+            <div class="descProjects">
+                <p>Descubra a casa ideal para o seu estilo de vida</p>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper myProject">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/img/projetcts/01.webp" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/img/projetcts/01.webp" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/img/projetcts/01.webp" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/img/projetcts/01.webp" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/img/projetcts/01.webp" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="btn-show">
+                <a href="" class="btnAnimation">Ver mais</a>
+            </div>
+        </div>
+    </div>
     <%- include('../partials/footer.ejs') %>
 
         <script>
@@ -160,6 +290,30 @@
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+        <script>
+            var swiper = new Swiper(".myProject", {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 50,
+                    },
                 },
             });
         </script>
