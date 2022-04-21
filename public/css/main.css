@@ -142,6 +142,34 @@
     font-size: 25px;
 }
 
+.alert {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    border-radius: 3px;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert>* {
+    margin: 2px;
+}
+
+.alert i {
+    cursor: pointer;
+}
+
+.alert-success {
+    background-color: #00c267;
+}
+
+.alert-danger {
+    background-color: #e04d4d;
+}
+
 @media (max-width:1025px) {
     .container-post-blog {
         flex-wrap: wrap;

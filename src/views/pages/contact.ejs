@@ -1,5 +1,4 @@
 <%- include('../partials/header', {title: 'Soldiers Construções - Contato' }) %>
-
     <div class="Subheader">
         <div class="sub-title-content">
             <div class="sub-title">
@@ -15,17 +14,19 @@
     </div>
 
 
-    <form action="">
+    <form method="post">
         <div class="contact">
             <div class="contact-direct">
                 <div class="direct">
                     <span><i class="fa-solid fa-phone"></i> 35 9997 1107</span>
                 </div>
                 <div class="direct">
-                    <span><i class="fa-solid fa-envelope"></i> grupocsy@gmail.com</span>
+                    <span><i class="fa-solid fa-envelope"></i>
+                        grupocsy@gmail.com</span>
                 </div>
                 <div class="direct">
-                    <span><i class="fa-brands fa-instagram-square"></i> /soldiersconstrutora</span>
+                    <span><i class="fa-brands fa-instagram-square"></i>
+                        /soldiersconstrutora</span>
                 </div>
             </div>
 
@@ -37,18 +38,18 @@
                 <div class="contact-content">
                     <div class="entry-value-contact">
                         <i class="fa-solid fa-user"></i>
-                        <input required type="text" placeholder="Nome">
+                        <input required type="text" name="nome" placeholder="Nome">
                     </div>
                     <div class="entry-value-contact">
                         <i class="fa-solid fa-envelope"></i>
-                        <input required type="email" placeholder="E-mail">
+                        <input required type="email" name="email" placeholder="E-mail">
                     </div>
                     <div class="entry-value-contact">
                         <i class="fa-solid fa-phone"></i>
-                        <input required type="telefone" placeholder="Telefone">
+                        <input onkeyup="mascara('(##) ####-####',this,event,false)" required type="telefone" name="telefone" placeholder="Telefone">
                     </div>
                     <div class="entry-value-contact">
-                        <textarea placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
+                        <textarea placeholder="Mensagem" name="mensagem" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="contact-send">
                         <button><i class="fa-solid fa-paper-plane"></i> Enviar</button>
@@ -59,4 +60,11 @@
     </form>
 
 
-    <%- include('../partials/footer.ejs') %>
+    <% if(message != "") {%>
+        <div class="alert alert-<%= type %>">
+            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+        </div>
+        <% } %>
+
+
+            <%- include('../partials/footer.ejs') %>

@@ -5,6 +5,10 @@ const ejs = require('ejs');
 const path = require('path');
 const morgan = require('morgan');
 const cors = require('cors');
+const session = require('express-session')
+const flash = require('connect-flash');
+
+
 require('dotenv').config();
 
 const HomeRoutes = require('./routes/home')
@@ -23,10 +27,13 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(cors());
+app.use(session({ secret: '6594637210271734-032312-aa00cfef0f5', resave: true, saveUninitialized: true }))
+app.use(flash());
 
 //rotas
 app.use(HomeRoutes)
