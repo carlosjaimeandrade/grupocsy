@@ -170,6 +170,10 @@
     background-color: #e04d4d;
 }
 
+.loading {
+    height: 19px;
+}
+
 @media (max-width:1025px) {
     .container-post-blog {
         flex-wrap: wrap;

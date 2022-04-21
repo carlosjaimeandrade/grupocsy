@@ -43,7 +43,7 @@ const sendEmail = (req, res) => {
             req.flash('type', 'danger');
             res.redirect('/contato')
         } else {
-            req.flash('message', 'Enviado com sucesso, logo entraremos em contato');
+            req.flash('message', 'Sua solicitação foi enviada com sucesso, logo entraremos em contato');
             req.flash('type', 'success');
             res.redirect('/contato')
         }
