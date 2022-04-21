@@ -11,6 +11,10 @@ const flash = require('connect-flash');
 
 require('dotenv').config();
 
+//importando os Model para criação das tabelas no MYSQL caso não tenha criado
+const User = require('./models/User.js')
+
+
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')
 const AboutRoutes = require('./routes/about')

@@ -18,7 +18,9 @@
         "express": "^4.17.3",
         "express-session": "^1.17.2",
         "morgan": "^1.10.0",
+        "mysql2": "^2.3.3",
         "nodemailer": "^6.7.3",
-        "save": "^2.5.0"
+        "save": "^2.5.0",
+        "sequelize": "^6.19.0"
     }
 }
