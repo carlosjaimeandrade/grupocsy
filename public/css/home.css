@@ -256,7 +256,7 @@
 .projects .projectsContainer {
     width: 90%;
     text-align: center;
-    margin: 3rem auto;    
+    margin: 3rem auto;
 }
 
 /* slide PROJECTS */
@@ -272,7 +272,7 @@
 }
 
 .projects .projectsContainer .btn-show {
-    padding: 2rem;    
+    padding: 2rem;
 }
 
 .projects .projectsContainer .btn-show a {
@@ -283,6 +283,74 @@
     transform: scale(1.1);
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+    width: 100%;
+    background-color: #0095E0;
+}
+
+.newsletter .newsletterContainer {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.newsletter .newsletterContainer .newsletterDesc {
+    width: 100%;
+}
+
+.newsletter .newsletterContainer .newsletterTitle {    
+    text-align: center;
+    font-size: 1.5rem;
+    color: #FFF;
+    margin: 2rem 0;
+}
+
+.newsletter .newsletterContainer .newsletterContent {    
+    width: 100%;    
+    border-radius: 2px;    
+    /* margin: 2rem 0; */
+}
+
+.newsletter .newsletterContainer .newsletterContent .input-content {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+}
+
+.newsletter .newsletterContainer .newsletterContent form input {
+    width: 100%;
+    outline: none;
+    padding: .8rem;
+    border: none;
+    border-radius: 3px;
+}
+
+.newsletter .newsletterContainer .newsletterContent .send-btn {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter .newsletterContainer .newsletterContent .send-btn a {
+    width: 100%;
+}
+
+.newsletter .newsletterContainer .newsletterContent .info {
+    width: 100%;
+    text-align: center;
+    font-size: .7rem;
+    padding: 1rem 0;
+    color: rgb(255, 255, 255);
 }
 
 @media (max-width: 480px) {}
@@ -327,6 +395,7 @@
     }
 }
 
+
 @media (min-width: 768px) and (max-width: 1279px) {
     .container {
         width: 80%;
@@ -334,6 +403,13 @@
 
     .benefits .benefitsCards .cardsList {
         grid-template-columns: repeat(3, 4fr);
+    }
+
+    .newsletter .newsletterContainer .newsletterContent .input-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
     }
 }
 
@@ -366,5 +442,16 @@
     .projects .projectsContainer {
         max-width: 1280px;
         margin: 0 auto;
+    }
+
+    .newsletter .newsletterContainer .newsletterContent .input-content {        
+        margin: .5rem auto;
+        max-width: 1080px;        
+        justify-content: center;        
+        flex-direction: row;                        
+    }    
+
+    .newsletter .newsletterContainer .newsletterContent .input-content .input-item {
+        width: 100%;
     }
 }
