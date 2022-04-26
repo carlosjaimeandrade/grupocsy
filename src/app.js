@@ -23,6 +23,7 @@ const EnterprisesRoutes = require('./routes/enterprises')
 const BlogRoutes = require('./routes/blog')
 const PostViewRoutes = require('./routes/postView')
 const ContactRoutes = require('./routes/contact')
+const CompaniesRoutes = require('./routes/company');
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use(AboutRoutes)
 app.use(FutureProjectsRoutes)
 app.use(EnterprisesRoutes)
 app.use(BlogRoutes)
+app.use(CompaniesRoutes);
 app.use(PostViewRoutes)
 app.use(ContactRoutes)
 
