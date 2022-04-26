@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const connection = require('../database/database')
 
 const User = connection.define('user', {
-    nome: {
+    name: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -10,12 +10,16 @@ const User = connection.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    telefone: {
+    telephone: {
         type: Sequelize.STRING(15),
         allowNull: false
     },
     uf: {
         type: Sequelize.STRING(2),
+        allowNull: false
+    },
+    city: {
+        type: Sequelize.STRING(150),
         allowNull: false
     },
     cpf: {
@@ -29,6 +33,12 @@ const User = connection.define('user', {
     password: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 0
+
     }
 
 })

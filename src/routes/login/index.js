@@ -6,6 +6,8 @@ const LoginController = require('../../controllers/LoginController.js')
 
 routes.get('/login', LoginController.login)
 
-routes.get('/login/cadastrar', LoginController.loginCreate)
+routes.get('/login/cadastrar', LoginController.loginRegister)
+
+routes.post('/login/cadastrar', LoginController.loginCreate)
 
 module.exports = routes;

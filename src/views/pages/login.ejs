@@ -50,9 +50,16 @@
         </div>
     </form>
 
+    <% if(message != "") {%>
+        <div class="alert alert-<%= type %>">
+            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+        </div>
+        <% } %>
+
 </body>
 
 </html>
 
 <script src="/js/login.js"></script>
 <script src="/js/loading.js"></script>
+<script src="/js/alert.js"></script>

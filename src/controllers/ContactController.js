@@ -39,7 +39,7 @@ const sendEmail = (req, res) => {
 
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
-            req.flash('message', 'Ocorreu um erro no envio, por favor entre em contato com o administrador do sistema' + error);
+            req.flash('message', 'Ocorreu um erro no envio, por favor entre em contato com o administrador do sistema');
             req.flash('type', 'danger');
             res.redirect('/contato')
         } else {
