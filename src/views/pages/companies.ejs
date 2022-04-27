@@ -1,0 +1,55 @@
+<%- include('../partials/header', {title: 'Soldiers Construções - Contato' }) %>
+    <section>
+        <div class="companiesContainer">
+            <div class="companiesBanner">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/img/companies/bg1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="companiesDesc" data-aos="fade-right">
+                <div class="title">
+                    <div class="titleCompanies">
+                        <p>Sobre</p>
+                    </div>
+                    <div class="nameCompanies">
+                        <p>Socialy</p>
+                    </div>
+                    <div class="historyCompanies">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, incidunt, architecto
+                            aspernatur porro distinctio iure nam natus nulla totam numquam eaque. Impedit voluptas ex
+                            quos voluptatibus sed nihil alias vero lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Nobis, incidunt, architecto
+                            aspernatur porro distinctio iure nam natus nulla totam numquam eaque. Impedit voluptas ex
+                            quos voluptatibus sed nihil alias vero.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, incidunt, architecto
+                            aspernatur porro distinctio iure nam natus nulla totam numquam eaque. Impedit voluptas ex
+                            quos voluptatibus sed nihil alias vero.
+                        </p>
+                    </div>
+                </div>
+                <div class="img" data-aos="fade-left">
+                    <img src="/img/companies/man.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('../partials/footer.ejs') %>
+        <script>
+
+            AOS.init();
+
+            var swiper = new Swiper(".mySwiper", {
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+                loop: true
+            });
+        </script>

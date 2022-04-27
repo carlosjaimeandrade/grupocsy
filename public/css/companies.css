@@ -1,0 +1,114 @@
+.companiesContainer {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.companiesContainer .companiesBanner {
+    width: 100%;
+    height: 600px;    
+}
+
+.companiesContainer .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .companiesContainer .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .companiesContainer .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.companiesContainer .companiesDesc {
+    width: 90%;
+    color: #2A303A;
+    margin: 0 auto;
+}
+
+.companiesContainer .companiesDesc .title {
+    max-width: 500px;
+    width: 100%;
+    margin: 3rem 0 2rem 0;
+}
+
+.companiesContainer .companiesDesc .title .titleCompanies p {
+    font-size: 1.2rem;
+    color: #0095E0;    
+    font-weight: 500;
+    padding: 0.2rem 0;
+}
+
+.companiesContainer .companiesDesc .title .nameCompanies p {
+    font-size: 2.5rem;
+    color: #2A303A;
+    font-weight: 700;
+}
+
+.companiesContainer .companiesDesc .title .historyCompanies p {
+    margin-top: 0.2rem;
+    padding: .5rem 0; 
+    text-align: justify;
+}
+
+.companiesContainer .companiesDesc .img {    
+    width: min(500px, 100%);    
+    border-radius: 10px;
+    overflow: hidden;
+    height: 400px;
+    margin: 2rem 0;
+}
+
+.companiesContainer .companiesDesc .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 481px) and (max-width: 679px) {
+
+}
+
+@media (min-width: 680px) {
+    .companiesContainer .companiesDesc {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .companiesContainer .companiesDesc .img {
+        height: 600px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+
+}
+
+@media (min-width: 1280px) {
+    
+    .companiesContainer .companiesBanner {    
+        height: 800px;
+    }
+
+}
