@@ -48,7 +48,7 @@ const loginCreate = async(req, res) => {
             from: 'teste@fmsoficial.com.br',
             to: req.body.email,
             subject: 'CONFIRMAÇÃO DE CADASTRO',
-            html: `Clique no link para confirmar o cadastro <br> ${hash_email}`
+            html: `Clique no link para confirmar o cadastro <br> http://localhost:3500/validate/${hash_email}`
         };
 
         transporter.sendMail(mailOptions, function(error, info) {

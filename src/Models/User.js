@@ -38,9 +38,12 @@ const User = connection.define('user', {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: 0
-
+    },
+    level: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 0
     }
-
 })
 
 
