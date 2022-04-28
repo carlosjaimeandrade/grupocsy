@@ -2,11 +2,50 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs")
 const transporter = require("../help/transporter")
 
+
 const login = async(req, res) => {
     res.render('pages/login', {
         message: req.flash('message'),
         type: req.flash('type')
     })
+}
+
+const loginCheck = async(req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+
+    user = await User.findOne({ where: { email: email } })
+
+    if (user) {
+        const check = bcrypt.compareSync(password, user.password)
+        if (check) {
+
+            req.session.user = {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            }
+
+            if (user.level == 0) {
+                res.redirect('cliente')
+            } else {
+                res.redirect('admin')
+            }
+
+        } else {
+            req.flash('message', 'Erro de autenticação, verifique os campos');
+            req.flash('type', 'danger');
+            res.redirect('login')
+        }
+
+    } else {
+        req.flash('message', 'Esse e-mail não possui cadastro');
+        req.flash('type', 'danger');
+        res.redirect('login')
+    }
+
+
+
 }
 
 const loginRegister = (req, res) => {
@@ -102,5 +141,6 @@ module.exports = {
     login,
     loginCreate,
     loginRegister,
-    confirmRegister
+    confirmRegister,
+    loginCheck
 }

@@ -15,8 +15,8 @@
     <main>
         <div>
             <span btn-change id="debits">Débitos</span>
-            <span btn-change id="budget">Orçamentos</span>
-            <span btn-change id="configurations">Configuração</span>
+            <span btn-change id="publication">Publicação</span>
+            <span btn-change id="users">Usuários</span>
         </div>
 
         <div import-ejs>
@@ -38,11 +38,11 @@
         btn.onclick = (e) => {
             const view = e.target.id
             switch (view) {
-                case "budget":
-                    import_ejs.innerHTML = `<%- include('./budget.ejs') %>`
+                case "users":
+                    import_ejs.innerHTML = `<%- include('./users.ejs') %>`
                     break
-                case "configurations":
-                    import_ejs.innerHTML = `<%- include('./configurations.ejs') %>`
+                case "publication":
+                    import_ejs.innerHTML = `<%- include('./publication.ejs') %>`
                     break
                 default:
                     import_ejs.innerHTML = `<%- include('./debits.ejs') %>`
