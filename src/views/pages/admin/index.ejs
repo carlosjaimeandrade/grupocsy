@@ -19,13 +19,16 @@
     <main>
 
         <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
-            <div new-post class="new-post-container">
-                <div class="new-post-content ">
-                    <div class="new-post-header">
+            <div new-modal-post class="new-modal-container">
+                <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
+                <div class="new-modal-content ">
+                    <div class="new-modal-header">
                         <h2>Nova publicação</h2>
-                        <i close class="fa-solid fa-xmark"></i>
+                        <div class="btn-modal">
+                            <button onclick="loading(event)">Publicar</button>
+                        </div>
                     </div>
-                    <div class="new-post-main">
+                    <div class="new-modal-main">
                         <div class="entry-content">
                             <div class="entry-value entry-bd-1">
                                 <i class="fa-solid fa-file-signature"></i>
@@ -49,9 +52,6 @@
                             </div>
                         </div>
                         <textarea id="post" name=""></textarea>
-                        <div class="btn-post">
-                            <button onclick="loading(event)">Publicar</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -97,5 +97,6 @@
 </script>
 <script src="/lib/tinymce/tinymce.min.js "></script>
 <script src="/js/tinymceConfig.js "></script>
+<script src="/js/modal.js "></script>
 <script src="/js/loading.js"></script>
 <script src="/js/fileLoad.js"></script>

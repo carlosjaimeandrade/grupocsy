@@ -6,15 +6,3 @@ tinymce.init({
     ],
     height: "290"
 })
-
-function newPost() {
-    let new_post_container = document.querySelector('[new-post]')
-    new_post_container.style.display = new_post_container.style.display == 'flex' ? 'none' : 'flex'
-}
-
-
-const new_post_close = document.querySelector('[close]')
-let new_post_container = document.querySelector('[new-post]')
-new_post_close.onclick = () => {
-    new_post_container.style.display = 'none'
-}

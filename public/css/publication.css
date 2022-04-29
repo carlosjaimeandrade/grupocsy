@@ -1,4 +1,4 @@
-.new-post-container {
+.new-modal-container {
     position: fixed;
     top: 0;
     width: 100%;
@@ -13,66 +13,67 @@
     margin-bottom: 4px;
 }
 
-.new-post-content {
+.new-modal-content {
     padding: 15px;
     background: #fff;
     border-radius: 2px;
     width: 60%;
 }
 
-.new-post-header {
+.new-modal-header {
     padding: 3px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.new-post-header i {
-    font-size: 25px;
+.modal-modal-close {
+    font-size: 35px;
     cursor: pointer;
-    color: #252525ac;
+    color: #ffffff;
+    position: absolute;
+    right: 30px;
+    top: 25px;
 }
 
-.new-post-header h2 {
+.new-modal-header h2 {
     font-size: 20px;
     color: #252525ac;
 }
 
-.new-post-main {
+.new-modal-main {
     padding: 10px 0px;
 }
 
-.btn-post {
-    width: 100%;
+.btn-modal {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 20px;
 }
 
-.btn-post button {
-    width: 20%;
+.btn-modal button {
+    width: 120px;
     background-color: #2493DE;
     border: none;
     color: #fff;
-    padding: 0.9rem 0px;
+    padding: 0.6rem 0px;
     border-radius: 3px;
 }
 
 @media (max-width: 992px) {
-    .new-post-content {
+    .new-modal-content {
         width: 70%;
     }
 }
 
 @media (max-width: 768px) {
-    .new-post-content {
+    .new-modal-content {
         width: 80%;
     }
 }
 
 @media (max-width: 414px) {
-    .new-post-content {
+    .new-modal-content {
         width: 90%;
     }
 }
