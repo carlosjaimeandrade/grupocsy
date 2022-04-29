@@ -14,6 +14,10 @@ const Publication = connection.define('publication', {
         type: Sequelize.STRING(50),
         allowNull: false
     },
+    previewText: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
     text: {
         type: Sequelize.TEXT,
         allowNull: false
@@ -25,6 +29,6 @@ const Publication = connection.define('publication', {
 })
 
 
-Publication.sync({ force: false })
+Publication.sync({ force: true })
 
 module.exports = Publication;

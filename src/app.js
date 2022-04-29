@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const session = require('express-session')
 const flash = require('connect-flash');
-var cookieParser = require('cookie-parser');
+
 
 require('dotenv').config();
 
@@ -27,9 +27,9 @@ const CompaniesRoutes = require('./routes/company');
 const ClientRoutes = require('./routes/client');
 const AdminRoutes = require('./routes/Admin');
 
+
 const app = express();
 
-app.use(cookieParser());
 app.use(express.static("public"));
 
 app.set('view engine', 'ejs');

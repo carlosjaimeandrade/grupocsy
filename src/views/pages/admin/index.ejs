@@ -16,46 +16,8 @@
     <header>
         header
     </header>
-    <main>
 
-        <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
-            <div new-modal-post class="new-modal-container">
-                <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
-                <div class="new-modal-content ">
-                    <div class="new-modal-header">
-                        <h2>Nova publicação</h2>
-                        <div class="btn-modal">
-                            <button onclick="loading(event)">Publicar</button>
-                        </div>
-                    </div>
-                    <div class="new-modal-main">
-                        <div class="entry-content">
-                            <div class="entry-value entry-bd-1">
-                                <i class="fa-solid fa-file-signature"></i>
-                                <input required type="text" name="title" placeholder="Título">
-                            </div>
-                            <div class="entry-value entry-bd-1">
-                                <i class="fa-solid fa-table-list"></i>
-                                <select name="category" id="">
-                                    <option value="">Categoria</option>
-                                    <option value="blog">Blog</option>
-                                    <option value="empreendimentos">Empreendimentos</option>
-                                    <option value="projetos-futuros">Projetos futuros</option>
-                                </select>
-                            </div>
-                            <div class="entry-value entry-bd-1">
-                                <i class="fa-solid fa-image"></i>
-                                <label class="upload-file" for="image">
-                                    Carregar... <span log-arq></span>
-                                </label>
-                                <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="image">
-                            </div>
-                        </div>
-                        <textarea id="post" name=""></textarea>
-                    </div>
-                </div>
-            </div>
-        </form>
+    <main>
 
         <div>
             <span btn-change id=" debits ">Débitos</span>
@@ -68,9 +30,16 @@
         </div>
 
     </main>
+
     <footer>
         footer
     </footer>
+
+    <% if(message != "") {%>
+        <div class="alert alert-<%= type %>">
+            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+        </div>
+        <% } %>
 
 </body>
 
@@ -88,6 +57,15 @@
                     break
                 case "publication ":
                     import_ejs.innerHTML = `<%- include('./publication.ejs') %>`
+                    tinymce.remove("#post");
+                    tinymce.init({
+                        language: 'pt_BR',
+                        selector: "#post",
+                        plugins: [
+                            'advlist autolink link image lists print hr searchreplace wordcout fullscreen insertdatetime media save table paste emoticons'
+                        ],
+                        height: "290"
+                    })
                     break
                 default:
                     import_ejs.innerHTML = `<%- include('./debits.ejs') %>`
@@ -96,7 +74,7 @@
     })
 </script>
 <script src="/lib/tinymce/tinymce.min.js "></script>
-<script src="/js/tinymceConfig.js "></script>
 <script src="/js/modal.js "></script>
 <script src="/js/loading.js"></script>
 <script src="/js/fileLoad.js"></script>
+<script src="/js/Alert.js"></script>

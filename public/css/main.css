@@ -120,10 +120,11 @@
 }
 
 .container-post-blog {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
     margin: 10px;
     justify-content: center;
-    align-items: center;
+    grid-auto-rows: 1fr
 }
 
 .blog-text {
@@ -264,6 +265,7 @@
 
 @media (max-width:1025px) {
     .container-post-blog {
+        display: flex;
         flex-wrap: wrap;
     }
 }
