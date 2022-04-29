@@ -21,6 +21,7 @@
 }
 
 .new-post-header {
+    padding: 3px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
