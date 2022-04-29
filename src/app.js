@@ -11,9 +11,9 @@ var cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 
-//importando os Model para criação das tabelas no MYSQL caso não tenha criado
+//model
 const User = require('./models/User.js')
-
+const Publication = require('./models/Publication.js')
 
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')
