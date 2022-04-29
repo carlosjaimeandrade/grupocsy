@@ -29,6 +29,6 @@ const Publication = connection.define('publication', {
 })
 
 
-Publication.sync({ force: true })
+Publication.sync({ force: false })
 
 module.exports = Publication;
