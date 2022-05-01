@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        header
+    </header>
+    <main>
+        <div>
+            <span btn-change id="debits">Débitos</span>
+            <span btn-change id="budget">Orçamentos</span>
+            <span btn-change id="configurations">Configuração</span>
+        </div>
+
+        <div import-ejs>
+            <%- include('./debits.ejs') %>
+        </div>
+
+    </main>
+    <footer>
+        footer
+    </footer>
+</body>
+
+</html>
+
+<script>
+    const btn_change = document.querySelectorAll('[btn-change]')
+    const import_ejs = document.querySelector('[import-ejs]')
+    btn_change.forEach(btn => {
+        btn.onclick = (e) => {
+            const view = e.target.id
+            switch (view) {
+                case "budget":
+                    import_ejs.innerHTML = `<%- include('./budget.ejs') %>`
+                    break
+                case "configurations":
+                    import_ejs.innerHTML = `<%- include('./configurations.ejs') %>`
+                    break
+                default:
+                    import_ejs.innerHTML = `<%- include('./debits.ejs') %>`
+            }
+        }
+    })
+</script>

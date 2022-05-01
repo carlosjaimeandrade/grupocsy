@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/publication.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/lib/fontawesome-free-6.1.1-web/css/all.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        header
+    </header>
+
+    <main>
+
+        <div>
+            <span btn-change id=" debits ">Débitos</span>
+            <span btn-change id="publication ">Publicações</span>
+            <span btn-change id="users ">Usuários</span>
+        </div>
+
+        <div import-ejs>
+            <%- include('./debits.ejs') %>
+        </div>
+
+    </main>
+
+    <footer>
+        footer
+    </footer>
+
+    <% if(message != "") {%>
+        <div class="alert alert-<%= type %>">
+            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+        </div>
+        <% } %>
+
+</body>
+
+</html>
+
+<script>
+    const btn_change = document.querySelectorAll('[btn-change]')
+    const import_ejs = document.querySelector('[import-ejs]')
+    btn_change.forEach(btn => {
+        btn.onclick = (e) => {
+            const view = e.target.id
+            switch (view) {
+                case "users ":
+                    import_ejs.innerHTML = `<%- include('./users.ejs') %>`
+                    break
+                case "publication ":
+                    import_ejs.innerHTML = `<%- include('./publication.ejs') %>`
+                    tinymce.remove("#post");
+                    tinymce.init({
+                        language: 'pt_BR',
+                        selector: "#post",
+                        plugins: [
+                            'advlist autolink link image lists print hr searchreplace wordcout fullscreen insertdatetime media save table paste emoticons'
+                        ],
+                        height: "290"
+                    })
+                    break
+                default:
+                    import_ejs.innerHTML = `<%- include('./debits.ejs') %>`
+            }
+        }
+    })
+</script>
+<script src="/lib/tinymce/tinymce.min.js "></script>
+<script src="/js/modal.js "></script>
+<script src="/js/loading.js"></script>
+<script src="/js/fileLoad.js"></script>
+<script src="/js/Alert.js"></script>

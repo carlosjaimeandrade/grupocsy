@@ -1,13 +1,51 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs")
-const nodemailer = require('nodemailer');
+const transporter = require("../help/transporter")
+
 
 const login = async(req, res) => {
-
     res.render('pages/login', {
         message: req.flash('message'),
         type: req.flash('type')
     })
+}
+
+const loginCheck = async(req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+
+    user = await User.findOne({ where: { email: email } })
+
+    if (user) {
+        const check = bcrypt.compareSync(password, user.password)
+        if (check) {
+
+            req.session.user = {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            }
+
+            if (user.level == 0) {
+                res.redirect('cliente')
+            } else {
+                res.redirect('admin')
+            }
+
+        } else {
+            req.flash('message', 'Erro de autenticação, verifique os campos');
+            req.flash('type', 'danger');
+            res.redirect('login')
+        }
+
+    } else {
+        req.flash('message', 'Esse e-mail não possui cadastro');
+        req.flash('type', 'danger');
+        res.redirect('login')
+    }
+
+
+
 }
 
 const loginRegister = (req, res) => {
@@ -44,29 +82,19 @@ const loginCreate = async(req, res) => {
         let buff = new Buffer(req.body.email);
         let hash_email = buff.toString('base64');
 
-        const transporter = nodemailer.createTransport({
-            host: "smtp.titan.email",
-            port: 465,
-            secure: true,
-            auth: {
-                user: "teste@fmsoficial.com.br",
-                pass: "teste123"
-            },
-            tls: { rejectUnauthorized: false }
-        });
 
         const mailOptions = {
             from: 'teste@fmsoficial.com.br',
             to: req.body.email,
             subject: 'CONFIRMAÇÃO DE CADASTRO',
-            html: hash_email
+            html: `Clique no link para confirmar o cadastro <br> http://localhost:3500/validate/${hash_email}`
         };
 
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
                 req.flash('message', 'Ocorreu um erro no envio, por favor entre em contato com o administrador do sistema');
                 req.flash('type', 'danger');
-                res.redirect('/contato')
+                res.redirect('/login')
             } else {
                 req.flash('message', 'Um link de confirmação foi enviado para o seu e-mail');
                 req.flash('type', 'success');
@@ -76,13 +104,43 @@ const loginCreate = async(req, res) => {
 
     }
 
-
 }
 
+const confirmRegister = async(req, res) => {
+    const hash = req.params.hash
+    let buff = new Buffer(hash, 'base64');
+    let email = buff.toString('ascii');
+    const user = await User.findAll({
+        where: {
+            email: email
+        }
+    })
 
+    if ([...user].length > 0) {
+        user_update = await User.update({
+            status: 1
+        }, {
+            where: {
+                id: user[0].id
+            }
+        })
+        if (user_update) {
+            req.flash('message', 'Seu e-mail foi verificado, agora você pode acessar o sistema');
+            req.flash('type', 'success');
+            res.redirect('/login')
+        }
+    } else {
+        req.flash('message', 'Erro de validação, entre em contato com o administrador');
+        req.flash('type', 'danger');
+        res.redirect('/login')
+    }
+
+}
 
 module.exports = {
     login,
     loginCreate,
-    loginRegister
+    loginRegister,
+    confirmRegister,
+    loginCheck
 }

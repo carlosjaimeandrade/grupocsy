@@ -11,9 +11,9 @@ const flash = require('connect-flash');
 
 require('dotenv').config();
 
-//importando os Model para criação das tabelas no MYSQL caso não tenha criado
+//model
 const User = require('./models/User.js')
-
+const Publication = require('./models/Publication.js')
 
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')
@@ -24,6 +24,9 @@ const BlogRoutes = require('./routes/blog')
 const PostViewRoutes = require('./routes/postView')
 const ContactRoutes = require('./routes/contact')
 const CompaniesRoutes = require('./routes/company');
+const ClientRoutes = require('./routes/client');
+const AdminRoutes = require('./routes/Admin');
+
 
 const app = express();
 
@@ -50,5 +53,7 @@ app.use(BlogRoutes)
 app.use(CompaniesRoutes);
 app.use(PostViewRoutes)
 app.use(ContactRoutes)
+app.use(ClientRoutes)
+app.use(AdminRoutes)
 
 module.exports = app;

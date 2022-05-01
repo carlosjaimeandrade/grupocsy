@@ -15,41 +15,28 @@
     </div>
 
     <div class="container-post-blog">
-        <div class="content-post-blog">
-            <div class="post-img-blog">
-                <img src="/upload/post/0/teste04.jpg" alt="">
-            </div>
-            <div class="blog-text">
-                <div class="post-title-blog">
-                    <h3>Ambience Vila Mariana, a essência de se viver bem!</h3>
+        <% publications.forEach(publication =>{ %>
+            <div class="content-post-blog">
+                <div class="post-img-blog">
+                    <img src="/upload/publication/<%= publication.id %>/<%= publication.nameImage %>" alt="">
                 </div>
-                <div class="post-description">
-                    <p> Do momento da compra do apartamento na planta até a entrega das chaves, muitas etapas acontecem. Normalmente, os futuros moradores têm curiosidade para saber o que acontece nas principais fases da obra, pois só assim é possível controlar
-                        a ansiedade para aguardar o tão esperado momento de fazer a mudança. .</p>
-                </div>
-                <div class="post-more">
-                    <a href="">Ver mais...</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-post-blog">
-            <div class="post-img-blog">
-                <img src="/upload/post/0/teste05.jpg" alt="">
-            </div>
-            <div class="blog-text">
-                <div class="post-title-blog">
-                    <h3>Ambience Vila Mariana, a essência de se viver bem!</h3>
-                </div>
-                <div class="post-description">
-                    <p> Do momento da compra do apartamento na planta até a entrega das chaves, muitas etapas acontecem. Normalmente, os futuros moradores têm curiosidade para saber o que acontece nas principais fases da obra, pois só assim é possível controlar
-                        a ansiedade para aguardar o tão esperado momento de fazer a mudança. .</p>
-                </div>
-                <div class="post-more">
-                    <a href="">Ver mais...</a>
+                <div class="blog-text">
+                    <div class="post-title-blog">
+                        <h3>
+                            <%= publication.title %>
+                        </h3>
+                    </div>
+                    <div class="post-description">
+                        <div remove-tag>
+                            <%- publication.previewText + "..." %>
+                        </div>
+                    </div>
+                    <div class="post-more">
+                        <a href="/post/<%= publication.d %>/<%= publication.t %>/<%= publication.slug %>">Ver mais...</a>
+                    </div>
                 </div>
             </div>
-        </div>
+            <% }) %>
 
     </div>
 

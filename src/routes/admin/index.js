@@ -1,0 +1,14 @@
+const userAuth = require('../../middleware/userAuth')
+const levelAdminAuth = require('../../middleware/levelAdminAuth')
+const AdminController = require('../../controllers/AdminController.js')
+const multer = require('multer');
+const express = require('express');
+const routes = express.Router();
+const uploadNewPublication = require('../../middleware/uploadNewPublication')
+const storage = uploadNewPublication.storage
+
+routes.get('/admin', userAuth.auth, levelAdminAuth.auth, AdminController.admin)
+
+routes.post('/admin/nova/publicacao', userAuth.auth, levelAdminAuth.auth, multer({ storage }).single("file"), AdminController.newPublication)
+
+module.exports = routes;

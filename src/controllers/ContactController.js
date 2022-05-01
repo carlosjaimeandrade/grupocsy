@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+const transporter = require('../help/transporter');
 
 const contact = (req, res) => {
     res.render('pages/contact', {
@@ -18,17 +18,6 @@ const sendEmail = (req, res) => {
     for (var key in req.body) {
         contato_info += `${key} : ${req.body[key]} <br><br>`
     }
-
-    const transporter = nodemailer.createTransport({
-        host: "smtp.titan.email",
-        port: 465,
-        secure: true,
-        auth: {
-            user: "teste@fmsoficial.com.br",
-            pass: "teste123"
-        },
-        tls: { rejectUnauthorized: false }
-    });
 
     const mailOptions = {
         from: 'teste@fmsoficial.com.br',

@@ -32,6 +32,11 @@
         margin: 15px 0px;
     }
     
+    .publication-text img {
+        width: 100%;
+        height: 100%
+    }
+    
     .publication-text p {
         text-align: justify;
         line-height: 35px;
