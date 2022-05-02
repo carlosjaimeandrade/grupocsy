@@ -5,10 +5,11 @@ function toggleMobile(div) {
 
 const open = document.querySelector('.menuHamburger i');
 const showEmpresas = document.querySelector('.menuListItem');
+const btnEmpresas = document.querySelector('#menuInative');
 
 open.addEventListener('click', () => toggleMobile('.menuItems'));
 
-showEmpresas.addEventListener('click', (e) => e.preventDefault());
+btnEmpresas.addEventListener('click', (e) => e.preventDefault());
 showEmpresas.addEventListener('mouseenter', () => toggleMobile('.menuListItem .list'));
 showEmpresas.addEventListener('mouseleave', () => toggleMobile('.menuListItem .list'));
 
