@@ -15,35 +15,24 @@
     </div>
 
     <div class="container-post">
-        <div class="content-post">
-            <div class="post-img">
-                <img src="/upload/post/0/teste2.jpg" alt="">
+        <% publications.forEach(publication =>{ %>
+            <div class="content-post">
+                <div class="post-img">
+                    <img src="/upload/publication/<%= publication.id %>/<%= publication.nameImage %>" alt="">
+                </div>
+                <div class="post-title">
+                    <h3>
+                        <b><%=  publication.title [0].toUpperCase() + publication.title .slice(1).toLowerCase().substring(0,59) %></b>
+                    </h3>
+                </div>
+                <div class="post-description">
+                    <%- publication.previewText + "..." %>
+                </div>
+                <div class="post-more">
+                    <a href="/post/<%= publication.d %>/<%= publication.t %>/<%= publication.slug %>">Ver mais...</a>
+                </div>
             </div>
-            <div class="post-title">
-                <h3>Ambience Vila Mariana, a essência de se viver bem!</h3>
-            </div>
-            <div class="post-description">
-                <p> O Ambience é um empreendimento único, projetado bem no coração e área mais nobre da Vila Mariana, que mudará a forma como você percebe e se…</p>
-            </div>
-            <div class="post-more">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
-
-        <div class="content-post">
-            <div class="post-img">
-                <img src="/upload/post/0/teste.jpg" alt="">
-            </div>
-            <div class="post-title">
-                <h3>Athos Paraíso: sempre contemporâneo</h3>
-            </div>
-            <div class="post-description">
-                <p> Aqui você viverá a experiência de morar em um ambiente transformador, com uma arquitetura diferenciada, um habitat urbano que despertará todos os sentidos de bem-estar e tranquilidade...</p>
-            </div>
-            <div class="post-more">
-                <a href="">Ver mais...</a>
-            </div>
-        </div>
+            <% }) %>
 
     </div>
 
