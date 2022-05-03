@@ -270,8 +270,8 @@
 
 @media (max-width:1025px) {
     .container-post-blog {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
     }
     .blog-text {
         width: 100%;
@@ -302,7 +302,7 @@
         font-size: 13px;
     }
     .container-post {
-        grid-template-columns: repeat(auto-fill, 340px);
+        grid-template-columns: repeat(auto-fill, 100%);
     }
     .content-post-blog {
         flex-direction: column;
@@ -310,6 +310,9 @@
     .blog-text {
         width: 100%;
         height: 350px;
+    }
+    .content-post {
+        height: 550px;
     }
 }
 
