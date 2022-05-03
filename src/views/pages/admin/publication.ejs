@@ -48,17 +48,17 @@
                                 <div class="entry-value entry-bd-1">
                                     <i class="fa-solid fa-table-list"></i>
                                     <select name="category" id="">
-                                    <option value="">Categoria</option>
-                                    <option value="blog">Blog</option>
-                                    <option value="empreendimentos">Empreendimentos</option>
-                                    <option value="projetos-futuros">Projetos futuros</option>
-                                </select>
+                                        <option value="">Categoria</option>
+                                        <option value="blog">Blog</option>
+                                        <option value="empreendimentos">Empreendimentos</option>
+                                        <option value="projetos-futuros">Projetos futuros</option>
+                                    </select>
                                 </div>
                                 <div class="entry-value entry-bd-1">
                                     <i class="fa-solid fa-image"></i>
                                     <label class="upload-file" for="image">
-                                    Carregar... <span log-arq></span>
-                                </label>
+                                        Carregar... <span log-arq></span>
+                                    </label>
                                     <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
                                 </div>
                             </div>
@@ -99,10 +99,11 @@
             </div>
 
 
-
-            <% if(message != "") {%>
+            <% if(message !="" ) {%>
                 <div class="alert alert-<%= type %>">
-                    <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+                    <span>
+                        <%= message %>
+                    </span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
                 </div>
                 <% } %>
 

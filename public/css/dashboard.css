@@ -13,6 +13,12 @@
     background-color: #061D2C;
     box-shadow: 5px 0 0 #0095E0;
     transition: 0.5s;
+    position: fixed;
+    z-index: 999;
+}
+
+.navigation-container {
+    width: 50px;
 }
 
 body {
@@ -29,7 +35,6 @@ main {
 }
 
 .navigation .navigationContainer {
-    position: relative;
     width: 100%;
     height: 100vh;
 }
