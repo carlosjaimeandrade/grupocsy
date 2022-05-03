@@ -29,6 +29,7 @@ const AdminDashboardRoutes = require('./routes/adminDashboard');
 const AdminPublicationRoutes = require('./routes/adminPublication');
 const AdminUsersRoutes = require('./routes/adminUsers');
 const AdminFinancialRoutes = require('./routes/adminFinancial');
+const ApiRoutes = require('./routes/Api');
 
 const app = express();
 
@@ -60,5 +61,6 @@ app.use(AdminDashboardRoutes)
 app.use(AdminPublicationRoutes)
 app.use(AdminUsersRoutes)
 app.use(AdminFinancialRoutes)
+app.use(ApiRoutes)
 
 module.exports = app;

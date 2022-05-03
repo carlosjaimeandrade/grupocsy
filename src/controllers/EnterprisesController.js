@@ -9,6 +9,10 @@ const enterprises = async(req, res) => {
                 [Sequelize.fn('date_format', Sequelize.col('createdAt'), "%H-%i-%s"), 't'],
             ]
         },
+        limit: 10,
+        order: [
+            ['id', 'DESC'],
+        ],
         where: {
             category: 'empreendimentos'
         },

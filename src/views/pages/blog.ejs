@@ -14,9 +14,9 @@
         <img src="/img/slide/slide03.png" alt="">
     </div>
 
-    <div class="container-post-blog">
+    <div scrollLoader id="blog" class="container-post-blog">
         <% publications.forEach(publication =>{ %>
-            <div class="content-post-blog">
+            <div scrollLoaderOffset class="content-post-blog">
                 <div class="post-img-blog">
                     <img src="/upload/publication/<%= publication.id %>/<%= publication.nameImage %>" alt="">
                 </div>
@@ -42,3 +42,5 @@
 
 
     <%- include('../partials/footer.ejs') %>
+
+        <script src="/js/scrollLoader.js"></script>

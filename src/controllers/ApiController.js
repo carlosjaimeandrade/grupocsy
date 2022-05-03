@@ -1,7 +1,11 @@
 const Publication = require('../models/Publication')
 const Sequelize = require('sequelize')
 
-const blog = async(req, res) => {
+const publications = async(req, res) => {
+    const offset = req.params.offset
+    console.log(req.params.offset)
+    const category = req.params.category
+
     const publications = await Publication.findAll({
         attributes: {
             include: [
@@ -10,21 +14,19 @@ const blog = async(req, res) => {
             ]
         },
         limit: 10,
+        offset: parseInt(offset),
         order: [
             ['id', 'DESC'],
         ],
         where: {
-            category: 'blog'
+            category: category
         },
         raw: true
 
     })
-
-    res.render('pages/blog', {
-        publications: publications
-    })
+    res.send(publications);
 }
 
 module.exports = {
-    blog
+    publications
 }
