@@ -45,3 +45,78 @@
     background-color: #f4f4f43f;
     transition: 0.3s
 }
+
+.action-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px
+}
+
+.action-content {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-content button {
+    border: none;
+    background-color: #2A303A;
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.action-info span {
+    color: #AEAEAE;
+}
+
+.action-press {
+    display: flex;
+    align-items: center;
+}
+
+.action-press>div {
+    background-color: #fff;
+    padding: 5px 0px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-press>div>i {
+    margin: 0px 10px;
+    color: #AEAEAE;
+}
+
+.action-press>div>input {
+    height: 100%;
+    background-color: red;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    width: 300px;
+}
+
+.action-press>div>select {
+    height: 100%;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    color: #AEAEAE;
+}
+
+.action-press>div>select:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+.action-press>div>input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+.action-press>* {
+    margin-left: 35px
+}

@@ -9,7 +9,24 @@
                 </div>
             </div>
 
-            <button onclick="newModal('post')">new</button>
+            <div class="action-container">
+                <div class="action-content">
+                    <div class="action-info">
+                        <span>100 registros</span>
+                    </div>
+                    <div class="action-press">
+                        <div>
+                            <select name="" id="">
+                                <option value="">Todos registros</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text">
+                        </div>
+                        <button onclick="newModal('post')"><i class="fa-solid fa-plus"></i> Criar publicação</button>
+                    </div>
+                </div>
+            </div>
 
             <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
                 <div new-modal-post class="new-modal-container">
@@ -51,6 +68,7 @@
             </form>
 
             <div class="list-container">
+
                 <div class="list-content">
                     <div class="list-title">
                         <h4>Todas as publicações cadastradas</h4>
