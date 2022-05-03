@@ -3,14 +3,14 @@ const bcrypt = require("bcryptjs")
 const transporter = require("../help/transporter")
 
 
-const login = async(req, res) => {
+const login = async (req, res) => {
     res.render('pages/login', {
         message: req.flash('message'),
         type: req.flash('type')
     })
 }
 
-const loginCheck = async(req, res) => {
+const loginCheck = async (req, res) => {
     const email = req.body.email
     const password = req.body.password
 
@@ -55,7 +55,7 @@ const loginRegister = (req, res) => {
     })
 }
 
-const loginCreate = async(req, res) => {
+const loginCreate = async (req, res) => {
 
     let register = req.body
 
@@ -90,7 +90,7 @@ const loginCreate = async(req, res) => {
             html: `Clique no link para confirmar o cadastro <br> http://localhost:3500/validate/${hash_email}`
         };
 
-        transporter.sendMail(mailOptions, function(error, info) {
+        transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 req.flash('message', 'Ocorreu um erro no envio, por favor entre em contato com o administrador do sistema');
                 req.flash('type', 'danger');
@@ -106,7 +106,7 @@ const loginCreate = async(req, res) => {
 
 }
 
-const confirmRegister = async(req, res) => {
+const confirmRegister = async (req, res) => {
     const hash = req.params.hash
     let buff = new Buffer(hash, 'base64');
     let email = buff.toString('ascii');
