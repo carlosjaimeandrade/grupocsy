@@ -281,8 +281,8 @@
 
 @media (max-width:1225px) {
     .container-post-blog {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
     }
     .blog-text {
         height: 400
