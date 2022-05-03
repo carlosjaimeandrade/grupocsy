@@ -9,17 +9,35 @@ window.onload = () => {
         const scrollLoader = document.querySelector('[scrollLoader]')
         const category = scrollLoader.id
         let offset = document.querySelectorAll('[scrollLoaderOffset]').length
-        if (percentualBar == 75) {
-            let publications = await fetch(`/api/publications/${category}/${offset}`)
-            publications = await publications.json()
-            if (publications.length > 0) {
-                if (category == "blog") {
-                    insertHtmlbodyBlog(publications, scrollLoader)
-                } else {
-                    insertHtmlbody(publications, scrollLoader)
+        let width = window.screen.width;
+        if (width <= 820) {
+            if (percentualBar == 75) {
+                let publications = await fetch(`/api/publications/${category}/${offset}`)
+                publications = await publications.json()
+                if (publications.length > 0) {
+                    if (category == "blog") {
+                        insertHtmlbodyBlog(publications, scrollLoader)
+                    } else {
+                        insertHtmlbody(publications, scrollLoader)
+                    }
                 }
             }
         }
+
+        if (width > 820) {
+            if (percentualBar >= 75) {
+                let publications = await fetch(`/api/publications/${category}/${offset}`)
+                publications = await publications.json()
+                if (publications.length > 0) {
+                    if (category == "blog") {
+                        insertHtmlbodyBlog(publications, scrollLoader)
+                    } else {
+                        insertHtmlbody(publications, scrollLoader)
+                    }
+                }
+            }
+        }
+
     }
 
     function insertHtmlbodyBlog(publications, scrollLoader) {
@@ -68,7 +86,7 @@ window.onload = () => {
                         ${publication.previewText}...
                     </div>
                     <div class="post-more">
-                        <a href="/post/${publication.id}/${publication.t}/${publication.slug}">Ver mais...</a>
+                        <a href="/post/${publication.d}/${publication.t}/${publication.slug}">Ver mais...</a>
                     </div>
                 </div>`)
             })
