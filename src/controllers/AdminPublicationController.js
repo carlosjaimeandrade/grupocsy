@@ -4,15 +4,8 @@ const fs = require('fs');
 const connection = require('../database/database')
 const innertext = require('innertext');
 
-const admin = (req, res) => {
-    res.render('pages/admin/home', {
-        message: req.flash('message'),
-        type: req.flash('type')
-    })
-}
-
-const ShowAdminUsersPage = (req, res) => {
-    res.render('pages/admin/users', {
+const showPagePublication = (req, res) => {
+    res.render('pages/admin/publication', {
         message: req.flash('message'),
         type: req.flash('type')
     })
@@ -37,13 +30,13 @@ const newPublication = async(req, res) => {
             if (err) {
                 req.flash('message', 'Houve um erro na criação, verifique os campos e tente novamente');
                 req.flash('type', 'danger');
-                res.redirect('/admin')
+                res.redirect('/admin/publicacao')
             }
         })
 
         req.flash('message', 'Houve um erro na criação, verifique os campos e tente novamente');
         req.flash('type', 'danger');
-        res.redirect('/admin')
+        res.redirect('/admin/publicacao')
         return
     }
 
@@ -59,19 +52,18 @@ const newPublication = async(req, res) => {
     if (new_post) {
         req.flash('message', 'Nova postagem criada com sucesso');
         req.flash('type', 'success');
-        res.redirect('/admin')
+        res.redirect('/admin/publicacao')
         return
     } else {
         req.flash('message', 'Houve um erro na criação, verifique os campos e tente novamente');
         req.flash('type', 'danger');
-        res.redirect('/admin')
+        res.redirect('/admin/publicacao')
     }
 
     res.send("new publication")
 }
 
 module.exports = {
-    admin,
-    ShowAdminUsersPage,
-    newPublication
+    newPublication,
+    showPagePublication
 }

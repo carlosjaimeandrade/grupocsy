@@ -1,42 +1,64 @@
-<h1>Publicacao</h1>
+<%- include('../admin/partials/header', {title: 'Soldiers Construções' }) %>
 
-<button onclick="newModal('post')">new</button>
+    <main id="publications">
 
-<form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
-    <div new-modal-post class="new-modal-container">
-        <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
-        <div class="new-modal-content ">
-            <div class="new-modal-header">
-                <h2>Nova publicação</h2>
-                <div class="btn-modal">
-                    <button publicar onclick="loading(event)">Publicar</button>
+        <h1>Publicacao</h1>
+
+        <button onclick="newModal('post')">new</button>
+
+        <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
+            <div new-modal-post class="new-modal-container">
+                <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
+                <div class="new-modal-content ">
+                    <div class="new-modal-header">
+                        <h2>Nova publicação</h2>
+                        <div class="btn-modal">
+                            <button publicar onclick="loading(event)">Publicar</button>
+                        </div>
+                    </div>
+                    <div class="new-modal-main">
+                        <div class="entry-content">
+                            <div class="entry-value entry-bd-1">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <input required type="text" name="title" placeholder="Título">
+                            </div>
+                            <div class="entry-value entry-bd-1">
+                                <i class="fa-solid fa-table-list"></i>
+                                <select name="category" id="">
+                                    <option value="">Categoria</option>
+                                    <option value="blog">Blog</option>
+                                    <option value="empreendimentos">Empreendimentos</option>
+                                    <option value="projetos-futuros">Projetos futuros</option>
+                                </select>
+                            </div>
+                            <div class="entry-value entry-bd-1">
+                                <i class="fa-solid fa-image"></i>
+                                <label class="upload-file" for="image">
+                                    Carregar... <span log-arq></span>
+                                </label>
+                                <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
+                            </div>
+                        </div>
+                        <textarea id="post" name="text"></textarea>
+                    </div>
                 </div>
             </div>
-            <div class="new-modal-main">
-                <div class="entry-content">
-                    <div class="entry-value entry-bd-1">
-                        <i class="fa-solid fa-file-signature"></i>
-                        <input required type="text" name="title" placeholder="Título">
-                    </div>
-                    <div class="entry-value entry-bd-1">
-                        <i class="fa-solid fa-table-list"></i>
-                        <select name="category" id="">
-                            <option value="">Categoria</option>
-                            <option value="blog">Blog</option>
-                            <option value="empreendimentos">Empreendimentos</option>
-                            <option value="projetos-futuros">Projetos futuros</option>
-                        </select>
-                    </div>
-                    <div class="entry-value entry-bd-1">
-                        <i class="fa-solid fa-image"></i>
-                        <label class="upload-file" for="image">
-                            Carregar... <span log-arq></span>
-                        </label>
-                        <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
-                    </div>
-                </div>
-                <textarea id="post" name="text"></textarea>
+        </form>
+
+
+        <% if(message != "") {%>
+            <div class="alert alert-<%= type %>">
+                <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
             </div>
-        </div>
-    </div>
-</form>
+            <% } %>
+
+    </main>
+
+    <%- include('../admin/partials/footer.ejs') %>
+
+        <script src="/lib/tinymce/tinymce.min.js "></script>
+        <script src="/js/tinymceConfig.js"></script>
+        <script src="/js/modal.js "></script>
+        <script src="/js/loading.js"></script>
+        <script src="/js/fileLoad.js"></script>
+        <script src="/js/Alert.js"></script>
