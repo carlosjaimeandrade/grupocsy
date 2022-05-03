@@ -5,7 +5,7 @@ const connection = require('../database/database')
 const innertext = require('innertext');
 
 const admin = (req, res) => {
-    res.render('pages/admin', {
+    res.render('pages/admin/home', {
         message: req.flash('message'),
         type: req.flash('type')
     })
