@@ -20,6 +20,13 @@ const loginCheck = async(req, res) => {
         const check = bcrypt.compareSync(password, user.password)
         if (check) {
 
+            if (user.status == 0) {
+                req.flash('message', 'Você precisa confirmar o seu cadastro através do link que foi enviado  no seu e-mail');
+                req.flash('type', 'danger');
+                res.redirect('login')
+                return
+            }
+
             req.session.user = {
                 id: user.id,
                 name: user.name,
@@ -82,7 +89,6 @@ const loginCreate = async(req, res) => {
         let buff = new Buffer(req.body.email);
         let hash_email = buff.toString('base64');
 
-
         const mailOptions = {
             from: 'teste@fmsoficial.com.br',
             to: req.body.email,
@@ -92,7 +98,7 @@ const loginCreate = async(req, res) => {
 
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
-                req.flash('message', 'Ocorreu um erro no envio, por favor entre em contato com o administrador do sistema');
+                req.flash('message', 'Ocorreu um erro no cadastro, verifique o e-mail ou entre em contato com o administrador do sistema');
                 req.flash('type', 'danger');
                 res.redirect('/login')
             } else {

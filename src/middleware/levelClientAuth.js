@@ -8,7 +8,7 @@ const auth = async(req, res, next) => {
     if (user.level == 0) {
         next()
     } else {
-        res.redirect('/login')
+        res.redirect('/admin')
     }
 
 
