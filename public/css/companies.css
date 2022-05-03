@@ -247,7 +247,7 @@
     }
 
     .companiesContainer .swiper-slide .swiper-desc .content-text { 
-        max-width: min(900px, 60%);         
+        max-width: min(700px, 60%);         
         text-align: justify;                           
     }
 

@@ -5,7 +5,14 @@ const connection = require('../database/database')
 const innertext = require('innertext');
 
 const admin = (req, res) => {
-    res.render('pages/admin', {
+    res.render('pages/admin/home', {
+        message: req.flash('message'),
+        type: req.flash('type')
+    })
+}
+
+const ShowAdminUsersPage = (req, res) => {
+    res.render('pages/admin/users', {
         message: req.flash('message'),
         type: req.flash('type')
     })
@@ -65,5 +72,6 @@ const newPublication = async(req, res) => {
 
 module.exports = {
     admin,
+    ShowAdminUsersPage,
     newPublication
 }

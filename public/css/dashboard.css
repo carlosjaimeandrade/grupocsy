@@ -1,0 +1,242 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navigation {
+    width: 50px;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: #061D2C;
+    box-shadow: 5px 0 0 #0095E0;
+    transition: 0.5s;
+}
+
+body {
+    display: flex;
+    background-color: #F4F4F4;
+}
+
+main {
+    width: 100%;
+}
+
+.navigation:hover {
+    width: 250px;
+}
+
+.navigation .navigationContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;    
+}
+
+.navigation .navigationContainer .logo {
+    width: 40%;
+    height: 150px;
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation .navigationContainer .logo img {
+    width: 100%;
+    margin: 3rem 0;
+}
+
+.navigation .navigationContainer ul {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 1rem;
+    flex-direction: column;        
+}
+
+.navigation .navigationContainer ul .list {
+    position: relative;
+    width: 90%;    
+    padding: .5rem;
+    border-radius: .6rem 0 0 .5rem;    
+}
+
+.navigation .navigationContainer ul .list.active {
+    background-color: #0095E0;
+}
+
+.navigation .navigationContainer ul .list.active a::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: #061D2C;
+    border-radius: 50%;
+    box-shadow: 15px 15px 0 #0095E0; 
+}
+
+.navigation .navigationContainer ul .list.active a::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: #061D2C;
+    border-radius: 50%;
+    box-shadow: 15px -15px 0 #0095E0; 
+}
+
+.navigation .navigationContainer ul .list a {    
+    margin: 0 auto;
+    display: flex;    
+    gap: 1rem;
+    font-size: .9rem;
+    align-items: center;
+    color: #fff;    
+}
+
+.navigation .navigationContainer ul .list a .icon ion-icon {
+    font-size: 1.4rem;
+}
+
+/* USER LOGGED */
+.user-isLogged {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem;
+    justify-content: flex-end;    
+}
+
+.user-isLogged .user-container {    
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.user-isLogged .user-container .user-img {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+    overflow: hidden;   
+}
+
+.user-isLogged .user-container .user-img img {
+    width: 100%;
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+}
+
+.user-isLogged .user-container .user-name {
+    position: relative;
+    display: flex;
+    gap: .5rem;
+    font-size: .9rem;
+    color: rgb(88, 88, 88);
+    align-items: center;    
+}
+
+.user-isLogged .user-container .user-name .user-actions {
+    width: 100%;    
+    position: absolute;
+    display: flex;
+    padding: 1rem;
+    margin-top: 4rem;
+    justify-content: flex-end;    
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+    display: none;
+}
+
+.user-isLogged .user-container .user-name .user-actions.active {
+    display: flex;
+}
+
+.user-isLogged .user-container .user-name .user-actions ul {
+    width: 100%;
+}
+
+.user-isLogged .user-container .user-name .user-actions ul li a { 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+    color: #2A303A;
+    align-items: center;    
+}
+
+.user-isLogged .user-container .user-name .user-actions a ion-icon { 
+    font-size: 1.3rem;
+}
+
+/* DASHBOARD */
+
+.titlePage {
+    width: 100%;    
+}
+
+.titlePage .titlePage-container {
+    width: 95%;
+    margin: 0 auto;    
+}
+
+.titlePage .titlePage-container h1 {
+    color: #AEAEAE;
+}
+
+.titlePage .titlePage-container span {
+    font-weight: 300;
+    font-size: .8rem;
+    color: #AEAEAE;
+}
+
+.dashboard-cards {
+    width: 100%;
+}
+
+.dashboard-cards .dashboard-card-Container {
+    width: 95%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 3fr);
+    margin: 2rem auto;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item {
+    max-width: 300px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;    
+
+    background-color: #fff;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item ion-icon {
+    font-size: 2.5rem;
+    color: #061D2C;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item .desc-cards p {
+    color: #AEAEAE;
+    padding: 0.5rem 0;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item .desc-cards span {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
