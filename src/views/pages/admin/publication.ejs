@@ -1,56 +1,91 @@
 <%- include('../admin/partials/header', {title: 'Soldiers Construções' }) %>
 
     <main id="publications">
+        <%- include('../admin/partials/user') %>
+            <div class="titlePage">
+                <div class="titlePage-container">
+                    <h1>Publicações</h1>
+                    <span>Veja todas as publicações cadastradas</span>
+                </div>
+            </div>
 
-        <h1>Publicacao</h1>
+            <button onclick="newModal('post')">new</button>
 
-        <button onclick="newModal('post')">new</button>
-
-        <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
-            <div new-modal-post class="new-modal-container">
-                <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
-                <div class="new-modal-content ">
-                    <div class="new-modal-header">
-                        <h2>Nova publicação</h2>
-                        <div class="btn-modal">
-                            <button publicar onclick="loading(event)">Publicar</button>
-                        </div>
-                    </div>
-                    <div class="new-modal-main">
-                        <div class="entry-content">
-                            <div class="entry-value entry-bd-1">
-                                <i class="fa-solid fa-file-signature"></i>
-                                <input required type="text" name="title" placeholder="Título">
+            <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
+                <div new-modal-post class="new-modal-container">
+                    <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
+                    <div class="new-modal-content ">
+                        <div class="new-modal-header">
+                            <h2>Nova publicação</h2>
+                            <div class="btn-modal">
+                                <button publicar onclick="loading(event)">Publicar</button>
                             </div>
-                            <div class="entry-value entry-bd-1">
-                                <i class="fa-solid fa-table-list"></i>
-                                <select name="category" id="">
+                        </div>
+                        <div class="new-modal-main">
+                            <div class="entry-content">
+                                <div class="entry-value entry-bd-1">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <input required type="text" name="title" placeholder="Título">
+                                </div>
+                                <div class="entry-value entry-bd-1">
+                                    <i class="fa-solid fa-table-list"></i>
+                                    <select name="category" id="">
                                     <option value="">Categoria</option>
                                     <option value="blog">Blog</option>
                                     <option value="empreendimentos">Empreendimentos</option>
                                     <option value="projetos-futuros">Projetos futuros</option>
                                 </select>
-                            </div>
-                            <div class="entry-value entry-bd-1">
-                                <i class="fa-solid fa-image"></i>
-                                <label class="upload-file" for="image">
+                                </div>
+                                <div class="entry-value entry-bd-1">
+                                    <i class="fa-solid fa-image"></i>
+                                    <label class="upload-file" for="image">
                                     Carregar... <span log-arq></span>
                                 </label>
-                                <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
+                                    <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
+                                </div>
                             </div>
+                            <textarea id="post" name="text"></textarea>
                         </div>
-                        <textarea id="post" name="text"></textarea>
                     </div>
                 </div>
+            </form>
+
+            <div class="list-container">
+                <div class="list-content">
+                    <div class="list-title">
+                        <h4>Todas as publicações cadastradas</h4>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Teste1</th>
+                                <th>teste2</th>
+                                <th>teste3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Teste1</td>
+                                <td>Teste1</td>
+                                <td>Teste1</td>
+                            </tr>
+                            <tr>
+                                <td>Teste1</td>
+                                <td>Teste1</td>
+                                <td>Teste1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </form>
 
 
-        <% if(message != "") {%>
-            <div class="alert alert-<%= type %>">
-                <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
-            </div>
-            <% } %>
+
+            <% if(message != "") {%>
+                <div class="alert alert-<%= type %>">
+                    <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+                </div>
+                <% } %>
 
     </main>
 

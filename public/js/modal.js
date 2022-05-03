@@ -12,7 +12,7 @@ function newModal(identification) {
             new_modal_container.style.display = 'none'
             new_modal_container.style.animation = "fadeInOpacity 0.5s linear"
             new_modal_content.style.animation = "fadeIn 0.5s linear"
-        }, 500)
+        }, 400)
 
     }
 
