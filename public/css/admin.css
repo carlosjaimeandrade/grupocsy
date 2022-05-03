@@ -57,6 +57,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .action-content button {
@@ -74,6 +75,7 @@
 .action-press {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .action-press>div {
@@ -119,4 +121,23 @@
 
 .action-press>* {
     margin-left: 35px
+}
+
+@media (max-width: 768px) {
+    .action-press>* {
+        margin: 5px;
+        width: 100%;
+    }
+    .action-press>div>input {
+        width: 100%;
+    }
+    .action-press>div>select {
+        width: 100%;
+    }
+    .action-content {
+        flex-direction: column-reverse;
+    }
+    .action-info {
+        margin: 5px;
+    }
 }
