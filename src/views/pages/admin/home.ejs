@@ -1,1 +1,51 @@
 <%- include('../admin/partials/header', {title: 'Soldiers Construções' }) %>
+    <main id="home">
+        <%- include('../admin/partials/user') %>
+        <!-- DESC PAGE -->
+        <div class="titlePage">
+            <div class="titlePage-container">
+                <h1>Dashboard</h1>
+                <span>Nessa página você tem uma visão geral da sua aplicação</span>
+            </div>
+        </div>
+        <!-- CARDS -->
+        <div class="dashboard-cards">
+            <div class="dashboard-card-Container">
+                <!-- card-item -->
+                <div class="dashboard-card-item">
+                    <ion-icon name="wallet-outline"></ion-icon>
+                    <div class="desc-cards">
+                        <p>Total faturado</p>
+                        <span>R$1.000,00</span>
+                    </div>
+                </div>
+                <!-- card-item -->
+                <div class="dashboard-card-item">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <div class="desc-cards">
+                        <p>Total Usuarios</p>
+                        <span>00</span>
+                    </div>
+                </div>
+                <!-- card-item -->
+                <div class="dashboard-card-item">
+                    <ion-icon name="send-outline"></ion-icon>
+                    <div class="desc-cards">
+                        <p>Total Posts</p>
+                        <span>00</span>
+                    </div>
+                </div>
+                <!-- card-item -->
+                <div class="dashboard-card-item">
+                    <ion-icon name="logo-apple-ar"></ion-icon>
+                    <div class="desc-cards">
+                        <p>Total Projetos</p>
+                        <span>00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- USUARIOS -->
+
+    </main>
+    <%- include('../admin/partials/footer.ejs') %>

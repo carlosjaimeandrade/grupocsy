@@ -9,6 +9,8 @@ const storage = uploadNewPublication.storage
 
 routes.get('/admin',  AdminController.admin)
 
+routes.get('/admin/usuarios',  AdminController.ShowAdminUsersPage)
+
 routes.post('/admin/nova/publicacao', userAuth.auth, levelAdminAuth.auth, multer({ storage }).single("file"), AdminController.newPublication)
 
 module.exports = routes;

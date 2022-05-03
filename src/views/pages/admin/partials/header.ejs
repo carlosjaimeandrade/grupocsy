@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/dashboard.css">
-    <!-- <title>
+    <title>
         <%= title %>
-    </title> -->
+    </title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
                 <img src="/img/logoB.svg" alt="">
             </div>
             <ul>
-                <li class="list active">
+                <li class="list active" data-active="home">
                     <a href="/admin">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
@@ -26,7 +26,7 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                <li class="list">
+                <li class="list" data-active="publications">
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
@@ -34,7 +34,7 @@
                         <span class="title">Publicações</span>
                     </a>
                 </li>
-                <li class="list">
+                <li class="list" data-active="users">
                     <a href="/admin/usuarios">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
@@ -42,7 +42,7 @@
                         <span class="title">Usuario</span>
                     </a>
                 </li>
-                <li class="list">
+                <li class="list" data-active="finance">
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="wallet-outline"></ion-icon>
@@ -53,20 +53,3 @@
             </ul>
         </section>
     </header>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-
-        const btns = document.querySelectorAll('.list');
-
-        btns.forEach((element) => {
-            element.addEventListener('click', (e) => {
-                btns.forEach((event) => event.classList.remove('active'));
-                element.classList.add('active');         
-            })
-        })
-
-    </script>
-</body>
-
-</html>

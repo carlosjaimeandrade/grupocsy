@@ -11,6 +11,13 @@ const admin = (req, res) => {
     })
 }
 
+const ShowAdminUsersPage = (req, res) => {
+    res.render('pages/admin/users', {
+        message: req.flash('message'),
+        type: req.flash('type')
+    })
+}
+
 const newPublication = async(req, res) => {
     const title = req.body.title
     const category = req.body.category
@@ -65,5 +72,6 @@ const newPublication = async(req, res) => {
 
 module.exports = {
     admin,
+    ShowAdminUsersPage,
     newPublication
 }

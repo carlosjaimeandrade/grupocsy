@@ -16,6 +16,15 @@
     transition: 0.5s;
 }
 
+body {
+    display: flex;
+    background-color: #F4F4F4;
+}
+
+main {
+    width: 100%;
+}
+
 .navigation:hover {
     width: 250px;
 }
@@ -97,4 +106,137 @@
 
 .navigation .navigationContainer ul .list a .icon ion-icon {
     font-size: 1.4rem;
+}
+
+/* USER LOGGED */
+.user-isLogged {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem;
+    justify-content: flex-end;    
+}
+
+.user-isLogged .user-container {    
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.user-isLogged .user-container .user-img {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+    overflow: hidden;   
+}
+
+.user-isLogged .user-container .user-img img {
+    width: 100%;
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+}
+
+.user-isLogged .user-container .user-name {
+    position: relative;
+    display: flex;
+    gap: .5rem;
+    font-size: .9rem;
+    color: rgb(88, 88, 88);
+    align-items: center;    
+}
+
+.user-isLogged .user-container .user-name .user-actions {
+    width: 100%;    
+    position: absolute;
+    display: flex;
+    padding: 1rem;
+    margin-top: 4rem;
+    justify-content: flex-end;    
+    box-shadow: rgb(0 0 0 / 10%) 0 .3rem .9rem;
+    display: none;
+}
+
+.user-isLogged .user-container .user-name .user-actions.active {
+    display: flex;
+}
+
+.user-isLogged .user-container .user-name .user-actions ul {
+    width: 100%;
+}
+
+.user-isLogged .user-container .user-name .user-actions ul li a { 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+    color: #2A303A;
+    align-items: center;    
+}
+
+.user-isLogged .user-container .user-name .user-actions a ion-icon { 
+    font-size: 1.3rem;
+}
+
+/* DASHBOARD */
+
+.titlePage {
+    width: 100%;    
+}
+
+.titlePage .titlePage-container {
+    width: 95%;
+    margin: 0 auto;    
+}
+
+.titlePage .titlePage-container h1 {
+    color: #AEAEAE;
+}
+
+.titlePage .titlePage-container span {
+    font-weight: 300;
+    font-size: .8rem;
+    color: #AEAEAE;
+}
+
+.dashboard-cards {
+    width: 100%;
+}
+
+.dashboard-cards .dashboard-card-Container {
+    width: 95%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 3fr);
+    margin: 2rem auto;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item {
+    max-width: 300px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;    
+
+    background-color: #fff;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item ion-icon {
+    font-size: 2.5rem;
+    color: #061D2C;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item .desc-cards p {
+    color: #AEAEAE;
+    padding: 0.5rem 0;
+}
+
+.dashboard-cards .dashboard-card-Container .dashboard-card-item .desc-cards span {
+    font-size: 1.5rem;
+    font-weight: 500;
 }
