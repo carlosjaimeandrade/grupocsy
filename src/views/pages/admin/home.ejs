@@ -24,7 +24,7 @@
                         <ion-icon name="people-outline"></ion-icon>
                         <div class="desc-cards">
                             <p>Total Usuarios</p>
-                            <span><%= users.length %> </span>
+                            <span><%= users.length <= 9 ? `0${users.length}` : users.length %> </span>
                         </div>
                     </div>
                     <!-- card-item -->
@@ -32,7 +32,7 @@
                         <ion-icon name="send-outline"></ion-icon>
                         <div class="desc-cards">
                             <p>Total Posts</p>
-                            <span>00</span>
+                            <span><%= publications.count <= 9 ? `0${publications.count}` : publications.count %> </span>
                         </div>
                     </div>
                     <!-- card-item -->
@@ -67,7 +67,7 @@
                                     <td>
                                         <div class="client-content">
                                             <div class="client-img">
-                                                IMG
+                                                <img src="/img/user.png" alt="imagem-usuario">
                                             </div>
                                             <p><%= user.name %> </p>
                                         </div>
@@ -80,12 +80,14 @@
                                         <% if(user.status == 0) { %> 
                                             
                                             <div class="client off">
+                                                <ion-icon name="close-circle-outline"></ion-icon>
                                                 <p>Inativo</p>
                                             </div>
 
                                         <%  } else { %> 
                                             
                                             <div class="client on">
+                                                <ion-icon name="close-circle-outline"></ion-icon>
                                                 <p>Ativo</p>
                                             </div>
 
@@ -99,11 +101,73 @@
                     </table>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
+            <!-- TRASAÇÕES E POSTS -->
+            <section class="trasactions-posts">
+                <div class="trasactions-posts-container">
+                    <div class="trasactions-container">                        
+                        <div class="list-container">
+                            <div class="list-content">
+                                <div class="list-title">
+                                    <h4>Transações recentes</h4>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>OrdemID</th>
+                                            <th>CPF</th>
+                                            <th>Valor</th>                                
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>SOL5457445</td>
+                                           <td>8529568269</td>
+                                           <td>R$852,00</td>
+
+                                           <td>
+                                            <div class="client on">
+                                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                                <p>Aprovado</p>
+                                            </div>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                        <td>SOL5457445</td>
+                                        <td>8529568269</td>
+                                        <td>R$852,00</td>
+
+                                        <td>
+                                            <div class="client pend">
+                                                <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+                                                <p>Pendente</p>
+                                            </div>                                                     
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SOL5457445</td>
+                                        <td>8529568269</td>
+                                        <td>R$852,00</td>
+
+                                        <td>
+                                            <div class="client off">
+                                                <ion-icon name="close-circle-outline"></ion-icon>
+                                                <p>Cancelado</p>
+                                            </div>                                                                   
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="posts-container">
+                        <h4>Ultimos Posts</h4>
+                    </div>
+                </div>
+            </section>
 
 
 
->>>>>>> c5b5f617461adeac6d9dbde2c42da4b70e526d6b
     </main>
     <%- include('../admin/partials/footer.ejs') %>

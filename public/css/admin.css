@@ -1,6 +1,6 @@
 .list-container {
     width: 100%;
-    display: flex;
+    display: flex;    
     justify-content: center;    
 }
 
@@ -15,6 +15,10 @@
 
 .list-title {
     padding-bottom: 10px;
+}
+
+.list-title h4 {
+    color: #2A303A;
 }
 
 .list-content>table {
@@ -38,7 +42,8 @@
 
 .list-content>table>tbody>tr>td {
     padding: 15px 0px;
-    font-weight: 300;
+    font-weight: 400;
+    color: #2A303A;
     border-bottom: #F4F4F4 1px solid;
     font-size: 15px;
 }

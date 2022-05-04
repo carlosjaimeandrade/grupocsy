@@ -17,7 +17,7 @@
     z-index: 999;
 }
 
-.navigation-container {
+.navigation-container {    
     width: 50px;
 }
 
@@ -27,8 +27,7 @@ body {
 }
 
 main {
-    width: 100%;
-    padding: 1rem 1rem 1rem 1.5rem;
+    width: calc(100% - 50px);      
 }
 
 .navigation:hover {
@@ -255,6 +254,7 @@ main {
 }
 
 #home .list-container .client-content .client-img {
+    min-width: 35px;
     width: 35px;
     height: 35px;
     display: flex;
@@ -264,24 +264,64 @@ main {
     background-color: rgb(180, 180, 180);
 }
 
+#home .list-container .client-content .client-img img {
+    width: 100%;    
+}
+
 
 #home .list-container tbody .client {
     border-radius: 3px;
-    padding: 0.5rem;
-    font-size: .8rem;
+    padding: 0.5rem;    
     text-align: center;
     font-weight: 400;
+
+    display: flex;
+    gap: .5rem;    
+    align-items: center;
+}
+
+#home .list-container tbody .client ion-icon {
+    font-size: 1.4rem;
 }
 
 #home .list-container tbody .client.off {
-    color: #C21B1B;
-    background-color: #EFDCDC;
+    color: #C21B1B;    
 }
 
 #home .list-container tbody .client.on {
-    color: #207E35;    
-    background-color: #DAF9E0;
+    color: #207E35;        
 }
+
+#home .list-container tbody .client.pend {
+    color: #e4bb4d;        
+}
+
+.trasations-posts {
+    width: 100%;
+}
+
+.trasactions-posts .list-container .list-content {
+    width: 100%;        
+}
+
+.trasactions-posts .trasactions-posts-container {
+    width: 95%;
+    display: flex;
+    gap: 1rem;
+    color: #2A303A;
+    margin: 2rem auto;    
+}
+
+.trasactions-posts .trasactions-container {
+    width: 50%;    
+    background-color: #fff;
+}
+
+.trasactions-posts .posts-container {
+    width: 50%;    
+    background-color: #fff;
+}
+
 
 @media (min-width: 768px) and (max-width: 1080px) {
     .dashboard-cards .dashboard-card-Container {
