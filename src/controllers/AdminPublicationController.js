@@ -16,8 +16,7 @@ const showPagePublication = async(req, res) => {
     res.render('pages/admin/publication', {
         message: req.flash('message'),
         type: req.flash('type'),
-        publications: publications,
-        total: publications.length
+        publications: publications
     })
 }
 
