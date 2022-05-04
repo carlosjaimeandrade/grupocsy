@@ -12,7 +12,7 @@
             <div class="action-container">
                 <div class="action-content">
                     <div class="action-info">
-                        <span>100 registros</span>
+                        <span><%= total %> registros</span>
                     </div>
                     <div class="action-press">
                         <div>
@@ -80,12 +80,19 @@
                                 <th>Imagem</th>
                                 <th>Categoria</th>
                                 <th>Título</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <%  publications.forEach(publication=>{ %>
+                            <% publications.forEach(publication=>{ %>
                                 <tr>
-                                    <td>Teste1</td>
+                                    <td>
+                                        <div class="list-img">
+                                            <div class="client-img">
+                                                <img src="/upload/publication/<%= publication.id %>/<%= publication.nameImage %>" alt="">
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>
                                         <%= publication.category %>
                                     </td>

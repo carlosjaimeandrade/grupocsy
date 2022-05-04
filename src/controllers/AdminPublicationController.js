@@ -12,10 +12,12 @@ const showPagePublication = async(req, res) => {
         ]
     })
 
+
     res.render('pages/admin/publication', {
         message: req.flash('message'),
         type: req.flash('type'),
-        publications: publications
+        publications: publications,
+        total: publications.length
     })
 }
 
@@ -70,6 +72,7 @@ const newPublication = async(req, res) => {
 
     res.send("new publication")
 }
+
 
 module.exports = {
     newPublication,

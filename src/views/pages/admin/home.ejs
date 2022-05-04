@@ -69,27 +69,35 @@
                                             <div class="client-img">
                                                 IMG
                                             </div>
-                                            <p><%= user.name %> </p>
+                                            <p>
+                                                <%= user.name %>
+                                            </p>
                                         </div>
                                     </td>
-                                    <td><%= user.cpf %></td>
-                                    <td><%= user.email %></td>
-                                    <td><%= user.level == 0 ? 'Cliente' : 'Admin' %></td>
-                                    
                                     <td>
-                                        <% if(user.status == 0) { %> 
-                                            
+                                        <%= user.cpf %>
+                                    </td>
+                                    <td>
+                                        <%= user.email %>
+                                    </td>
+                                    <td>
+                                        <%= user.level == 0 ? 'Cliente' : 'Admin' %>
+                                    </td>
+
+                                    <td>
+                                        <% if(user.status == 0) { %>
+
                                             <div class="client off">
                                                 <p>Inativo</p>
                                             </div>
 
-                                        <%  } else { %> 
-                                            
-                                            <div class="client on">
-                                                <p>Ativo</p>
-                                            </div>
+                                            <%  } else { %>
 
-                                        <% } %> 
+                                                <div class="client on">
+                                                    <p>Ativo</p>
+                                                </div>
+
+                                                <% } %>
 
                                     </td>
 
@@ -99,11 +107,8 @@
                     </table>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> c5b5f617461adeac6d9dbde2c42da4b70e526d6b
     </main>
     <%- include('../admin/partials/footer.ejs') %>
