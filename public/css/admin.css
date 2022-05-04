@@ -1,12 +1,7 @@
 .list-container {
     width: 100%;
-<<<<<<< HEAD
-    display: flex;    
-    justify-content: center;    
-=======
     display: flex;
     justify-content: center;
->>>>>>> 568b85b8bb7018d8f9c9ac0f438958aaf5dc67e9
 }
 
 .list-content {

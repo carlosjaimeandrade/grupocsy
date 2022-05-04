@@ -24,11 +24,41 @@
                             <input type="text">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <button onclick="newModal('post')"><i class="fa-solid fa-plus"></i> Criar débito</button>
+                        <button onclick="newModal('financial')"><i class="fa-solid fa-plus"></i> Criar débito</button>
                     </div>
                 </div>
             </div>
 
+            <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
+                <div new-modal-financial class="new-modal-container">
+                    <i close-financial class="fa-solid fa-xmark modal-modal-close"></i>
+                    <div class="new-modal-content ">
+                        <div class="new-modal-header">
+                            <h2>Novo Débito</h2>
+                            <div class="btn-modal">
+                                <button publicar onclick="loading(event)">Criar</button>
+                            </div>
+                        </div>
+                        <div class="new-modal-main">
+                            <div class="entry-content">
+                                <div class="entry-value entry-bd-1">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <input required type="text" name="title" placeholder="Título">
+                                </div>
+                                <div class="entry-value entry-bd-1">
+                                    <i class="fa-solid fa-table-list"></i>
+                                    <select name="category" id="">
+                                        <option value="">Categoria</option>
+                                        <option value="blog">Blog</option>
+                                        <option value="empreendimentos">Empreendimentos</option>
+                                        <option value="projetos-futuros">Projetos futuros</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
             <div class="list-container">
 
@@ -62,3 +92,5 @@
             </div>
     </main>
     <%- include('../admin/partials/footer.ejs') %>
+
+        <script src="/js/modal.js "></script>
