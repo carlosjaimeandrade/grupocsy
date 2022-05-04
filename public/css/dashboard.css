@@ -28,6 +28,7 @@ body {
 
 main {
     width: 100%;
+    padding: 1rem 1rem 1rem 1.5rem;
 }
 
 .navigation:hover {
@@ -215,12 +216,11 @@ main {
     width: 95%;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(4, 3fr);
+    grid-template-columns: repeat(1, 100%);
     margin: 2rem auto;
 }
 
 .dashboard-cards .dashboard-card-Container .dashboard-card-item {
-    max-width: 300px;
     width: 100%;
     padding: 1.5rem;
     border-radius: 5px;
@@ -244,4 +244,53 @@ main {
 .dashboard-cards .dashboard-card-Container .dashboard-card-item .desc-cards span {
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+/* TATBLE */
+
+#home .list-container .client-content {
+    display: flex;
+    gap: .5rem;
+    align-items: center
+}
+
+#home .list-container .client-content .client-img {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(180, 180, 180);
+}
+
+
+#home .list-container tbody .client {
+    border-radius: 3px;
+    padding: 0.5rem;
+    font-size: .8rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+#home .list-container tbody .client.off {
+    color: #C21B1B;
+    background-color: #EFDCDC;
+}
+
+#home .list-container tbody .client.on {
+    color: #207E35;    
+    background-color: #DAF9E0;
+}
+
+@media (min-width: 768px) and (max-width: 1080px) {
+    .dashboard-cards .dashboard-card-Container {
+        grid-template-columns: repeat(2, 6fr);
+    }
+}
+
+@media (min-width: 1081px) {
+    .dashboard-cards .dashboard-card-Container {
+        grid-template-columns: repeat(4, 3fr);
+    }
 }
