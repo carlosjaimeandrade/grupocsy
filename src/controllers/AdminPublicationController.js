@@ -4,10 +4,19 @@ const fs = require('fs');
 const connection = require('../database/database')
 const innertext = require('innertext');
 
-const showPagePublication = (req, res) => {
+const showPagePublication = async(req, res) => {
+
+    const publications = await Publication.findAll({
+        order: [
+            ['id', 'DESC'],
+        ]
+    })
+
+
     res.render('pages/admin/publication', {
         message: req.flash('message'),
-        type: req.flash('type')
+        type: req.flash('type'),
+        publications: publications
     })
 }
 
@@ -62,6 +71,7 @@ const newPublication = async(req, res) => {
 
     res.send("new publication")
 }
+
 
 module.exports = {
     newPublication,

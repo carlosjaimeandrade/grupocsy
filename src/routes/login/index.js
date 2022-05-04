@@ -14,4 +14,6 @@ routes.post('/login/cadastrar', LoginController.loginCreate)
 
 routes.get('/validate/:hash', LoginController.confirmRegister)
 
+routes.get('/logout', LoginController.logout)
+
 module.exports = routes;

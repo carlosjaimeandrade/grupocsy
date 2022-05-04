@@ -69,16 +69,24 @@
                                             <div class="client-img">
                                                 <img src="/img/user.png" alt="imagem-usuario">
                                             </div>
-                                            <p><%= user.name %> </p>
+                                            <p>
+                                                <%= user.name %>
+                                            </p>
                                         </div>
                                     </td>
-                                    <td><%= user.cpf %></td>
-                                    <td><%= user.email %></td>
-                                    <td><%= user.level == 0 ? 'Cliente' : 'Admin' %></td>
-                                    
                                     <td>
-                                        <% if(user.status == 0) { %> 
-                                            
+                                        <%= user.cpf %>
+                                    </td>
+                                    <td>
+                                        <%= user.email %>
+                                    </td>
+                                    <td>
+                                        <%= user.level == 0 ? 'Cliente' : 'Admin' %>
+                                    </td>
+
+                                    <td>
+                                        <% if(user.status == 0) { %>
+
                                             <div class="client off">
                                                 <ion-icon name="close-circle-outline"></ion-icon>
                                                 <p>Inativo</p>
@@ -91,7 +99,7 @@
                                                 <p>Ativo</p>
                                             </div>
 
-                                        <% } %> 
+                                                <% } %>
 
                                     </td>
 

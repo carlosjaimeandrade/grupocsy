@@ -1,7 +1,12 @@
 .list-container {
     width: 100%;
+<<<<<<< HEAD
     display: flex;    
     justify-content: center;    
+=======
+    display: flex;
+    justify-content: center;
+>>>>>>> 568b85b8bb7018d8f9c9ac0f438958aaf5dc67e9
 }
 
 .list-content {
@@ -38,6 +43,8 @@
     font-weight: 520;
     text-align: left;
     font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    z-index: 997;
 }
 
 .list-content>table>tbody>tr>td {
@@ -53,6 +60,42 @@
     transition: 0.3s
 }
 
+.list-content>table>tbody>tr {
+    position: relative;
+}
+
+.more-option-container {
+    position: relative;
+    padding: 0px 30px;
+}
+
+.more-option-container:hover .more-option {
+    display: block;
+}
+
+.more-option {
+    display: none;
+    position: absolute;
+    width: 100px;
+    right: 0px;
+    top: -70px;
+    border-radius: 4px;
+    width: 150px;
+    background-color: #F4F4F4;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.116) 1px 0px 8px 1px;
+    z-index: 998;
+}
+
+.more-option button {
+    border: none;
+    padding: 10px;
+    background-color: #F4F4F4;
+    color: #061D2C;
+    width: 100%;
+    cursor: pointer;
+}
+
 .list-content>table {
     position: relative;
 }
@@ -60,7 +103,6 @@
 .list-content>table>thead>tr>th {
     position: sticky;
     top: -20px;
-    background-color: white;
 }
 
 .action-container {
@@ -138,6 +180,27 @@
 
 .action-press>* {
     margin-left: 35px
+}
+
+.list-img {
+    display: flex;
+    gap: .5rem;
+    align-items: center
+}
+
+.list-img div {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(180, 180, 180);
+    overflow: hidden;
+}
+
+.list-img div>img {
+    height: 100%
 }
 
 @media (max-width: 768px) {
