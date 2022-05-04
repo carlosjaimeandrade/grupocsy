@@ -1,7 +1,7 @@
 .list-container {
     width: 100%;
     display: flex;
-    justify-content: center;    
+    justify-content: center;
 }
 
 .list-content {
@@ -35,7 +35,7 @@
     text-align: left;
     font-size: 15px;
     background-color: rgb(255, 255, 255);
-    z-index: 999;
+    z-index: 998;
 }
 
 .list-content>table>tbody>tr>td {
