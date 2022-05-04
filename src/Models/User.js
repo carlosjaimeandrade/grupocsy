@@ -23,11 +23,11 @@ const User = connection.define('user', {
         allowNull: false
     },
     cpf: {
-        type: Sequelize.STRING(12),
+        type: Sequelize.STRING(30),
         allowNull: false
     },
     rg: {
-        type: Sequelize.STRING(10),
+        type: Sequelize.STRING(30),
         allowNull: false
     },
     password: {

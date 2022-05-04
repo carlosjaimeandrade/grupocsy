@@ -77,22 +77,32 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Teste1</th>
-                                <th>teste2</th>
-                                <th>teste3</th>
+                                <th>Imagem</th>
+                                <th>Categoria</th>
+                                <th>Título</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                            </tr>
-                            <tr>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                            </tr>
+                            <%  publications.forEach(publication=>{ %>
+                                <tr>
+                                    <td>Teste1</td>
+                                    <td>
+                                        <%= publication.category %>
+                                    </td>
+                                    <td>
+                                        <%= publication.title %>
+                                    </td>
+                                    <td>
+                                        <div class="more-option-container">
+                                            <i class="fas fa-ellipsis-v btn-option"></i>
+                                            <div class="more-option">
+                                                <a href=""><button>Editar</button></a>
+                                                <button>Excluir</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }) %>
                         </tbody>
                     </table>
                 </div>

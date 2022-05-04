@@ -34,6 +34,8 @@
     font-weight: 520;
     text-align: left;
     font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
 }
 
 .list-content>table>tbody>tr>td {
@@ -48,6 +50,41 @@
     transition: 0.3s
 }
 
+.list-content>table>tbody>tr {
+    position: relative;
+}
+
+.more-option-container {
+    position: relative;
+    padding: 0px 30px;
+}
+
+.more-option-container:hover .more-option {
+    display: block;
+}
+
+.more-option {
+    display: none;
+    position: absolute;
+    width: 100px;
+    right: 0px;
+    top: -70px;
+    border-radius: 4px;
+    width: 150px;
+    background-color: #F4F4F4;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.116) 1px 0px 8px 1px;
+}
+
+.more-option button {
+    border: none;
+    padding: 10px;
+    background-color: #F4F4F4;
+    color: #061D2C;
+    width: 100%;
+    cursor: pointer;
+}
+
 .list-content>table {
     position: relative;
 }
@@ -55,7 +92,6 @@
 .list-content>table>thead>tr>th {
     position: sticky;
     top: -20px;
-    background-color: white;
 }
 
 .action-container {
