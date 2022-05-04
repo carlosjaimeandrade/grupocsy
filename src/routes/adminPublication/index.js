@@ -11,4 +11,5 @@ const AdminPublicationController = require('../../controllers/AdminPublicationCo
 routes.get('/admin/publicacao', userAuth.auth, levelAdminAuth.auth, AdminPublicationController.showPagePublication)
 routes.post('/admin/nova/publicacao', userAuth.auth, levelAdminAuth.auth, multer({ storage }).single("file"), AdminPublicationController.newPublication)
 
+routes.get('/admin/publicacao/delete/:id', userAuth.auth, levelAdminAuth.auth, AdminPublicationController.destroy)
 module.exports = routes;

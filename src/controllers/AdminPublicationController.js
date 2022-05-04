@@ -72,8 +72,36 @@ const newPublication = async(req, res) => {
     res.send("new publication")
 }
 
+const destroy = async(req, res) => {
+    const id = req.params.id;
+
+    const publication = await Publication.findAll({ raw: true, where: { id: id } })
+
+    if (publication.length == 0) {
+        res.redirect('/admin/publicacao')
+        return
+    }
+
+    const del = await Publication.destroy({ where: { id: id } })
+
+    if (del) {
+        fs.unlink(`public/upload/publication/${publication[0].id}/${publication[0].nameImage}`, function(err) {
+            if (err) {
+                req.flash('message', 'Houve um erro em deletar a imagem desta postagem, entre em contato com o adm');
+                req.flash('type', 'danger');
+                res.redirect('/admin/publicacao')
+                return
+            }
+        })
+        req.flash('message', 'Excluido com sucesso');
+        req.flash('type', 'success');
+        res.redirect('/admin/publicacao')
+    }
+
+}
 
 module.exports = {
     newPublication,
-    showPagePublication
+    showPagePublication,
+    destroy
 }

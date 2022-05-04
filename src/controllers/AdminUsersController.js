@@ -5,8 +5,6 @@ const showUsers = (req, res) => {
     })
 }
 
-
-
 module.exports = {
     showUsers
 }
