@@ -24,7 +24,7 @@
                         <ion-icon name="people-outline"></ion-icon>
                         <div class="desc-cards">
                             <p>Total Usuarios</p>
-                            <span>00</span>
+                            <span><%= users.length %> </span>
                         </div>
                     </div>
                     <!-- card-item -->
@@ -54,28 +54,56 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Teste1</th>
-                                <th>teste2</th>
-                                <th>teste3</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>E-mail</th>
+                                <th>Nivel</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                            </tr>
-                            <tr>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                                <td>Teste1</td>
-                            </tr>
+                            <% users.forEach((user)=> { %>
+                                <tr>
+                                    <td>
+                                        <div class="client-content">
+                                            <div class="client-img">
+                                                IMG
+                                            </div>
+                                            <p><%= user.name %> </p>
+                                        </div>
+                                    </td>
+                                    <td><%= user.cpf %></td>
+                                    <td><%= user.email %></td>
+                                    <td><%= user.level == 0 ? 'Cliente' : 'Admin' %></td>
+                                    
+                                    <td>
+                                        <% if(user.status == 0) { %> 
+                                            
+                                            <div class="client off">
+                                                <p>Inativo</p>
+                                            </div>
+
+                                        <%  } else { %> 
+                                            
+                                            <div class="client on">
+                                                <p>Ativo</p>
+                                            </div>
+
+                                        <% } %> 
+
+                                    </td>
+
+                                </tr>
+                                <% })%>
                         </tbody>
                     </table>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> c5b5f617461adeac6d9dbde2c42da4b70e526d6b
     </main>
     <%- include('../admin/partials/footer.ejs') %>
