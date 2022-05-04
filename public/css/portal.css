@@ -59,9 +59,15 @@
     position: relative;
 }
 
+.list-content>table>tbody>tr>td:nth-last-child(1) {
+    width: 30px;
+}
+
 .more-option-container {
     position: relative;
-    padding: 0px 30px;
+    text-align: end;
+    display: flex;
+    justify-content: center;
 }
 
 .more-option-container:hover .more-option {
@@ -198,6 +204,154 @@
     height: 100%
 }
 
+.new-modal-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525ac;
+    z-index: 999;
+    animation: fadeInOpacity 0.3s linear;
+}
+
+.entry-content {
+    margin-bottom: 4px;
+}
+
+.new-modal-content {
+    padding: 15px;
+    background: #fff;
+    border-radius: 2px;
+    width: 60%;
+    animation: fadeIn 0.3s linear;
+}
+
+.new-modal-header {
+    padding: 3px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-modal-close {
+    font-size: 35px;
+    cursor: pointer;
+    color: #ffffff;
+    position: absolute;
+    right: 30px;
+    top: 25px;
+}
+
+.new-modal-header h2 {
+    font-size: 20px;
+    color: #252525ac;
+}
+
+.new-modal-main {
+    padding: 10px 0px;
+}
+
+.btn-modal {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-modal button {
+    width: 120px;
+    background-color: #2493DE;
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0px;
+    border-radius: 3px;
+}
+
+.modal-delete-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525ac;
+    z-index: 999;
+    animation: fadeInOpacity 0.3s linear;
+}
+
+.modal-delete-content {
+    background-color: #fff;
+    border-radius: 3px;
+    width: 420px;
+}
+
+.modal-delete-text {
+    display: flex;
+    padding: 20px;
+}
+
+.modal-delete-icon i {
+    color: #ca4345;
+    width: 35px;
+    height: 35px;
+    background-color: #dc959681;
+    box-shadow: 1px 0px 8px 1px #dc959615;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.modal-delete-info>* {
+    padding-bottom: 10px;
+}
+
+.modal-delete-action {
+    background-color: #F4F4F4;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-delete-info h4 {
+    color: rgb(90, 89, 89);
+}
+
+.modal-delete-info p {
+    color: #838383;
+    font-size: 15px;
+}
+
+.modal-delete-action>* {
+    margin-left: 8px;
+    padding: 8px 10px;
+}
+
+.btn-cancel {
+    border: 1px solid rgb(201, 199, 199);
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.btn-del {
+    border: 1px solid #e25f63;
+    background-color: #e25f63;
+    color: #fff;
+    border-radius: 3px;
+}
+
+@media (max-width: 992px) {
+    .new-modal-content {
+        width: 70%;
+    }
+}
+
 @media (max-width: 768px) {
     .action-press>* {
         margin: 5px;
@@ -214,5 +368,55 @@
     }
     .action-info {
         margin: 5px;
+    }
+    .new-modal-content {
+        width: 80%;
+    }
+    .modal-delete-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 414px) {
+    .new-modal-content {
+        width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        width: 10%;
+    }
+    100% {
+        width: 60%;
+    }
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        width: 60%;
+    }
+    100% {
+        opacity: 0;
+        width: 10%;
     }
 }
