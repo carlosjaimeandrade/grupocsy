@@ -2,8 +2,7 @@ const Publication = require('../models/Publication')
 const Sequelize = require('sequelize')
 
 const publications = async(req, res) => {
-    const offset = req.params.offset
-    console.log(req.params.offset)
+    const offset = req.params.offset    
     const category = req.params.category
 
     const publications = await Publication.findAll({

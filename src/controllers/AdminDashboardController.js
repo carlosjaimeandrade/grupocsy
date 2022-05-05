@@ -16,7 +16,7 @@ module.exports = {
             message: req.flash('message'),
             type: req.flash('type'),
             users,
-            publications: { publications: publications.slice(0, 2), count: publications.length },
+            publications: { data: publications.slice(0, 2), count: publications.length },
         })
     },
 }
