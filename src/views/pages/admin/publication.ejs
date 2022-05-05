@@ -2,7 +2,6 @@
     <main id="publications">
         <%- include('../admin/partials/user') %>
             <%- include('../admin/partials/modalDel') %>
-                <%- include('../admin/partials/modalEdit') %>
 
                     <div class="titlePage">
                         <div class="titlePage-container">
@@ -10,7 +9,7 @@
                             <span>Veja todas as publicações cadastradas</span>
                         </div>
                     </div>
-
+                    <!-- Filtros -->
                     <form method="get">
                         <div class="action-container">
                             <div class="action-content">
@@ -37,15 +36,15 @@
                                                 <input value="<%= query.title %>" name="title" type="text" placeholder="Título da publicação">
                                                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
                                             </div>
-                                            <button type="button" onclick="newModal('post')"><i class="fa-solid fa-plus"></i> Criar publicação</button>
+                                            <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar publicação</button>
                                 </div>
                             </div>
                         </div>
                     </form>
-
+                    <!-- modal de nova publicação -->
                     <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
-                        <div new-modal-post class="new-modal-container">
-                            <i close-post class="fa-solid fa-xmark modal-modal-close"></i>
+                        <div new-modal class="new-modal-container">
+                            <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
                             <div class="new-modal-content">
                                 <div class="new-modal-header">
                                     <h2>Nova publicação</h2>
@@ -79,7 +78,42 @@
                             </div>
                         </div>
                     </form>
-
+                    <!-- modal de edição -->
+                    <div new-modal-edit class="new-modal-container">
+                        <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
+                        <div class="new-modal-content">
+                            <div class="new-modal-header">
+                                <h2>Editar publicação</h2>
+                                <div class="btn-modal">
+                                    <button publicar onclick="loading(event)">Publicar</button>
+                                </div>
+                            </div>
+                            <div class="new-modal-main">
+                                <div class="entry-content">
+                                    <div class="entry-value entry-bd-1">
+                                        <i class="fa-solid fa-file-signature"></i>
+                                        <input required type="text" name="title" placeholder="Título">
+                                    </div>
+                                    <div class="entry-value entry-bd-1"><i class="fa-solid fa-table-list"></i>
+                                        <select name="category" id="">
+                                            <option value="">Categoria</option>
+                                            <option value="blog">Blog</option>
+                                            <option value="empreendimentos">Empreendimentos</option>
+                                            <option value="projetos-futuros">Projetos
+                                                futuros</option>
+                                        </select>
+                                    </div>
+                                    <div class="entry-value entry-bd-1">
+                                        <i class="fa-solid fa-image"></i>
+                                        <label class="upload-file" for="image">Carregar... <span log-arq></span></label>
+                                        <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
+                                    </div>
+                                </div>
+                                <textarea id="edit" name="text"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- listagem das publicações -->
                     <div id="publicacao" class="list-container">
                         <div class="list-content">
                             <div class="list-title">
@@ -114,7 +148,7 @@
                                                 <div class="more-option-container">
                                                     <i class="fas fa-ellipsis-v btn-option"></i>
                                                     <div class="more-option">
-                                                        <button onclick="newModalEdit('edit',`<%=publication.id%>`,'publication')">Editar</button>
+                                                        <button onclick="newModalEdit(`<%=publication.id%>`)">Editar</button>
                                                         <button id="<%=publication.id %>" modal-del-btn>Excluir</button>
                                                     </div>
                                                 </div>
@@ -126,7 +160,7 @@
                         </div>
                     </div>
 
-
+                   <!--  mensagem  -->
                     <% if(message !="" ) {%>
                         <div class="alert alert-<%= type %>">
                             <span>
@@ -141,7 +175,7 @@
 
         <script src="/lib/tinymce/tinymce.min.js"></script>
         <script src="/js/tinymceConfig.js"></script>
-        <script src="/js/modal.js"></script>
+        <script src="/js/modalNew.js"></script>
         <script src="/js/loading.js"></script>
         <script src="/js/fileLoad.js"></script>
         <script src="/js/Alert.js"></script>

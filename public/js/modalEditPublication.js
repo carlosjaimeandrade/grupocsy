@@ -1,9 +1,9 @@
-async function newModalEdit(identification, id, url) {
+async function newModalEdit(id) {
     initTiny()
-    initModalEdit(identification)
+    initModalEdit()
 
 
-    let publication = await fetch(`/api/${url}/${id}`)
+    let publication = await fetch(`/api/publication/${id}`)
     publication = await publication.json()
     console.log(publication)
 
@@ -22,12 +22,12 @@ function initTiny() {
     })
 }
 
-function initModalEdit(identification) {
+function initModalEdit() {
     const new_modal_content = document.querySelector('.new-modal-content')
-    let new_modal_container = document.querySelector(`[new-modal-${identification}]`)
+    let new_modal_container = document.querySelector(`[new-modal-edit]`)
     new_modal_container.style.display = new_modal_container.style.display == 'flex' ? 'none' : 'flex'
 
-    const new_modal_close = document.querySelector(`[close-${identification}]`)
+    const new_modal_close = document.querySelector(`[close-edit]`)
     new_modal_close.onclick = () => {
         new_modal_container.style.animation = "fadeOutOpacity 0.5s linear"
         new_modal_content.style.animation = "fadeInOut 0.5s linear"

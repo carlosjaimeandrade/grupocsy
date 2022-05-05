@@ -25,14 +25,14 @@
                                 <input name="title" type="text">
                                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
-                            <button onclick="newModal('user')"><i class="fa-solid fa-plus"></i> Criar usuário</button>
+                            <button onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar usuário</button>
                         </div>
                     </div>
                 </div>
 
                 <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
-                    <div new-modal-user nancial class="new-modal-container">
-                        <i close-user class="fa-solid fa-xmark modal-modal-close"></i>
+                    <div new-modal nancial class="new-modal-container">
+                        <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
                         <div class="new-modal-content ">
                             <div class="new-modal-header">
                                 <h2>Novo usuário</h2>
@@ -200,5 +200,7 @@
     </main>
     <%- include('../admin/partials/footer.ejs') %>
 
-        <script src="/js/modal.js "></script>
+        <script src="/js/modalNew.js "></script>
         <script src="/js/modalDel.js"></script>
+        <script src="/js/loading.js"></script>
+        <script src="/js/Alert.js"></script>
