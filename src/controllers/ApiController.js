@@ -27,6 +27,17 @@ const publications = async(req, res) => {
     res.send(publications);
 }
 
+const publication = async(req, res) => {
+    const id = req.params.id
+
+    const publication = await Publication.findByPk(id)
+
+    if (publication) {
+        res.json(publication)
+    }
+}
+
 module.exports = {
-    publications
+    publications,
+    publication
 }
