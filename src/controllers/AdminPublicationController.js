@@ -3,20 +3,35 @@ const Publication = require('../models/Publication');
 const fs = require('fs');
 const connection = require('../database/database')
 const innertext = require('innertext');
+const search = require('../help/search')
 
 const showPagePublication = async(req, res) => {
 
-    const publications = await Publication.findAll({
+    let publications = await Publication.findAll({
         order: [
             ['id', 'DESC'],
         ]
     })
 
+    const query = search.query(req.query)
+    if (query) {
+        try {
+            publications = await Publication.findAll({
+                order: [
+                    ['id', 'DESC'],
+                ],
+                where: query
+            })
+        } catch (err) {
+            res.redirect('/admin/publicacao')
+        }
+    }
 
     res.render('pages/admin/publication', {
         message: req.flash('message'),
         type: req.flash('type'),
-        publications: publications
+        publications: publications,
+        query: req.query
     })
 }
 

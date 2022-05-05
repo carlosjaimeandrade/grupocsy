@@ -128,6 +128,12 @@
     border-radius: 3px;
 }
 
+.action-press div>button {
+    border: none;
+    background-color: transparent;
+    color: #AEAEAE;
+}
+
 .action-info span {
     color: #AEAEAE;
 }
@@ -140,7 +146,7 @@
 
 .action-press>div {
     background-color: #fff;
-    padding: 5px 0px;
+    padding: 2px 0px;
     border-radius: 3px;
     display: flex;
     justify-content: center;
@@ -148,7 +154,6 @@
 }
 
 .action-press>div>i {
-    margin: 0px 10px;
     color: #AEAEAE;
 }
 
@@ -163,7 +168,7 @@
 
 .action-press>div>select {
     height: 100%;
-    padding: 5px;
+    padding: 8px;
     background-color: transparent;
     border: none;
     color: #AEAEAE;
@@ -177,10 +182,33 @@
 .action-press>div>input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
+    color: #AEAEAE;
+}
+
+.action-press>div>input::placeholder {
+    color: #AEAEAE;
+}
+
+.action-press>div>input {
+    color: #AEAEAE;
 }
 
 .action-press>* {
     margin-left: 35px
+}
+
+.clear-search {
+    color: #AEAEAE;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.clear-search ion-icon {
+    margin-right: 5px;
 }
 
 .list-img {
