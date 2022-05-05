@@ -9,7 +9,7 @@
                         <span>Usuários cadastrados</span>
                     </div>
                 </div>
-
+                <!-- Filtros e btns-->
                 <div class="action-container">
                     <div class="action-content">
                         <div class="action-info">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- modal de nova criação -->
                 <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
                     <div new-modal nancial class="new-modal-container">
                         <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
@@ -60,7 +60,24 @@
                         </div>
                     </div>
                 </form>
-
+                <!-- modal de edição -->
+                <form method="post" action="/admin/editar/publicacao" enctype="multipart/form-data">
+                    <div new-modal-edit class="new-modal-container">
+                        <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
+                        <div class="new-modal-content">
+                            <div class="new-modal-header">
+                                <h2>Editar usuário</h2>
+                                <div class="btn-modal">
+                                    <button publicar onclick="loading(event)">Atualizar</button>
+                                </div>
+                            </div>
+                            <div new-modal-import class="new-modal-main">
+        
+                            </div>
+                        </div>
+                    </div>
+                </form>                   
+                <!-- listagem dos dados -->
                 <div id="usuarios" class="list-container">
                     <div class="list-content">
                         <div class="list-title">
@@ -82,7 +99,7 @@
                                         <div class="more-option-container">
                                             <i class="fas fa-ellipsis-v btn-option"></i>
                                             <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
+                                                <button onclick="newModalEdit(`teste_id`)">Editar</button>
                                                 <button id="teste1" modal-del-btn>Excluir</button>
                                             </div>
                                         </div>
@@ -95,98 +112,7 @@
                                         <div class="more-option-container">
                                             <i class="fas fa-ellipsis-v btn-option"></i>
                                             <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <a href=""><button>Editar</button></a>
+                                                <button onclick="newModalEdit(`teste_id`)">Editar</button>
                                                 <button id="teste1" modal-del-btn>Excluir</button>
                                             </div>
                                         </div>
@@ -196,11 +122,17 @@
                         </table>
                     </div>
                 </div>
-
+                <!--  mensagem  -->
+                <% if(message !="" ) {%>
+                    <div class="alert alert-<%= type %>">
+                            <span> <%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+                    </div>
+                    <% } %>
     </main>
     <%- include('../admin/partials/footer.ejs') %>
-
+        <script src="/lib/tinymce/tinymce.min.js"></script>
         <script src="/js/modalNew.js "></script>
         <script src="/js/modalDel.js"></script>
         <script src="/js/loading.js"></script>
         <script src="/js/Alert.js"></script>
+        <script src="/js/modalEditUsers.js"></script>
