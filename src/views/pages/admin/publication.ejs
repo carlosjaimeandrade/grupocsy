@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </form>
-                    <!-- modal de nova publicação -->
+                    <!-- modal de nova criação -->
                     <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
                         <div new-modal class="new-modal-container">
                             <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
@@ -79,41 +79,23 @@
                         </div>
                     </form>
                     <!-- modal de edição -->
-                    <div new-modal-edit class="new-modal-container">
-                        <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
-                        <div class="new-modal-content">
-                            <div class="new-modal-header">
-                                <h2>Editar publicação</h2>
-                                <div class="btn-modal">
-                                    <button publicar onclick="loading(event)">Publicar</button>
-                                </div>
-                            </div>
-                            <div class="new-modal-main">
-                                <div class="entry-content">
-                                    <div class="entry-value entry-bd-1">
-                                        <i class="fa-solid fa-file-signature"></i>
-                                        <input required type="text" name="title" placeholder="Título">
-                                    </div>
-                                    <div class="entry-value entry-bd-1"><i class="fa-solid fa-table-list"></i>
-                                        <select name="category" id="">
-                                            <option value="">Categoria</option>
-                                            <option value="blog">Blog</option>
-                                            <option value="empreendimentos">Empreendimentos</option>
-                                            <option value="projetos-futuros">Projetos
-                                                futuros</option>
-                                        </select>
-                                    </div>
-                                    <div class="entry-value entry-bd-1">
-                                        <i class="fa-solid fa-image"></i>
-                                        <label class="upload-file" for="image">Carregar... <span log-arq></span></label>
-                                        <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
+                    <form method="post" action="/admin/editar/publicacao" enctype="multipart/form-data">
+                        <div new-modal-edit class="new-modal-container">
+                            <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
+                            <div class="new-modal-content">
+                                <div class="new-modal-header">
+                                    <h2>Editar publicação</h2>
+                                    <div class="btn-modal">
+                                        <button publicar onclick="loading(event)">Atualizar</button>
                                     </div>
                                 </div>
-                                <textarea id="edit" name="text"></textarea>
+                                <div new-modal-import class="new-modal-main">
+            
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- listagem das publicações -->
+                    </form>
+                    <!-- listagem dos dados -->
                     <div id="publicacao" class="list-container">
                         <div class="list-content">
                             <div class="list-title">
@@ -159,7 +141,6 @@
                             </table>
                         </div>
                     </div>
-
                    <!--  mensagem  -->
                     <% if(message !="" ) {%>
                         <div class="alert alert-<%= type %>">
@@ -178,6 +159,7 @@
         <script src="/js/modalNew.js"></script>
         <script src="/js/loading.js"></script>
         <script src="/js/fileLoad.js"></script>
+        <script src="/js/fileLoadEdit.js"></script>
         <script src="/js/Alert.js"></script>
         <script src="/js/modalDel.js"></script>
         <script src="/js/modalEditPublication.js"></script>
