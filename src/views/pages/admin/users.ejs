@@ -13,13 +13,15 @@
                 <div class="action-container">
                     <div class="action-content">
                         <div class="action-info">
-                            <span>100 registros</span>
+                            <span>
+                                <%= users.length %> usuarios
+                            </span>
                         </div>
                         <div class="action-press">
                             <div>
                                 <select name="" id="">
-                                <option value="">Todos registros</option>
-                            </select>
+                                    <option value="">Todos registros</option>
+                                </select>
                             </div>
                             <div>
                                 <input name="title" type="text">
@@ -30,53 +32,105 @@
                     </div>
                 </div>
                 <!-- modal de nova criação -->
-                <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
+                <form action="" method="post">
                     <div new-modal nancial class="new-modal-container">
                         <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
                         <div class="new-modal-content ">
                             <div class="new-modal-header">
                                 <h2>Novo usuário</h2>
-                                <div class="btn-modal">
-                                    <button publicar onclick="loading(event)">Criar</button>
+                            </div>
+                            <div class="login-container">
+                                <div class="login-entry">
+                                    <div class="login-content-create ">
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-user"></i>
+                                            <input name="name" required type="text" placeholder="Nome">
+                                        </div>
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            <input name="email" required type="email" placeholder="E-mail">
+                                        </div>
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-phone"></i>
+                                            <input name="telephone" onkeyup="mascara('(##) ####-####',this,event,false)"
+                                                maxlength="14" type="text" placeholder="Telefone">
+                                        </div>
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            <select name="uf" uf-select required import-city type="text"
+                                                placeholder="uf" name="">
+                                                <option value="">UF</option>
+                                            </select>
+                                        </div>
+                                        <div city-select class="login-input display-none ">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            <select name="city" city-select-import required import-city type="text"
+                                                placeholder="Cidade" name="" id="">
+                                                <option value="">Cidade</option>
+                                            </select>
+                                        </div>
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-id-card"></i>
+                                            <input name="cpf" required
+                                                onkeyup="mascara('###.###.###-##',this,event,false)" maxlength="14"
+                                                type="text" placeholder="CPF">
+                                        </div>
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-id-card"></i>
+                                            <input name="rg" required onkeyup="mascara('##.###.###-#',this,event,false)"
+                                                maxlength="12" type="text" placeholder="RG">
+                                        </div>
+                                        <div class="login-input">
+                                            <i class="fa-solid fa-lock"></i>
+                                            <input name="password" required type="password" placeholder="Password">
+                                            <i view-password class="fa-solid fa-eye"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="new-modal-main">
-                                <div class="entry-content">
-                                    <div class="entry-value entry-bd-1">
-                                        <i class="fa-solid fa-file-signature"></i>
-                                        <input required type="text" name="title" placeholder="Título">
-                                    </div>
-                                    <div class="entry-value entry-bd-1">
-                                        <i class="fa-solid fa-table-list"></i>
-                                        <select name="category" id="">
-                                        <option value="">Categoria</option>
-                                        <option value="blog">Blog</option>
-                                        <option value="empreendimentos">Empreendimentos</option>
-                                        <option value="projetos-futuros">Projetos futuros</option>
-                                    </select>
-                                    </div>
-                                </div>
+                            <div class="btn-modal">
+                                <button publicar onclick="loading(event)">Criar</button>
                             </div>
                         </div>
                     </div>
                 </form>
                 <!-- modal de edição -->
-                <form method="post" action="/admin/editar/publicacao" enctype="multipart/form-data">
+                <form method="post" action="" id="edit">
                     <div new-modal-edit class="new-modal-container">
                         <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
                         <div class="new-modal-content">
                             <div class="new-modal-header">
-                                <h2>Editar usuário</h2>
-                                <div class="btn-modal">
-                                    <button publicar onclick="loading(event)">Atualizar</button>
-                                </div>
+                                <h2>Editar usuário</h2>                               
                             </div>
                             <div new-modal-import class="new-modal-main">
-        
+                                <div class="login-container">
+                                    <div class="login-entry">
+                                        <div class="login-content-create ">
+                                            <div class="login-input">
+                                                <i class="fa-solid fa-user"></i>
+                                                <input name="name" required type="text">
+                                            </div>
+                                            <div class="login-input">
+                                                <i class="fa-solid fa-envelope"></i>
+                                                <input name="email" required type="email">
+                                            </div>
+                                            <div class="login-input">
+                                                <i class="fa-solid fa-user-shield"></i>
+                                                <select name="level" type="text">
+                                                    <option value="0">Cliente</option>
+                                                    <option value="1">Admin</option>
+                                                </select>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-modal">
+                                <button publicar onclick="loading(event)">Atualizar</button>
                             </div>
                         </div>
                     </div>
-                </form>                   
+                </form>
                 <!-- listagem dos dados -->
                 <div id="usuarios" class="list-container">
                     <div class="list-content">
@@ -86,38 +140,66 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Teste1</th>
-                                    <th>teste2</th>
-                                    <th></th>
+                                    <th>Nome</th>
+                                    <th>CPF</th>
+                                    <th>E-mail</th>
+                                    <th>Nivel</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <button onclick="newModalEdit(`teste_id`)">Editar</button>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
+                                <% users.forEach((user)=> { %>
+                                    <tr>
+                                        <td>
+                                            <div class="client-content">
+                                                <div class="client-img">
+                                                    <img src="/img/user.png" alt="imagem-usuario">
+                                                </div>
+                                                <p>
+                                                    <%= user.name %>
+                                                </p>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <button onclick="newModalEdit(`teste_id`)">Editar</button>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
+                                        </td>
+                                        <td>
+                                            <%= user.cpf %>
+                                        </td>
+                                        <td>
+                                            <%= user.email %>
+                                        </td>
+                                        <td>
+                                            <%= user.level==0 ? 'Cliente' : 'Admin' %>
+                                        </td>
+
+                                        <td>
+                                            <% if(user.status==0) { %>
+
+                                                <div class="client off">
+                                                    <ion-icon name="close-circle-outline"></ion-icon>
+                                                    <p>Inativo</p>
+                                                </div>
+
+                                                <% } else { %>
+
+                                                    <div class="client on">
+                                                        <ion-icon name="close-circle-outline"></ion-icon>
+                                                        <p>Ativo</p>
+                                                    </div>
+
+                                                    <% } %>
+
+                                        </td>
+                                        <td>
+                                            <div class="more-option-container">
+                                                <i class="fas fa-ellipsis-v btn-option"></i>
+                                                <div class="more-option">
+                                                    <button onclick="newModalEdit(`<%= user.id %>`)">Editar</button>
+                                                    <button id="teste1" modal-del-btn>Excluir</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+
+                                    </tr>
+                                    <% })%>
                             </tbody>
                         </table>
                     </div>
@@ -125,7 +207,9 @@
                 <!--  mensagem  -->
                 <% if(message !="" ) {%>
                     <div class="alert alert-<%= type %>">
-                            <span> <%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+                        <span>
+                            <%= message %>
+                        </span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
                     </div>
                     <% } %>
     </main>
@@ -136,3 +220,8 @@
         <script src="/js/loading.js"></script>
         <script src="/js/Alert.js"></script>
         <script src="/js/modalEditUsers.js"></script>
+
+
+        <script src="/js/loginCreate.js"></script>
+        <script src="/js/mask.js"></script>
+        <script src="/js/login.js"></script>

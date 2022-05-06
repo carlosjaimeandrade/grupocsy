@@ -1,7 +1,7 @@
 function newModalEdit(id) {
     initModalEdit()
     importModal(id)
- 
+
 }
 
 function initModalEdit() {
@@ -9,7 +9,7 @@ function initModalEdit() {
     new_modal_container.style.display = new_modal_container.style.display == 'flex' ? 'none' : 'flex'
 
     const new_modal_close = document.querySelector(`[close-edit]`)
-    new_modal_close.onclick = () => {   
+    new_modal_close.onclick = () => {
         new_modal_container.style.animation = "fadeOutOpacity 0.5s linear"
         setTimeout(() => {
             new_modal_container.style.display = 'none'
@@ -19,39 +19,35 @@ function initModalEdit() {
 }
 
 async function importModal(id) {
-    const new_modal_import = document.querySelector('[new-modal-import]')
-    let publication = await fetch(`/api/publication/${id}`)
-    publication = await publication.json()
 
+    let inputs = QueryAll('#users #edit .login-input input');
+    let select = Query('#users #edit .login-input select');
 
-    const elements = `
-    <div class="entry-content">
-        <div class="entry-value entry-bd-1">
-            <i class="fa-solid fa-file-signature"></i>
-            <input required value="${publication.title}" type="text" name="title" placeholder="Título">
-        </div>
-        <div class="entry-value entry-bd-1"><i class="fa-solid fa-table-list"></i>
-            <select name="category" id="">
-            <option value="">Categoria</option>
-            <option ${publication.category == "blog" ? "selected" : ""} value="blog">Blog</option>
-            <option ${publication.category == "empreendimentos" ? "selected" : ""} value="empreendimentos">Empreendimentos</option>
-            <option ${publication.category == "projetos-futuros" ? "selected" : ""} value="projetos-futuros">Projetos futuros</option>
-        </select>
-        </div>
-        <div class="entry-value entry-bd-1 preview-image">
-            <div>
-                <i class="fa-solid fa-image"></i>
-                <label class="upload-file-edit" for="image-edit">Atualizar... <span log-arq-edit></span></label>
-                <input oninput="onLoadFileEdit(event)" class="display-none" id="image-edit" type="file" name="file">
-            </div>
-            <div>
-                <a target="_blank" href="/upload/publication/${publication.id}/${publication.nameImage}"><i class="fa-solid fa-eye"></i></a>
-            </div>
-        </div>
-    </div>
-    <textarea id="edit" name="text">${publication.text}</textarea>`
+    fetch(`/api/user/${id}`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((response) => {
+                
+            inputs[0].value = response.email;
+            inputs[1].value = response.name;                        
 
-    new_modal_import.innerHTML = elements
+            if(response.level == 1) {
+                select.options[1].selected = true;
+            } else {
+                select.options[0].selected = true;
+            }
 
+        })
+        .catch((error) => {
+            alert(error.message);
+        })
 }
 
+function Query(params) {
+    return document.querySelector(params);
+};
+
+function QueryAll(params) {
+    return document.querySelectorAll(params);
+};

@@ -6,6 +6,6 @@ const express = require('express');
 const routes = express.Router();
 
 routes.get('/admin/usuarios', userAuth.auth, levelAdminAuth.auth, AdminUsersController.showUsers)
-
+routes.post('/admin/usuarios', userAuth.auth, levelAdminAuth.auth, AdminUsersController.createUsers)
 
 module.exports = routes;

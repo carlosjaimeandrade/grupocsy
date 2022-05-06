@@ -6,6 +6,8 @@ const levelAdminAuth = require('../../middleware/levelAdminAuth')
 
 routes.get('/api/publications/:category/:offset/',userAuth.auth, levelAdminAuth.auth, ApiController.publications)
 
-routes.get('/api/publication/:id', userAuth.auth, levelAdminAuth.auth, ApiController.publication)
+routes.get('/api/publication/:id', userAuth.auth, levelAdminAuth.auth, ApiController.publication);
+
+routes.get('/api/user/:id', userAuth.auth, levelAdminAuth.auth, ApiController.user);
 
 module.exports = routes;

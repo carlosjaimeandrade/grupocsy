@@ -17,7 +17,7 @@
     z-index: 999;
 }
 
-.navigation-container {    
+.navigation-container {
     width: 50px;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 main {
-    width: calc(100% - 50px);      
+    width: calc(100% - 50px);
 }
 
 .navigation:hover {
@@ -246,14 +246,15 @@ main {
 }
 
 /* TATBLE */
-
-#home .list-container .client-content {
+#home .list-container .client-content,
+#users .list-container .client-content {
     display: flex;
     gap: .5rem;
     align-items: center
 }
 
-#home .list-container .client-content .client-img {
+#home .list-container .client-content .client-img,
+#users .list-container .client-content .client-img {
     min-width: 35px;
     width: 35px;
     height: 35px;
@@ -264,36 +265,41 @@ main {
     background-color: rgb(180, 180, 180);
 }
 
-#home .list-container .client-content .client-img img {
-    width: 100%;    
+#home .list-container .client-content .client-img img,
+#users .list-container .client-content .client-img img {
+    width: 100%;
 }
 
 
-#home .list-container tbody .client {
+#home .list-container tbody .client,
+#users .list-container tbody .client {
     border-radius: 3px;
-    padding: 0.5rem;    
+    padding: 0.5rem;
     text-align: center;
     font-weight: 400;
 
     display: flex;
-    gap: .5rem;    
+    gap: .5rem;
     align-items: center;
 }
 
-#home .list-container tbody .client ion-icon {
+#home .list-container tbody .client ion-icon,
+#users .list-container tbody .client ion-icon {
     font-size: 1.4rem;
 }
 
-#home .list-container tbody .client.off {
-    color: #C21B1B;    
+#home .list-container tbody .client.off,
+#users .list-container tbody .client.off {
+    color: #C21B1B;
 }
 
-#home .list-container tbody .client.on {
-    color: #207E35;        
+#home .list-container tbody .client.on,
+#users .list-container tbody .client.on {
+    color: #207E35;
 }
 
 #home .list-container tbody .client.pend {
-    color: #e4bb4d;        
+    color: #e4bb4d;
 }
 
 .trasations-posts {
@@ -301,7 +307,7 @@ main {
 }
 
 .trasactions-posts .list-container .list-content {
-    width: 100%;        
+    width: 100%;
 }
 
 .trasactions-posts .trasactions-posts-container {
@@ -309,16 +315,16 @@ main {
     display: flex;
     gap: 1rem;
     color: #2A303A;
-    margin: 2rem auto;    
+    margin: 2rem auto;
 }
 
 .trasactions-posts .trasactions-container {
-    width: 50%;    
+    width: 50%;
     background-color: #fff;
 }
 
 .trasactions-posts .posts-container {
-    width: 50%;        
+    width: 50%;
     padding: 20px;
     background-color: #fff;
 }
@@ -330,7 +336,7 @@ main {
 }
 
 .trasactions-posts .posts-container .posts-content {
-    width: 100%;    
+    width: 100%;
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -376,6 +382,35 @@ main {
     text-align: justify;
 }
 
+/* USUARIOS MODAL */
+
+#users .new-modal-container .new-modal-content {
+    width: 35%;
+    padding: 2rem;
+}
+
+#users .new-modal-container .new-modal-content .login-container {
+    width: 100%;
+    height: auto !important;
+    margin: 2rem 0;
+}
+
+#users .login-content-create,
+#users .login-entry {
+    width: 100%;
+}
+
+#users .new-modal-container .new-modal-content .login-container input {
+    width: 100%;
+}
+
+#users .client-content .client-img img {
+    width: 100%;
+}
+
+#users .list-container .list-content {    
+    max-height: 100%;
+}
 
 @media (min-width: 768px) and (max-width: 1080px) {
     .dashboard-cards .dashboard-card-Container {
