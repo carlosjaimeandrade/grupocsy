@@ -9,23 +9,16 @@ const storage = multer.diskStorage({
         const publication = await Publication.findByPk(id)
         const nameImage = publication.nameImage
 
-        fs.unlink(`public/upload/publication/${id}/${nameImage}`, function(err) {
-            console.log(err)
+        await fs.unlink(`public/upload/publication/${id}/${nameImage}`,()=>{
+            cb(null, `public/upload/publication/${id}/`)
         })
 
-        const dir = `public/upload/publication/${id}/`;
-
-
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-        cb(null, `public/upload/publication/${id}/`)
 
     },
     filename: function(req, file, cb) {
             const extension = file.originalname.split('.')[1]
             const new_name = slugify(req.body.title)
-       
+            //console.log(`${new_name}.${extension}`)
             cb(null, `${new_name}.${extension}`);
     
     }
