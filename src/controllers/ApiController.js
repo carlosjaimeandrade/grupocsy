@@ -24,7 +24,12 @@ const publications = async (req, res) => {
         raw: true
 
     })
-    res.send(publications);
+    if(publications){
+        res.json(publications);
+    }else{
+        res.json({ error: 'users not found' })
+    }
+
 }
 
 const publication = async (req, res) => {

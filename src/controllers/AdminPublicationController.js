@@ -112,6 +112,10 @@ const destroy = async(req, res) => {
         req.flash('message', 'Excluido com sucesso');
         req.flash('type', 'success');
         res.redirect('/admin/publicacao')
+    }else{
+        req.flash('message', 'Houve um erro em deletar a imagem desta postagem, entre em contato com o adm');
+        req.flash('type', 'danger');
+        res.redirect('/admin/publicacao')
     }
 
 }

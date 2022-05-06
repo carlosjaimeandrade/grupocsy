@@ -40,11 +40,11 @@ async function importModal(id) {
     const elements = `
     <div class="entry-content">
         <input name="id" type="hidden" value="${publication.id}">
-        <div class="entry-value entry-bd-1">
+        <div class="entry-value entry-bd-2">
             <i class="fa-solid fa-file-signature"></i>
             <input required value="${publication.title}" type="text" name="title" placeholder="Título">
         </div>
-        <div class="entry-value entry-bd-1"><i class="fa-solid fa-table-list"></i>
+        <div class="entry-value entry-bd-2"><i class="fa-solid fa-table-list"></i>
             <select name="category" id="">
             <option value="">Categoria</option>
             <option ${publication.category == "blog" ? "selected" : ""} value="blog">Blog</option>
@@ -52,7 +52,7 @@ async function importModal(id) {
             <option ${publication.category == "projetos-futuros" ? "selected" : ""} value="projetos-futuros">Projetos futuros</option>
         </select>
         </div>
-        <div class="entry-value entry-bd-1 preview-image">
+        <div class="entry-value entry-bd-2 preview-image">
             <div>
                 <i class="fa-solid fa-image"></i>
                 <label class="upload-file-edit" for="image-edit">Atualizar... <span log-arq-edit></span></label>

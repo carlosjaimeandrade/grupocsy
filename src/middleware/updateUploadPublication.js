@@ -1,28 +1,36 @@
 const multer = require('multer');
 const slugify = require('slugify');
 const fs = require('fs');
-const connection = require('../database/database')
+const Publication = require('../models/Publication');
 
 const storage = multer.diskStorage({
     destination: async function(req, file, cb) {
+        const id = req.body.id
+        const publication = await Publication.findByPk(id)
+        const nameImage = publication.nameImage
 
-        let next_id = await connection.query("SHOW TABLE STATUS LIKE 'publications'");
-        next_id = next_id[0][0]['Auto_increment']
+        fs.unlink(`public/upload/publication/${id}/${nameImage}`, function(err) {
+            console.log(err)
+        })
 
-        const dir = `public/upload/publication/${next_id}/`;
+        const dir = `public/upload/publication/${id}/`;
+
 
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
-        cb(null, `public/upload/publication/${next_id}/`)
+        cb(null, `public/upload/publication/${id}/`)
+
     },
     filename: function(req, file, cb) {
-        const extension = file.originalname.split('.')[1]
-        const new_name = slugify(req.body.title)
-        cb(null, `${new_name}.${extension}`);
+            const extension = file.originalname.split('.')[1]
+            const new_name = slugify(req.body.title)
+       
+            cb(null, `${new_name}.${extension}`);
+    
     }
 
 })
 
 
-module.exports =  storage 
+module.exports = storage

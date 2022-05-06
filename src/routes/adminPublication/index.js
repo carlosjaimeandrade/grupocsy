@@ -6,9 +6,9 @@ const routes = express.Router();
 const AdminPublicationController = require('../../controllers/AdminPublicationController')
 const uploadPublication = require('../../middleware/uploadPublication')
 const updateUploadPublication = require('../../middleware/updateUploadPublication')
-let storage = updateUploadPublication
+let storage =  uploadPublication
 const uploadNew = multer({ storage })
-storage = uploadPublication
+storage = updateUploadPublication
 const uploadUpdate = multer({ storage })
 
 routes.get('/admin/publicacao', userAuth.auth, levelAdminAuth.auth, AdminPublicationController.showPagePublication)
