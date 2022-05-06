@@ -88,6 +88,7 @@ const newPublication = async(req, res) => {
 }
 
 const destroy = async(req, res) => {
+    
     const id = req.params.id;
 
     const publication = await Publication.findAll({ raw: true, where: { id: id } })
@@ -115,8 +116,45 @@ const destroy = async(req, res) => {
 
 }
 
+const update = async(req, res) => { 
+    const id = req.body.id
+    const title = req.body.title
+    const category = req.body.category
+    const text = req.body.text
+    const slug = slugify(req.body.title)
+    const previewText = innertext(text).substr(0, 350)
+
+    let update = {
+        title: title,
+        category: category,
+        previewText: previewText,
+        slug: slug
+    }
+
+    if(req.file != undefined){
+        const new_name = slugify(req.body.title)
+        const extension = req.file.filename.split('.')[1]
+        const nameImage = `${new_name}.${extension}`
+        update['nameImage'] = nameImage
+    }
+
+    const confirm = await Publication.update(update,{ where:{ id: id }})
+
+    if(confirm){
+        req.flash('message', 'Atualizado com sucesso');
+        req.flash('type', 'success');
+        res.redirect('/admin/publicacao')
+        return
+    }else{
+        req.flash('message', 'Não foi possivel atualizar, entre em contato com o administrador');
+        req.flash('type', 'danger');
+        res.redirect('/admin/publicacao')
+    }
+}
+
 module.exports = {
     newPublication,
     showPagePublication,
-    destroy
+    destroy,
+    update
 }

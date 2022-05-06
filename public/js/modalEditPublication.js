@@ -39,6 +39,7 @@ async function importModal(id) {
 
     const elements = `
     <div class="entry-content">
+        <input name="id" type="hidden" value="${publication.id}">
         <div class="entry-value entry-bd-1">
             <i class="fa-solid fa-file-signature"></i>
             <input required value="${publication.title}" type="text" name="title" placeholder="Título">
@@ -55,7 +56,7 @@ async function importModal(id) {
             <div>
                 <i class="fa-solid fa-image"></i>
                 <label class="upload-file-edit" for="image-edit">Atualizar... <span log-arq-edit></span></label>
-                <input oninput="onLoadFileEdit(event)" class="display-none" id="image-edit" type="file" name="file">
+                <input oninput="onLoadFileEdit(event)" class="display-none" id="image-edit" type="file" name="file" accept=".png,.jpeg,.jpg">
             </div>
             <div>
                 <a target="_blank" href="/upload/publication/${publication.id}/${publication.nameImage}"><i class="fa-solid fa-eye"></i></a>
