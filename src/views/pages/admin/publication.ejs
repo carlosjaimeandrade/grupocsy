@@ -70,7 +70,7 @@
                                         <div class="entry-value entry-bd-1">
                                             <i class="fa-solid fa-image"></i>
                                             <label class="upload-file" for="image">Carregar... <span log-arq></span></label>
-                                            <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file">
+                                            <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file" accept=".png,.jpeg,.jpg">
                                         </div>
                                     </div>
                                     <textarea id="post" name="text"></textarea>
@@ -86,7 +86,7 @@
                                 <div class="new-modal-header">
                                     <h2>Editar publicação</h2>
                                     <div class="btn-modal">
-                                        <button publicar onclick="loading(event)">Atualizar</button>
+                                        <button publicar onclick="loadingUpdate(event)">Atualizar</button>
                                     </div>
                                 </div>
                                 <div new-modal-import class="new-modal-main">
