@@ -23,7 +23,8 @@ const showFinancial = async(req, res) => {
         message: req.flash('message'),
         type: req.flash('type'),
         users: users,
-        debts
+        debts : debts,
+        query: req.query
     })
 }
 
@@ -70,5 +71,5 @@ const destroy = async(req, res) => {
 module.exports = {
     showFinancial,
     createDebit,
-    destroy
+    destroy    
 }
