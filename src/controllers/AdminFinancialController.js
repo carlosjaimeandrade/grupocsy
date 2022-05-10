@@ -51,9 +51,24 @@ const createDebit = async(req, res) => {
     res.redirect('/admin/financeiro')
 }
 
+const destroy = async(req, res) => {
+    const id = req.params.id
+    const destroy = await Financial.destroy({ where:{ id:id } })
+    if(!destroy){
+        req.flash('message', 'Não foi possivel deletar, verifique com o administrador');
+        req.flash('type', 'danger');
+        res.redirect('/admin/financeiro')
+        return 
+    }
+
+    req.flash('message', 'Deletado com sucesso');
+    req.flash('type', 'success');
+    res.redirect('/admin/financeiro')
+}
 
 
 module.exports = {
     showFinancial,
-    createDebit
+    createDebit,
+    destroy
 }

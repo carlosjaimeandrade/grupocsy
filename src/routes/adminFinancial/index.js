@@ -9,4 +9,6 @@ routes.get('/admin/financeiro', /* userAuth.auth, levelAdminAuth.auth, */ AdminF
 
 routes.post('/admin/novo/debito',  /* userAuth.auth, levelAdminAuth.auth, */  AdminFinancialController.createDebit)
 
+routes.get('/admin/financeiro/delete/:id',  /* userAuth.auth, levelAdminAuth.auth, */  AdminFinancialController.destroy)
+
 module.exports = routes;
