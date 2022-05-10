@@ -11,27 +11,32 @@
                     </div>
                 </div>
                 <!-- Filtros e btns-->
-                <div class="action-container">
-                    <div class="action-content">
-                        <div class="action-info">
-                            <span>100 registros</span>
-                        </div>
-                        <div class="action-press">
-                            <div>
-                                <select name="" id="">
-                                <option value="">Todos registros</option>
-                            </select>
+                <form method="get">
+                    <div class="action-container">
+                        <div class="action-content">
+                            <div class="action-info">
+                                <span>100 registros</span>
                             </div>
-                            <div>
-                                <input name="title" type="text">
-                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <div class="action-press">
+                                <div>
+                                    <select name="status" id="">
+                                    <option value="">Todos registros</option>
+                                    <option value="pendente">Pendente</option>
+                                    <option value="aprovado">Aprovado</option>
+                                    <option value="cancelado">Cancelado</option>
+                                </select>
+                                </div>
+                                <div>
+                                    <input name="charge" type="text">
+                                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar débito</button>
                             </div>
-                            <button onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar débito</button>
                         </div>
                     </div>
-                </div>
+                </form>
                 <!-- modal de nova criação -->
-                <form method="post" action="/admin/nova/publicacao" enctype="multipart/form-data">
+                <form method="post" action="/admin/novo/debito" >
                     <div new-modal class="new-modal-container">
                         <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
                         <div class="new-modal-content ">
@@ -43,17 +48,29 @@
                             </div>
                             <div class="new-modal-main">
                                 <div class="entry-content">
-                                    <div class="entry-value entry-bd-1">
+                                    <div class="entry-value entry-bd-2">
                                         <i class="fa-solid fa-file-signature"></i>
-                                        <input required type="text" name="title" placeholder="Título">
+                                        <input required type="text" name="charge" placeholder="nome da cobraça">
                                     </div>
-                                    <div class="entry-value entry-bd-1">
-                                        <i class="fa-solid fa-table-list"></i>
-                                        <select name="category" id="">
-                                        <option value="">Categoria</option>
-                                        <option value="blog">Blog</option>
-                                        <option value="empreendimentos">Empreendimentos</option>
-                                        <option value="projetos-futuros">Projetos futuros</option>
+                                    <div class="entry-value entry-bd-2">
+                                        <i class="fa-solid fa-file-signature"></i>
+                                        <input required type="text" name="description" placeholder="Descrição da cobraça">
+                                    </div>
+                                    <div class="entry-value entry-bd-2">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        <input required type="date" name="dueDate" placeholder="Data da cobrança">
+                                    </div>
+                                    <div class="entry-value entry-bd-2">
+                                        <i class="fa-solid fa-sack-dollar"></i>
+                                        <input required type="text" name="value" placeholder="Valor da cobraça" onKeyUp="mascaraMoeda(this, event)">
+                                    </div>
+                                    <div class="entry-value entry-bd-2">
+                                        <i class="fa-solid fa-user"></i>
+                                    <select required name="user" id="">
+                                        <option value="">Usuário</option>
+                                        <% users.forEach(user=>{ %>
+                                            <option value="<%= user.id %>"><%= `${user.name} - ${user.email}`%></option>
+                                        <% }) %>
                                     </select>
                                     </div>
                                 </div>
@@ -88,38 +105,36 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Teste1</th>
-                                    <th>teste2</th>
-                                    <th></th>
+                                    <th>Nome</th>
+                                    <th>Valor</th>
+                                    <th>Vencimento</th>
+                                    <th>Usuário</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <% debts.forEach(debt=>{ %>
                                 <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
+                                    <td><%= debt['financials.charge'] %></td>
+                                    <td><%= debt['financials.value'].toLocaleString() %></td>
+                                    <td><%= `${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
+                                    <td><%= debt.name %></td>
+                                    <td>
+                                        <div class="status_<%= debt['financials.status'] %>">
+                                            <p><%= debt['financials.status'] %></p>
+                                        </div>   
+                                    </td>
                                     <td>
                                         <div class="more-option-container">
                                             <i class="fas fa-ellipsis-v btn-option"></i>
                                             <div class="more-option">
-                                                <button onclick="newModalEdit(`teste_id`)">Editar</button>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
+                                                <button onclick="newModalEdit(`<%= debt['financials.id'] %>`)">Editar</button>
+                                                <button id="<%= debt['financials.id'] %>" modal-del-btn>Excluir</button>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Teste1</td>
-                                    <td>Teste1</td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <button onclick="newModalEdit(`teste_id`)">Editar</button>
-                                                <button id="teste1" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <% }) %>
                             </tbody>
                         </table>
                     </div>
@@ -140,3 +155,4 @@
         <script src="/js/loading.js"></script>
         <script src="/js/Alert.js"></script>
         <script src="/js/modalEditFinancial.js"></script>
+        <script src="/js/mask.js"></script>

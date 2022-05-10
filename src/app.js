@@ -7,13 +7,19 @@ const morgan = require('morgan');
 const cors = require('cors');
 const session = require('express-session')
 const flash = require('connect-flash');
+const MercadoPago = require('mercadopago');
 
+MercadoPago.configure({
+    sandbox: true, //modo de s desenvolvimento
+    access_token: 'TEST-3070807880521704-050923-ba8d0e5193b516cba5ea51dd35e461e2-839874758'
+});
 
 require('dotenv').config();
 
 //model
 const User = require('./models/User.js')
 const Publication = require('./models/Publication.js')
+const Financial = require('./models/Financial.js')
 
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')

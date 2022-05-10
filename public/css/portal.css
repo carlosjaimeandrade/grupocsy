@@ -386,6 +386,18 @@
     font-size: 15px;
 }
 
+.status_cancelado{
+    color: #C21B1B;
+}
+
+.status_aprovado {
+    color: #207E35;
+}
+
+.status_pendente{
+    color: #e4bb4d;
+}
+
 @media (max-width: 992px) {
     .new-modal-content {
         width: 70%;
