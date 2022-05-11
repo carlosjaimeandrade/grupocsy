@@ -1,165 +1,166 @@
 <%- include('../admin/partials/header', {title: 'Soldiers Construções' }) %>
 
     <main id="financial">
+
         <%- include('../admin/partials/user') %>
-            <%- include('../admin/partials/modalDel') %>
+        <%- include('../admin/partials/modalDel') %>
 
-                <div class="titlePage">
-                    <div class="titlePage-container">
-                        <h1>Financeiro</h1>
-                        <span>Débitos cadastrados</span>
+        <div class="titlePage">
+            <div class="titlePage-container">
+                <h1>Financeiro</h1>
+                <span>Débitos cadastrados</span>
+            </div>
+        </div>
+        <!-- Filtros e btns-->
+        <form method="get">
+            <div class="action-container">
+                <div class="action-content">
+                    <div class="action-info">
+                        <span>
+                            <%= debts.length %> registros
+                        </span>
+                    </div>
+                    <div class="action-press">
+                        <% if(Object.keys(query).length> 0){%>
+                            <span onclick="window.location.href='/admin/financeiro'" class="clear-search">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </span>
+                        <% }%>
+                        <div>
+                            <select name="status" id="">
+                            <option value="">Todos registros</option>
+                            <option <%= query.status=="pendente" ?" selected" :""%>  value="pendente">Pendente</option>
+                            <option <%= query.status=="aprovado" ?" selected" :""%>  value="aprovado">Aprovado</option>
+                            <option <%= query.status=="cancelado" ?" selected" :""%> value="cancelado">Cancelado</option>
+                        </select>
+                        </div>
+                        <div>
+                            <input value="<%= query.charge %>" name="charge" type="text">
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar débito</button>
                     </div>
                 </div>
-                <!-- Filtros e btns-->
-                <form method="get">
-                    <div class="action-container">
-                        <div class="action-content">
-                            <div class="action-info">
-                                <span>
-                                    <%= debts.length %> registros
-                                </span>
-                            </div>
-                            <div class="action-press">
-                                <% if(Object.keys(query).length> 0){%>
-                                <span onclick="window.location.href='/admin/financeiro'" class="clear-search">
-                                    <ion-icon name="close-circle-outline"></ion-icon>
-                                </span>
-                                    <% }%>
-                                <div>
-                                    <select name="status" id="">
-                                    <option value="">Todos registros</option>
-                                    <option <%= query.status=="pendente" ?" selected" :""%>  value="pendente">Pendente</option>
-                                    <option <%= query.status=="aprovado" ?" selected" :""%>  value="aprovado">Aprovado</option>
-                                    <option <%= query.status=="cancelado" ?" selected" :""%> value="cancelado">Cancelado</option>
-                                </select>
-                                </div>
-                                <div>
-                                    <input value="<%= query.charge %>" name="charge" type="text">
-                                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </div>
-                                <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar débito</button>
-                            </div>
+            </div>
+        </form>
+        <!-- modal de nova criação -->
+        <form method="post" action="/admin/novo/debito" >
+            <div new-modal class="new-modal-container">
+                <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
+                <div class="new-modal-content ">
+                    <div class="new-modal-header">
+                        <h2>Novo Débito</h2>
+                        <div class="btn-modal">
+                            <button publicar onclick="loading(event)">Criar</button>
                         </div>
                     </div>
-                </form>
-                <!-- modal de nova criação -->
-                <form method="post" action="/admin/novo/debito" >
-                    <div new-modal class="new-modal-container">
-                        <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
-                        <div class="new-modal-content ">
-                            <div class="new-modal-header">
-                                <h2>Novo Débito</h2>
-                                <div class="btn-modal">
-                                    <button publicar onclick="loading(event)">Criar</button>
-                                </div>
+                    <div class="new-modal-main">
+                        <div class="entry-content">
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <input required type="text" name="charge" placeholder="nome da cobraça">
                             </div>
-                            <div class="new-modal-main">
-                                <div class="entry-content">
-                                    <div class="entry-value entry-bd-2">
-                                        <i class="fa-solid fa-file-signature"></i>
-                                        <input required type="text" name="charge" placeholder="nome da cobraça">
-                                    </div>
-                                    <div class="entry-value entry-bd-2">
-                                        <i class="fa-solid fa-file-signature"></i>
-                                        <input required type="text" name="description" placeholder="Descrição da cobraça">
-                                    </div>
-                                    <div class="entry-value entry-bd-2">
-                                        <i class="fa-solid fa-calendar"></i>
-                                        <input required type="date" name="dueDate" placeholder="Data da cobrança">
-                                    </div>
-                                    <div class="entry-value entry-bd-2">
-                                        <i class="fa-solid fa-sack-dollar"></i>
-                                        <input required type="text" name="value" placeholder="Valor da cobraça" onKeyUp="mascaraMoeda(this, event)">
-                                    </div>
-                                    <div class="entry-value entry-bd-2">
-                                        <i class="fa-solid fa-user"></i>
-                                    <select required name="user" id="">
-                                        <option value="">Usuário</option>
-                                        <% users.forEach(user=>{ %>
-                                            <option value="<%= user.id %>"><%= `${user.name} - ${user.email}`%></option>
-                                        <% }) %>
-                                    </select>
-                                    </div>
-                                </div>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <input required type="text" name="description" placeholder="Descrição da cobraça">
                             </div>
-                        </div>
-                    </div>
-                </form>
-                <!-- modal de edição -->
-                <form method="post" action="#" enctype="multipart/form-data">
-                    <div new-modal-edit class="new-modal-container">
-                        <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
-                        <div class="new-modal-content">
-                            <div class="new-modal-header">
-                                <h2>Editar débito</h2>
-                                <div class="btn-modal">
-                                    <button publicar onclick="loading(event)">Atualizar</button>
-                                </div>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-calendar"></i>
+                                <input required type="date" name="dueDate" placeholder="Data da cobrança">
                             </div>
-                            <div new-modal-import class="new-modal-main">
-        
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <input required type="text" name="value" placeholder="Valor da cobraça" onKeyUp="mascaraMoeda(this, event)">
                             </div>
-                        </div>
-                    </div>
-                </form>                      
-                <!-- listagem dos dados -->
-                <div id="financeiro" class="list-container">
-
-                    <div class="list-content">
-                        <div class="list-title">
-                            <h4>Todas os débitos cadastradas</h4>
-                        </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Valor</th>
-                                    <th>Vencimento</th>
-                                    <th>Usuário</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% debts.forEach(debt=>{ %>
-                                <tr>
-                                    <td><%= debt['financials.charge'] %></td>
-                                    <td><%= debt['financials.value'].toLocaleString() %></td>
-                                    <td><%= `${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
-                                    <td><%= debt.name %></td>
-                                    <td>
-                                        <div class="status_<%= debt['financials.status'] %>">
-                                            <p><%= debt['financials.status'] %></p>
-                                        </div>   
-                                    </td>
-                                    <td>
-                                        <div class="more-option-container">
-                                            <i class="fas fa-ellipsis-v btn-option"></i>
-                                            <div class="more-option">
-                                                <button onclick="newModalEdit(`<%= debt['financials.id'] %>`)">Editar</button>
-                                                <button id="<%= debt['financials.id'] %>" modal-del-btn>Excluir</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-user"></i>
+                            <select required name="user" id="">
+                                <option value="">Usuário</option>
+                                <% users.forEach(user=>{ %>
+                                    <option value="<%= user.id %>"><%= `${user.name} - ${user.email}`%></option>
                                 <% }) %>
-                            </tbody>
-                        </table>
+                            </select>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </form>
+        <!-- modal de edição -->
+        <form method="post" action="/admin/editar/debito">
+            <div new-modal-edit class="new-modal-container">
+                <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
+                <div class="new-modal-content">
+                    <div class="new-modal-header">
+                        <h2>Editar débito</h2>
+                        <div class="btn-modal">
+                            <button publicar onclick="loading(event)">Atualizar</button>
+                        </div>
+                    </div>
+                    <div new-modal-import class="new-modal-main">
 
+                    </div>
                 </div>
-                <!--  mensagem  -->
-                <% if(message !="" ) {%>
-                <div class="alert alert-<%= type %>">
-                    <span> <%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+            </div>
+        </form>                      
+        <!-- listagem dos dados -->
+        <div id="financeiro" class="list-container">
+            <div class="list-content">
+                <div class="list-title">
+                    <h4>Todas os débitos cadastradas</h4>
                 </div>
-                <% } %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th>Vencimento</th>
+                            <th>Usuário</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% debts.forEach(debt=>{ %>
+                        <tr>
+                            <td><%= debt['financials.charge'] %></td>
+                            <td><%= debt['financials.value'].toLocaleString() %></td>
+                            <td><%= `${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
+                            <td><%= debt.name %></td>
+                            <td>
+                                <div class="status_<%= debt['financials.status'] %>">
+                                    <p><%= debt['financials.status'] %></p>
+                                </div>   
+                            </td>
+                            <td>
+                                <div class="more-option-container">
+                                    <i class="fas fa-ellipsis-v btn-option"></i>
+                                    <div class="more-option">
+                                        <button onclick="newModalEdit(`<%= debt['financials.id'] %>`)">Editar</button>
+                                        <button id="<%= debt['financials.id'] %>" modal-del-btn>Excluir</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--  mensagem  -->
+        <% if(message !="" ) {%>
+            <div class="alert alert-<%= type %>">
+                <span> <%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+            </div>
+        <% } %>
+
     </main>
-    <%- include('../admin/partials/footer.ejs') %>
+    
+<%- include('../admin/partials/footer.ejs') %>
 
-        <script src="/lib/tinymce/tinymce.min.js"></script>
-        <script src="/js/modalNew.js "></script>
-        <script src="/js/modalDel.js"></script>
-        <script src="/js/loading.js"></script>
-        <script src="/js/Alert.js"></script>
-        <script src="/js/modalEditFinancial.js"></script>
-        <script src="/js/mask.js"></script>
+<script src="/lib/tinymce/tinymce.min.js"></script>
+<script src="/js/modalNew.js "></script>
+<script src="/js/modalDel.js"></script>
+<script src="/js/loading.js"></script>
+<script src="/js/Alert.js"></script>
+<script src="/js/modalEditFinancial.js"></script>
+<script src="/js/mask.js"></script>       

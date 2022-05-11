@@ -10,7 +10,6 @@ window.onload = () => {
     }
 
     modal_del_btn.forEach(btn => {
-        console.log(btn)
         btn.onclick = event => {
             let id = event.target.id
             btn_del.onclick = () => {

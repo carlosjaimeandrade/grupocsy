@@ -10,4 +10,6 @@ routes.get('/api/publication/:id', userAuth.auth, levelAdminAuth.auth, ApiContro
 
 routes.get('/api/user/:id', userAuth.auth, levelAdminAuth.auth, ApiController.user);
 
+routes.get('/api/debts/:id', userAuth.auth, levelAdminAuth.auth, ApiController.debts);
+
 module.exports = routes;

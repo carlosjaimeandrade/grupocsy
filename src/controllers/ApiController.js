@@ -1,6 +1,8 @@
 const Publication = require('../models/Publication')
 const User = require('../models/User');
 const Sequelize = require('sequelize')
+const Financial = require("../models/Financial");
+
 
 const publications = async (req, res) => {
     const offset = req.params.offset
@@ -27,7 +29,7 @@ const publications = async (req, res) => {
     if(publications){
         res.json(publications);
     }else{
-        res.json({ error: 'users not found' })
+        res.json({ error: 'not found' })
     }
 
 }
@@ -57,8 +59,24 @@ const user = async (req, res) => {
 
 }
 
+const debts = async (req, res) => {
+    const id = req.params.id;
+
+    let debts = await User.findAll({ include: [{ model: Financial, where: { id: id } }], raw: true })
+
+    if (debts) {
+        res.json(debts);
+    } else {
+        res.json({ error: 'not found' })
+    }
+
+}
+
+
+
 module.exports = {
     publications,
     publication,
-    user
+    user,
+    debts
 }

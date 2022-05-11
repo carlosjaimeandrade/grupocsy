@@ -20,36 +20,32 @@ function initModalEdit() {
 
 async function importModal(id) {
     const new_modal_import = document.querySelector('[new-modal-import]')
-    let publication = await fetch(`/api/publication/${id}`)
-    publication = await publication.json()
+      let debts = await fetch(`/api/debts/${id}`)
+      debts = await debts.json() 
 
-
+    
     const elements = `
-    <div class="entry-content">
-        <div class="entry-value entry-bd-1">
-            <i class="fa-solid fa-file-signature"></i>
-            <input required value="${publication.title}" type="text" name="title" placeholder="Título">
-        </div>
-        <div class="entry-value entry-bd-1"><i class="fa-solid fa-table-list"></i>
-            <select name="category" id="">
-            <option value="">Categoria</option>
-            <option ${publication.category == "blog" ? "selected" : ""} value="blog">Blog</option>
-            <option ${publication.category == "empreendimentos" ? "selected" : ""} value="empreendimentos">Empreendimentos</option>
-            <option ${publication.category == "projetos-futuros" ? "selected" : ""} value="projetos-futuros">Projetos futuros</option>
-        </select>
-        </div>
-        <div class="entry-value entry-bd-1 preview-image">
-            <div>
-                <i class="fa-solid fa-image"></i>
-                <label class="upload-file-edit" for="image-edit">Atualizar... <span log-arq-edit></span></label>
-                <input oninput="onLoadFileEdit(event)" class="display-none" id="image-edit" type="file" name="file">
+    <div class="new-modal-main">
+        <div class="entry-content">
+            <input name="id" type="hidden" value="${debts[0]['financials.id']}">
+            <div class="entry-value entry-bd-2">
+                <i class="fa-solid fa-file-signature"></i>
+                <input required type="text" value="${debts[0]['financials.charge']}" name="charge" placeholder="nome da cobraça">
             </div>
-            <div>
-                <a target="_blank" href="/upload/publication/${publication.id}/${publication.nameImage}"><i class="fa-solid fa-eye"></i></a>
+            <div class="entry-value entry-bd-2">
+                <i class="fa-solid fa-file-signature"></i>
+                <input required type="text" value="${debts[0]['financials.description']}" name="description" placeholder="Descrição da cobraça">
+            </div>
+            <div class="entry-value entry-bd-2">
+                <i class="fa-solid fa-calendar"></i>
+                <input required type="date" value="${debts[0]['financials.dueDate']}" name="dueDate" placeholder="Data da cobrança">
+            </div>
+            <div class="entry-value entry-bd-2">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <input required type="text" name="value" value="${debts[0]['financials.value']}" placeholder="Valor da cobraça" onKeyUp="mascaraMoeda(this, event)">
             </div>
         </div>
-    </div>
-    <textarea id="edit" name="text">${publication.text}</textarea>`
+    </div>`
 
     new_modal_import.innerHTML = elements
 
