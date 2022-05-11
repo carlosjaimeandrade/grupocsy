@@ -1,10 +1,10 @@
 const userAuth = require('../../middleware/userAuth')
 const levelClientAuth = require('../../middleware/levelClientAuth')
-const ClientController = require('../../controllers/ClientControllers.js')
+const ClientDebtsController = require('../../controllers/ClientDebtsController.js')
 
 const express = require('express');
 const routes = express.Router();
 
-routes.get('/cliente', userAuth.auth, levelClientAuth.auth, ClientController.client)
+routes.get('/cliente/debitos', userAuth.auth, levelClientAuth.auth, ClientDebtsController.showDebts)
 
 module.exports = routes;

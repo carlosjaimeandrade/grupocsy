@@ -144,11 +144,9 @@
                    <!--  mensagem  -->
                     <% if(message !="" ) {%>
                         <div class="alert alert-<%= type %>">
-                            <span>
-                            <%= message %>
-                        </span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+                            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
                         </div>
-                        <% } %>
+                    <% } %>
 
     </main>
 
