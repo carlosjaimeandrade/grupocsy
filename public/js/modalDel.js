@@ -9,8 +9,7 @@ window.onload = () => {
         modal_delete_container.style.display = "none"
     }
 
-    modal_del_btn.forEach(btn => {
-        console.log(btn)
+    modal_del_btn.forEach(btn => {        
         btn.onclick = event => {
             let id = event.target.id
             btn_del.onclick = () => {

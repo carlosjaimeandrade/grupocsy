@@ -114,18 +114,19 @@
                                                 <i class="fa-solid fa-envelope"></i>
                                                 <input name="email" required type="email">
                                             </div>
+
                                             <div class="login-input">
                                                 <i class="fa-solid fa-user-shield"></i>
                                                 <select name="level" type="text">
                                                     <option value="0">Cliente</option>
                                                     <option value="1">Admin</option>
                                                 </select>
-                                            </div>                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                            </div>                                              
+                                        </div>                                        
+                                    </div>                                    
+                                </div>                                
                             </div>
-                            <div class="btn-modal">
+                            <div class="btn-modal" editModalSubmit>                            
                                 <button publicar onclick="loading(event)">Atualizar</button>
                             </div>
                         </div>
@@ -193,7 +194,7 @@
                                                 <i class="fas fa-ellipsis-v btn-option"></i>
                                                 <div class="more-option">
                                                     <button onclick="newModalEdit(`<%= user.id %>`)">Editar</button>
-                                                    <button id="teste1" modal-del-btn>Excluir</button>
+                                                    <button id="<%= user.id %>" modal-del-btn>Excluir</button>
                                                 </div>
                                             </div>
                                         </td>

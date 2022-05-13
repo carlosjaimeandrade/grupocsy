@@ -63,7 +63,42 @@ const createUsers = async (req, res) => {
 
 }
 
+const deleteUser = async (req, res) => {
+
+    const id = req.params.id;
+
+    if (!id) {
+        req.flash('message', 'Usuario não encontrado');
+        req.flash('type', 'danger');
+        res.redirect('/admin/usuarios')
+        return;
+    }
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+        req.flash('message', 'Usuario não encontrado sssss.');
+        req.flash('type', 'danger');
+        res.redirect('/admin/usuarios')
+        return;
+    }
+
+    const confirm = await User.destroy({ where: { id: id } });
+
+    if (!confirm) {
+        req.flash('message', 'Não foi possivel atualizar, entre em contato com o administrador');
+        req.flash('type', 'danger');
+        res.redirect('/admin/usuarios')
+        return;
+    }
+
+    req.flash('message', 'Usuario deletado com sucesso');
+    req.flash('type', 'success');
+    res.redirect('/admin/usuarios')
+}
+
 module.exports = {
     showUsers,
-    createUsers
+    createUsers,
+    deleteUser
 }

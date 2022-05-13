@@ -1,7 +1,6 @@
 function newModalEdit(id) {
     initModalEdit()
     importModal(id)
-
 }
 
 function initModalEdit() {
@@ -22,17 +21,19 @@ async function importModal(id) {
 
     let inputs = QueryAll('#users #edit .login-input input');
     let select = Query('#users #edit .login-input select');
+    let form = Query('#users #edit');
 
     fetch(`/api/user/${id}`)
         .then((response) => {
             return response.json();
         })
         .then((response) => {
-                
-            inputs[0].value = response.email;
-            inputs[1].value = response.name;                        
 
-            if(response.level == 1) {
+            form.action = `/api/user/upd/${id}`;
+            inputs[0].value = response.name;
+            inputs[1].value = response.email;
+
+            if (response.level == 1) {
                 select.options[1].selected = true;
             } else {
                 select.options[0].selected = true;
