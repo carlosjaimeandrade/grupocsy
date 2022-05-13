@@ -1,8 +1,6 @@
 const Sequelize = require('sequelize')
-
 const connection = require('../database/database')
 const User = require('./User')
-
 
 const Financial = connection.define('financial', {
     charge: {
@@ -17,19 +15,16 @@ const Financial = connection.define('financial', {
         type: Sequelize.DATEONLY,
         allowNull: false
     },
+    value: {
+        type: Sequelize.FLOAT,
+        allowNull: false
+    },
     status: {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: 'pendente'
-    },
-    idIdentification: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    value: {
-        type: Sequelize.FLOAT,
-        allowNull: false
     }
+
 })
 
 User.hasMany(Financial)

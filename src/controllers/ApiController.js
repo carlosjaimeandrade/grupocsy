@@ -73,7 +73,6 @@ const debts = async (req, res) => {
 }
 
 
-
 module.exports = {
     publications,
     publication,

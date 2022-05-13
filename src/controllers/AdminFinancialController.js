@@ -1,13 +1,21 @@
 const User = require("../models/User");
 const Financial = require("../models/Financial");
+const Checkout = require("../models/Checkout");
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
 const search = require('../help/search')
 
 const showFinancial = async(req, res) => {
 
-    let debts = await User.findAll({ include: [{ model: Financial, where: { id: {
-                    [Op.ne]: null } } }], raw: true })
+    let debts = await User.findAll({
+        include: [{
+            model: Financial,
+            where: {id: { [Op.ne]: null } }
+        }],
+        raw: true
+    })
+
+  
 
     const query = search.query(req.query)
     if (query) {
@@ -18,8 +26,14 @@ const showFinancial = async(req, res) => {
         }
     }
 
-    const users = await User.findAll({ raw: true, where: { level: {
-                [Op.ne]: 1 } } })
+    const users = await User.findAll({
+        raw: true,
+        where: {
+            level: {
+                [Op.ne]: 1
+            }
+        }
+    })
 
     res.render('pages/admin/financial', {
         message: req.flash('message'),

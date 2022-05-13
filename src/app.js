@@ -20,6 +20,7 @@ require('dotenv').config();
 const User = require('./models/User.js')
 const Publication = require('./models/Publication.js')
 const Financial = require('./models/Financial.js')
+const Checkout = require('./models/Checkout.js')
 
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')

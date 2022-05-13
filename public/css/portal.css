@@ -398,6 +398,10 @@
     color: #e4bb4d;
 }
 
+.pay-btn{
+    color: black;
+}
+
 @media (max-width: 992px) {
     .new-modal-content {
         width: 70%;

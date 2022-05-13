@@ -18,7 +18,7 @@
                 <div class="action-content">
                     <div class="action-info">
                         <span>
-                            10 registros
+                            <%= debts.length %> registros
                         </span>
                     </div>
                     <div class="action-press">
@@ -30,7 +30,6 @@
                             <option value="">Todos registros</option>
                             <option value="pendente">Pendente</option>
                             <option value="aprovado">Aprovado</option>
-                            <option value="cancelado">Cancelado</option>
                         </select>
                         </div>
                         <div>
@@ -69,7 +68,7 @@
                     <div class="new-modal-header">
                         <h2>Nova solicitação de pagamento</h2>
                         <div class="btn-modal">
-                            <button publicar onclick="loading(event)">Publicar</button>
+                            <button publicar onclick="loading(event)">Solicitar</button>
                         </div>
                     </div>
                     <div class="new-modal-main">
@@ -107,30 +106,34 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>teste</th>
-                            <th>teste</th>
-                            <th></th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Vencimento</th>
+                            <th>Valor</th>
+                            <th>Juros atraso dia (0,02%)</th>
+                            <th>Multa atraso (2,00%)</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>
-                                <div class="status_pendente">
-                                    <p>pendente</p>
-                                </div>   
-                            </td>
-                            <td>
-                                <div class="more-option-container">
-                                    <i class="fas fa-ellipsis-v btn-option"></i>
-                                    <div class="more-option">
-                                        <button onclick="newModalEdit(`teste`)">Editar</button>
-                                        <button id="teste" modal-del-btn>Excluir</button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        <% debts.forEach(debt=>{%>
+                            <tr>
+                                <td><%= debt.charge %></td>
+                                <td><%= debt.description %></td>
+                                <td><%= `${debt.dueDate.split('-')[2]}/${debt.dueDate.split('-')[1]}/${debt.dueDate.split('-')[0]}` %></td>
+                                <td><%= debt.value.toLocaleString()  %></td>
+                                <td><%= debt.juros.toLocaleString()  %></td>
+                                <td><%= debt.multa.toLocaleString()  %></td>
+                                <td>
+                                    <div class="status_pendente">
+                                        <p><%= debt.status %></p>
+                                    </div>   
+                                </td>
+                                <td>
+                                    <a class="pay-btn" href="/cliente/debitos/checkout/<%= debt.id %>"><i class="fa-regular fa-credit-card"></i></a>
+                                </td>
+                            </tr>
+                        <% }) %>
                     </tbody>
                 </table>
             </div>

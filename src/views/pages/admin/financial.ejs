@@ -124,7 +124,7 @@
                         <tr>
                             <td><%= debt['financials.charge'] %></td>
                             <td><%= debt['financials.value'].toLocaleString() %></td>
-                            <td><%= `${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
+                            <td><%= `${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
                             <td><%= debt.name %></td>
                             <td>
                                 <div class="status_<%= debt['financials.status'] %>">
