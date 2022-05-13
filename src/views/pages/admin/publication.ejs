@@ -15,8 +15,8 @@
                             <div class="action-content">
                                 <div class="action-info">
                                     <span>
-                                    <%= publications.length %> registros
-                                </span>
+                                        <%= publications.length %> registros
+                                    </span>
                                 </div>
                                 <div class="action-press">
                                     <% if(Object.keys(query).length> 0){%>
@@ -144,11 +144,9 @@
                    <!--  mensagem  -->
                     <% if(message !="" ) {%>
                         <div class="alert alert-<%= type %>">
-                            <span>
-                            <%= message %>
-                        </span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+                            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
                         </div>
-                        <% } %>
+                    <% } %>
 
     </main>
 

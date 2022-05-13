@@ -30,12 +30,13 @@ const BlogRoutes = require('./routes/blog')
 const PostViewRoutes = require('./routes/postView')
 const ContactRoutes = require('./routes/contact')
 const CompaniesRoutes = require('./routes/company');
-const ClientRoutes = require('./routes/client');
+const ClientRoutes = require('./routes/clientDebts');
 const AdminDashboardRoutes = require('./routes/adminDashboard');
 const AdminPublicationRoutes = require('./routes/adminPublication');
 const AdminUsersRoutes = require('./routes/adminUsers');
 const AdminFinancialRoutes = require('./routes/adminFinancial');
-const ApiRoutes = require('./routes/Api');
+const ApiRoutes = require('./routes/api');
+const ClientDebtsRoutes = require('./routes/clientDebts');
 
 const app = express();
 
@@ -68,5 +69,6 @@ app.use(AdminPublicationRoutes)
 app.use(AdminUsersRoutes)
 app.use(AdminFinancialRoutes)
 app.use(ApiRoutes)
+app.use(ClientDebtsRoutes)
 
 module.exports = app;

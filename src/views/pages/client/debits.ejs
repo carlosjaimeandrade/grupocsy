@@ -1,1 +1,154 @@
-<h1>Debitos</h1>
+<%- include('../client/partials/header', {title: 'Soldiers Construções' }) %>
+
+    <main id="debts">
+
+        <%- include('../client/partials/user') %>
+        <%- include('../client/partials/modalDel') %>
+
+        <div class="titlePage">
+            <div class="titlePage-container">
+                <h1>Débitos</h1>
+                <span>Débitos cadastrados</span>
+            </div>
+        </div>
+
+        <!-- Filtros e btns-->
+        <form method="get">
+            <div class="action-container">
+                <div class="action-content">
+                    <div class="action-info">
+                        <span>
+                            10 registros
+                        </span>
+                    </div>
+                    <div class="action-press">
+                            <span onclick="window.location.href='/cliente/debitos'" class="clear-search">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </span>
+                        <div>
+                            <select name="status" id="">
+                            <option value="">Todos registros</option>
+                            <option value="pendente">Pendente</option>
+                            <option value="aprovado">Aprovado</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                        </div>
+                        <div>
+                            <input value="" name="charge" type="text">
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Solicitar débito</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- modal de view -->
+        <form method="post">
+            <div new-modal-edit class="new-modal-container">
+                <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
+                <div class="new-modal-content">
+                    <div class="new-modal-header">
+                        <h2>Editar débito</h2>
+                        <div class="btn-modal">
+                            <button publicar onclick="loading(event)">Atualizar</button>
+                        </div>
+                    </div>
+                    <div new-modal-import class="new-modal-main">
+
+                    </div>
+                </div>
+            </div>
+        </form>   
+
+        <!-- modal de solicitação de debitos -->
+        <form method="post">
+            <div new-modal class="new-modal-container">
+                <i close-modal class="fa-solid fa-xmark modal-modal-close"></i>
+                <div class="new-modal-content">
+                    <div class="new-modal-header">
+                        <h2>Nova solicitação de pagamento</h2>
+                        <div class="btn-modal">
+                            <button publicar onclick="loading(event)">Publicar</button>
+                        </div>
+                    </div>
+                    <div class="new-modal-main">
+                        <div class="entry-content">
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <input required type="text" name="title" placeholder="Título">
+                            </div>
+                            <div class="entry-value entry-bd-2"><i class="fa-solid fa-table-list"></i>
+                                <select name="category" id="">
+                                <option value="">Categoria</option>
+                                <option value="blog">Blog</option>
+                                <option value="empreendimentos">Empreendimentos</option>
+                                <option value="projetos-futuros">Projetos
+                                    futuros</option>
+                            </select>
+                            </div>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-image"></i>
+                                <label class="upload-file" for="image">Carregar... <span log-arq></span></label>
+                                <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file" accept=".png,.jpeg,.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- listagem dos dados -->
+        <div id="financeiro" class="list-container">
+            <div class="list-content">
+                <div class="list-title">
+                    <h4>Todas os débitos</h4>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>teste</th>
+                            <th>teste</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>teste</td>
+                            <td>teste</td>
+                            <td>
+                                <div class="status_pendente">
+                                    <p>pendente</p>
+                                </div>   
+                            </td>
+                            <td>
+                                <div class="more-option-container">
+                                    <i class="fas fa-ellipsis-v btn-option"></i>
+                                    <div class="more-option">
+                                        <button onclick="newModalEdit(`teste`)">Editar</button>
+                                        <button id="teste" modal-del-btn>Excluir</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--  mensagem  -->
+        <% if(message !="" ) {%>
+            <div class="alert alert-<%= type %>">
+                <span> <%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+            </div>
+        <% } %>
+
+    </main>
+    
+<%- include('../admin/partials/footer.ejs') %>
+
+<script src="/lib/tinymce/tinymce.min.js"></script>
+<script src="/js/modalNew.js "></script>
+<script src="/js/modalDel.js"></script>
+<script src="/js/loading.js"></script>
+<script src="/js/Alert.js"></script>
+<script src="/js/mask.js"></script>       
