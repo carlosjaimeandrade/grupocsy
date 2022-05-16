@@ -32,6 +32,13 @@ const loginCheck = async(req, res) => {
                 name: user.name,
                 email: user.email
             }
+            res.cookie("user_cookie", {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            },{maxAge: 360000});
+
+            console.log(req.cookies.user_cookie)
 
             if (user.level == 0) {
                 res.redirect('cliente')
@@ -145,6 +152,7 @@ const confirmRegister = async(req, res) => {
 
 const logout = (req, res) => {
     req.session.destroy();
+    res.clearCookie("user_cookie");
     res.redirect('/login')
 }
 

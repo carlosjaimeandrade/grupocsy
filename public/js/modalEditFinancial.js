@@ -50,4 +50,3 @@ async function importModal(id) {
     new_modal_import.innerHTML = elements
 
 }
-

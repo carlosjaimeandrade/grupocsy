@@ -29,7 +29,7 @@
                             <select name="status" id="">
                             <option value="">Todos registros</option>
                             <option value="pendente">Pendente</option>
-                            <option value="aprovado">Aprovado</option>
+                            <option value="approved">Aprovado</option>
                         </select>
                         </div>
                         <div>
@@ -96,7 +96,6 @@
                 </div>
             </div>
         </form>
-
         <!-- listagem dos dados -->
         <div id="financeiro" class="list-container">
             <div class="list-content">
@@ -122,15 +121,17 @@
                                 <td><%= debt.description %></td>
                                 <td><%= `${debt.dueDate.split('-')[2]}/${debt.dueDate.split('-')[1]}/${debt.dueDate.split('-')[0]}` %></td>
                                 <td><%= debt.value.toLocaleString()  %></td>
-                                <td><%= debt.juros.toLocaleString()  %></td>
-                                <td><%= debt.multa.toLocaleString()  %></td>
+                                <td><%= debt.status == "approved" ? "-" : debt.juros.toLocaleString() %> </td>
+                                <td><%= debt.status == "approved" ? "-" : debt.multa.toLocaleString() %> </td>
                                 <td>
-                                    <div class="status_pendente">
-                                        <p><%= debt.status %></p>
+                                    <div>
+                                        <p><%= debt.status == "approved" ? "pago" : "pendente" %></p>
                                     </div>   
                                 </td>
                                 <td>
-                                    <a class="pay-btn" href="/cliente/debitos/checkout/<%= debt.id %>"><i class="fa-regular fa-credit-card"></i></a>
+                                    <% if(debt.status != "approved"){ %>
+                                        <a class="pay-btn" href="/cliente/debitos/checkout/<%= debt.id %>"><i class="fa-regular fa-credit-card"></i></a>
+                                    <% } %>
                                 </td>
                             </tr>
                         <% }) %>

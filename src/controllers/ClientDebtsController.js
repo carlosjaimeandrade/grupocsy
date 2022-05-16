@@ -7,7 +7,13 @@ const showDebts = async(req, res) => {
     const now = moment().format('DD/MM/YYYY')
     const { id } = req.session.user
 
-    const debts = await Financial.findAll({ raw: true, where: { userId: id } })
+    const debts = await Financial.findAll({
+        raw: true,
+        where: { userId: id },
+        order: [
+            ['status', 'DESC']
+        ]
+    })
 
     debts.forEach(debt => {
         let dueDate = moment(debt.dueDate).format('DD/MM/YYYY')
@@ -27,6 +33,7 @@ const showDebts = async(req, res) => {
         }
     })
 
+
     res.render('pages/client/debits', {
         message: req.flash('message'),
         type: req.flash('type'),
@@ -38,6 +45,14 @@ const showDebts = async(req, res) => {
 const checkout = async(req, res) => {
     const id = req.params.id
     const financial = await Financial.findByPk(id)
+
+    if (financial.status == "approved") {
+        req.flash('message', 'Esse debito já foi pago');
+        req.flash('type', 'success');
+        res.redirect('/cliente/debitos')
+        return
+    }
+
     const now = moment().format('DD/MM/YYYY')
     const dueDate = moment(financial.dueDate).format('DD/MM/YYYY')
     const diff = moment(now, "DD/MM/YYYY").diff(moment(dueDate, "DD/MM/YYYY"));
