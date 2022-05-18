@@ -100,7 +100,7 @@
                         <i close-edit class="fa-solid fa-xmark modal-modal-close"></i>
                         <div class="new-modal-content">
                             <div class="new-modal-header">
-                                <h2>Editar usuário</h2>                               
+                                <h2>Editar usuário</h2>
                             </div>
                             <div new-modal-import class="new-modal-main">
                                 <div class="login-container">
@@ -121,12 +121,12 @@
                                                     <option value="0">Cliente</option>
                                                     <option value="1">Admin</option>
                                                 </select>
-                                            </div>                                              
-                                        </div>                                        
-                                    </div>                                    
-                                </div>                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="btn-modal" editModalSubmit>                            
+                            <div class="btn-modal" editModalSubmit>
                                 <button publicar onclick="loading(event)">Atualizar</button>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                         <div class="list-title">
                             <h4>Todas as publicações cadastradas</h4>
                         </div>
-                        <table>
+                        <table data-table-users>
                             <thead>
                                 <tr>
                                     <th>Nome</th>
@@ -189,16 +189,16 @@
                                                     <% } %>
 
                                         </td>
-                                        <td>
+                                        <td data-exclude="true">
                                             <div class="more-option-container">
                                                 <i class="fas fa-ellipsis-v btn-option"></i>
                                                 <div class="more-option">
+                                                    <button btn-export>ASQUII</button>
                                                     <button onclick="newModalEdit(`<%= user.id %>`)">Editar</button>
                                                     <button id="<%= user.id %>" modal-del-btn>Excluir</button>
                                                 </div>
                                             </div>
                                         </td>
-
                                     </tr>
                                     <% })%>
                             </tbody>
@@ -215,7 +215,27 @@
                     <% } %>
     </main>
     <%- include('../admin/partials/footer.ejs') %>
+
+        <script>
+
+            document.querySelector('[btn-export]').addEventListener('click', () => {
+
+                alert('export');
+
+                TableToExcel.convert(document.querySelector("table"), {
+                    name: "table1.xlsx",
+                    sheet: {
+                        name: "Sheet 1"
+                    }
+                });
+
+            });
+
+        </script>
+
+
         <script src="/lib/tinymce/tinymce.min.js"></script>
+        <script src="/js/modalExport.js"></script>
         <script src="/js/modalNew.js "></script>
         <script src="/js/loading.js"></script>
         <script src="/js/Alert.js"></script>
@@ -223,4 +243,5 @@
         <script src="/js/loginCreate.js"></script>
         <script src="/js/modalDel.js"></script>
         <script src="/js/mask.js"></script>
-        <script src="/js/login.js"></script>
+        <script src="/js/login.js"></script>        
+        <script type="text/javascript" src="/js/tableToExcel.js"></script>

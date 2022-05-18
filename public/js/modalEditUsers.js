@@ -29,7 +29,7 @@ async function importModal(id) {
         })
         .then((response) => {
 
-            form.action = `/api/user/upd/${id}`;
+            form.action = `/admin/usuarios/update/${id}`;
             inputs[0].value = response.name;
             inputs[1].value = response.email;
 

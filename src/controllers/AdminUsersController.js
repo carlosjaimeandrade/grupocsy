@@ -97,8 +97,65 @@ const deleteUser = async (req, res) => {
     res.redirect('/admin/usuarios')
 }
 
+const updateUser = async (req, res) => {
+
+    const id = req.params.id;
+    const update = {};
+
+    const { name, email, level, password, confirmation } = req.body;
+
+    if (password != confirmation) {
+        req.flash('message', 'As senhas não conferem');
+        req.flash('type', 'danger');
+        res.redirect('/admin/usuarios')
+        return;
+    }
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+        req.flash('message', 'Usuario não encontrado.');
+        req.flash('type', 'danger');
+        res.redirect('/admin/usuarios')
+        return;
+    }
+
+    if (password) {
+
+        const isPasswordEquals = bcrypt.compare(password, user.password);
+
+        if (!isPasswordEquals) {
+            req.flash('message', 'As senhas não conferem');
+            req.flash('type', 'danger');
+            res.redirect('/admin/usuarios')
+            return;
+        }
+
+        update.push(password);
+    }
+
+    if (name) update['name'] = name;
+    if (email) update['email'] = email;
+    if (level) update['level'] = level;
+
+    const confirm = await User.update(update, { where: { id: id } });
+
+    if (!confirm) {
+        req.flash('message', 'Não foi possivel atualizar, entre em contato com o administrador');
+        req.flash('type', 'danger');
+        res.redirect('/admin/usuarios')
+        return;
+    }
+
+    req.flash('message', 'Usuario atualizado com sucesso');
+    req.flash('type', 'success');
+    res.redirect('/admin/usuarios')
+
+}
+
 module.exports = {
     showUsers,
     createUsers,
-    deleteUser
+    deleteUser,
+    updateUser
 }
