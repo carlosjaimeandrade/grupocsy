@@ -414,6 +414,56 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 5px
 }
+.budget-card-1{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px
+}
+
+.card-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.card-content{
+    width: 95%;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 20px;
+
+    overflow: auto;  
+}
+.card-title {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-title span{
+    cursor: pointer;
+}
+
+.card-title h4 {
+    color: #2A303A;
+}
+
+.simulation-import{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 12px;
+}
+.simulation-import a{
+    color: #2A303A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px
+}
+
 
 @media (max-width: 992px) {
     .new-modal-content {
@@ -445,9 +495,13 @@
         width: 90%;
     }
     .budget-card{
-      
-        grid-template-columns: repeat(1, 1fr);
-       
+        grid-template-columns: repeat(1, 1fr);     
+    }
+    .card-btn{
+        width: 100%;
+    }
+    .card-btn button{
+        width: 100%;
     }
 }
 

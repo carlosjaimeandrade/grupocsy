@@ -16,4 +16,6 @@ routes.get('/api/checkout/:id', userAuth.auth, levelAdminAuth.auth, ApiControlle
 
 routes.get('/api/not/', ApiController.not);
 
+routes.get('/api/email/:text',userAuth.auth, ApiController.sendEmail);
+
 module.exports = routes;

@@ -8,7 +8,7 @@ const auth = async(req, res, next) => {
     if (user.level == 1) {
         next()
     } else {
-        res.redirect('/cliente')
+        res.redirect('/cliente/debitos')
     }
 
 

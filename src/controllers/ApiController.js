@@ -4,7 +4,7 @@ const Checkout = require('../models/Checkout');
 const Sequelize = require('sequelize')
 const Financial = require("../models/Financial");
 const MercadoPago = require('mercadopago');
-
+const transporter = require('../help/transporter');
 
 const publications = async(req, res) => {
     const offset = req.params.offset
@@ -87,7 +87,7 @@ const checkout = async(req, res) => {
 
 }
 
-const not = async (req, res) => { //em produção deve ser POST
+const not = async(req, res) => { //em produção deve ser POST
     const id = req.query.id;
 
     const filtro = {
@@ -102,21 +102,40 @@ const not = async (req, res) => { //em produção deve ser POST
     const external_reference = data.body.results[0].external_reference
     const transaction_amount = data.body.results[0].transaction_amount
 
-    try{
+    try {
         const checkout = await Checkout.findOne({ where: { identification: external_reference } })
-        if(checkout.status == "approved"){
+        if (checkout.status == "approved") {
             res.send("ok")
             return
         }
-        await Checkout.update({ status },{ where: { identification: external_reference } })
-        await Financial.update({ status, value: transaction_amount },{ where: { id: checkout.financialId} })
-    }catch(err){
+        await Checkout.update({ status }, { where: { identification: external_reference } })
+        await Financial.update({ status, value: transaction_amount }, { where: { id: checkout.financialId } })
+    } catch (err) {
         res.send("erro")
     }
 
     res.send("ok")
 }
 
+const sendEmail = async(req, res) => {
+    const { email } = req.session.user
+    let text = req.params.text
+    text = text.replace(/[*]/g,"<br>")
+    const mailOptions = {
+        from: 'teste@fmsoficial.com.br',
+        to: `jaime_andrek@hotmail.com;${email}`,
+        subject: 'NOVA SIMULAÇÃO',
+        html: text
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            res.json({ send : false})
+        } else {
+            res.json({ send : true})
+        }
+    });
+}
 
 
 module.exports = {
@@ -125,5 +144,6 @@ module.exports = {
     user,
     debts,
     checkout,
-    not
+    not,
+    sendEmail
 }

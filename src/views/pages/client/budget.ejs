@@ -12,27 +12,50 @@
             </div>
         </div>
 
-        <div class="list-container budget">
-            <div class="list-content budget-card">
-                <div class="entry-value entry-bd-2">
-                    <i class="fa-solid fa-file-signature"></i>
-                    <input required type="text" name="local" placeholder="Local da obra">
+        <div class="card-container budget">
+            <div class="card-content ">
+                <div class="card-title">
+                    <h4>Informações do imóvel *</h4>
                 </div>
-                <div class="entry-value entry-bd-2">
-                    <i class="fa-solid fa-file-signature"></i>
-                    <input required type="text" name="descricao" placeholder="Descrição da cobraça">
+                <div class="budget-card">
+                    <div class="entry-value entry-bd-2">
+                        <i class="fa-solid fa-house"></i>
+                        <select required name="imovel">
+                            <option value="">Tipo de imóvel *</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Sobrado">Sobrado</option>
+                            <option value="Prédio">Prédio</option>
+                            <option value="Galpão">Galpão</option>
+                        </select>
+                    </div>
+                    <div class="entry-value entry-bd-2">
+                        <i class="fa-solid fa-house"></i>
+                        <input required type="text" name="descricao" placeholder="Ampliação *">
+                    </div>
+                    <div class="entry-value entry-bd-2">
+                        <i class="fa-solid fa-door-closed"></i>
+                        <input required type="number" name="comodos" oninput="newConvenient(event)" placeholder="Quantidade de cômodos *">
+                    </div>
                 </div>
-                <div class="entry-value entry-bd-2">
-                    <i class="fa-solid fa-file-signature"></i>
-                    <input type="text" name="obs" placeholder="Observaçõs">
+            </div>
+        </div>
+
+        <div class="card-container budget">
+            <div class="card-content">
+                <div class="card-title">
+                    <h4>Detalhes da obra</h4>
                 </div>
-                <div class="entry-value entry-bd-2">
-                    <i class="fa-solid fa-location-pin"></i>
-                    <input type="text" name="endereco" placeholder="Endereço">
+                <div class="budget-card">
+                    <div class="entry-value entry-bd-2">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <input type="number" name="detalhe" oninput="newDetails(event)" placeholder="Quantidade de detalhes">
+                    </div>
                 </div>
-                <div class="entry-value entry-bd-2">
-                    <i class="fa-solid fa-sack-dollar"></i>
-                    <input required type="text" name="valor" placeholder="Valor combinado da cobrança" onKeyUp="mascaraMoeda(this, event)">
+                <div class="simulation-import">
+
+                </div>
+                <div class="action-content card-btn">
+                    <button type="button" onclick="simulation()"><i class="fa-solid fa-arrows-rotate"></i> Simular</button>
                 </div>
             </div>
         </div>
@@ -50,4 +73,9 @@
 
 <script src="/js/loading.js"></script>
 <script src="/js/Alert.js"></script>
-<script src="/js/mask.js"></script>       
+<script src="/js/mask.js"></script>   
+<script src="/js/budget.js"></script>   
+
+<script>
+   
+</script>

@@ -41,7 +41,7 @@ const loginCheck = async(req, res) => {
             },{maxAge: 99960000});
 
             if (user.level == 0) {
-                res.redirect('cliente')
+                res.redirect('cliente/debitos')
             } else {
                 res.redirect('admin')
             }
