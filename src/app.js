@@ -38,6 +38,9 @@ const AdminUsersRoutes = require('./routes/adminUsers');
 const AdminFinancialRoutes = require('./routes/adminFinancial');
 const ApiRoutes = require('./routes/api');
 const ClientDebtsRoutes = require('./routes/clientDebts');
+const ClientBudgetRoutes = require('./routes/clientBudget')
+
+
 const cookieParser = require('cookie-parser');
 
 const app = express();
@@ -74,5 +77,6 @@ app.use(AdminUsersRoutes)
 app.use(AdminFinancialRoutes)
 app.use(ApiRoutes)
 app.use(ClientDebtsRoutes)
+app.use(ClientBudgetRoutes)
 
 module.exports = app;

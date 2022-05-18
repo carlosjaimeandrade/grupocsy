@@ -1,1 +1,53 @@
-<h1>Orçamentos</h1>
+<%- include('../client/partials/header', {title: 'Soldiers Construções' }) %>
+
+    <main id="budget">
+
+        <%- include('../client/partials/user') %>
+        <%- include('../client/partials/modalDel') %>
+
+        <div class="titlePage">
+            <div class="titlePage-container">
+                <h1>Orçamentos</h1>
+                <span>Simule um orçamento</span>
+            </div>
+        </div>
+
+        <div class="list-container budget">
+            <div class="list-content budget-card">
+                <div class="entry-value entry-bd-2">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <input required type="text" name="local" placeholder="Local da obra">
+                </div>
+                <div class="entry-value entry-bd-2">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <input required type="text" name="descricao" placeholder="Descrição da cobraça">
+                </div>
+                <div class="entry-value entry-bd-2">
+                    <i class="fa-solid fa-file-signature"></i>
+                    <input type="text" name="obs" placeholder="Observaçõs">
+                </div>
+                <div class="entry-value entry-bd-2">
+                    <i class="fa-solid fa-location-pin"></i>
+                    <input type="text" name="endereco" placeholder="Endereço">
+                </div>
+                <div class="entry-value entry-bd-2">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                    <input required type="text" name="valor" placeholder="Valor combinado da cobrança" onKeyUp="mascaraMoeda(this, event)">
+                </div>
+            </div>
+        </div>
+
+        <!--  mensagem  -->
+        <% if(message !="" ) {%>
+            <div class="alert alert-<%= type %>">
+                <span> <%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+            </div>
+        <% } %>
+
+    </main>
+    
+<%- include('../admin/partials/footer.ejs') %>
+
+<script src="/js/loading.js"></script>
+<script src="/js/Alert.js"></script>
+<script src="/js/mask.js"></script>       

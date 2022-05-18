@@ -403,6 +403,18 @@
     color: black;
 }
 
+.budget{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.budget-card{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px
+}
+
 @media (max-width: 992px) {
     .new-modal-content {
         width: 70%;
@@ -431,6 +443,11 @@
     }
     .modal-delete-content {
         width: 90%;
+    }
+    .budget-card{
+      
+        grid-template-columns: repeat(1, 1fr);
+       
     }
 }
 

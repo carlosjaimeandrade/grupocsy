@@ -2,18 +2,37 @@ const Financial = require('../models/Financial')
 const Checkout = require('../models/Checkout')
 const moment = require('moment')
 const MercadoPago = require('mercadopago');
+const search = require('../help/search')
+const transporter = require("../help/transporter");
+
 
 const showDebts = async(req, res) => {
     const now = moment().format('DD/MM/YYYY')
     const { id } = req.session.user
 
-    const debts = await Financial.findAll({
+    let debts = await Financial.findAll({
         raw: true,
         where: { userId: id },
         order: [
             ['status', 'DESC']
         ]
     })
+
+
+    const query = search.query(req.query)
+    if (query) {
+        try {
+            debts = await Financial.findAll({
+                raw: true,
+                where: query,
+                order: [
+                    ['status', 'DESC']
+                ]
+            })
+        } catch (err) {
+            res.redirect('/admin/publicacao')
+        }
+    }
 
     debts.forEach(debt => {
         let dueDate = moment(debt.dueDate).format('DD/MM/YYYY')
@@ -33,12 +52,12 @@ const showDebts = async(req, res) => {
         }
     })
 
-
     res.render('pages/client/debits', {
         message: req.flash('message'),
         type: req.flash('type'),
         debts: debts,
-        now
+        now,
+        query: req.query
     })
 }
 
@@ -101,7 +120,40 @@ const checkout = async(req, res) => {
 
 }
 
+const solicitation = async(req, res) => {
+    let contato_info = "";
+    let body = req.body
+    const { email } = req.session.user
+
+    console.log( email)
+    body['Usuario'] = email
+    for (var key in body) {
+        contato_info += `${key} : ${body[key]} <br><br>`
+    }
+
+    const mailOptions = {
+        from: 'teste@fmsoficial.com.br',
+        to: 'jaime_andrek@hotmail.com',
+        subject: 'NOVA SOLICITAÇÃO DE DÉBITO',
+        html: contato_info
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            req.flash('message', 'Ocorreu um erro no envio, por favor entre em contato com o administrador do sistema');
+            req.flash('type', 'danger');
+            res.redirect('/cliente/debitos')
+        } else {
+            req.flash('message', 'Sua solicitação foi enviada com sucesso, logo entraremos em contato');
+            req.flash('type', 'success');
+            res.redirect('/cliente/debitos')
+        }
+    });
+}
+
+
 module.exports = {
     showDebts,
-    checkout
+    checkout,
+    solicitation
 }

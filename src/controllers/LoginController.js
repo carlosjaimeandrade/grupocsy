@@ -34,7 +34,11 @@ const loginCheck = async(req, res) => {
             }
             
             //apenas em desenvolvimento
-            res.cookie("user_cookie", {id: user.id},{maxAge: 360000});
+            res.cookie("user_cookie", {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            },{maxAge: 99960000});
 
             if (user.level == 0) {
                 res.redirect('cliente')
