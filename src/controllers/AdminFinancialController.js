@@ -1,14 +1,24 @@
 const User = require("../models/User");
 const Financial = require("../models/Financial");
+const Checkout = require("../models/Checkout");
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
 const search = require('../help/search')
 
 const showFinancial = async(req, res) => {
 
-    let debts = await User.findAll({ include: [{ model: Financial, where: { id: {
-                    [Op.ne]: null } } }], raw: true })
+    let debts = await User.findAll({
+        include: [{
+            model: Financial,
+            where: {id: { [Op.ne]: null } },
+        }],
+        raw: true,
+        order: [
+            ['id', 'DESC'],
+        ]
+    })
 
+ 
     const query = search.query(req.query)
     if (query) {
         try {
@@ -18,8 +28,14 @@ const showFinancial = async(req, res) => {
         }
     }
 
-    const users = await User.findAll({ raw: true, where: { level: {
-                [Op.ne]: 1 } } })
+    const users = await User.findAll({
+        raw: true,
+        where: {
+            level: {
+                [Op.ne]: 1
+            }
+        }
+    })
 
     res.render('pages/admin/financial', {
         message: req.flash('message'),
@@ -56,6 +72,16 @@ const createDebit = async(req, res) => {
 
 const destroy = async(req, res) => {
     const id = req.params.id
+    const finacial = await Financial.findOne({ where: { id: id } })
+
+    if(finacial.status == "approved"){
+        req.flash('message', 'Esse registro já foi pago e não é possivel deletar');
+        req.flash('type', 'danger');
+        res.redirect('/admin/financeiro')
+        return
+    }
+
+
     const destroy = await Financial.destroy({ where: { id: id } })
     if (!destroy) {
         req.flash('message', 'Não foi possivel deletar, verifique com o administrador');
@@ -70,6 +96,16 @@ const destroy = async(req, res) => {
 }
 
 const update = async(req, res) => {
+    const id = req.body.id
+    const finacial = await Financial.findOne({ where: { id: id } })
+
+    if(finacial.status == "approved"){
+        req.flash('message', 'Esse registro já foi pago e não é possivel atualizar');
+        req.flash('type', 'danger');
+        res.redirect('/admin/financeiro')
+        return
+    }
+
     const update = await Financial.update({
         charge: req.body.charge,
         description: req.body.description,
@@ -77,7 +113,7 @@ const update = async(req, res) => {
         value: req.body.value.replace(/[.]/g, "").replace(/[,]/g, "."),
     }, {
         where: {
-            id: req.body.id
+            id: id
         }
     })
 

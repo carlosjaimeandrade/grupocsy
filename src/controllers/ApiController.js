@@ -1,10 +1,12 @@
 const Publication = require('../models/Publication')
 const User = require('../models/User');
+const Checkout = require('../models/Checkout');
 const Sequelize = require('sequelize')
 const Financial = require("../models/Financial");
+const MercadoPago = require('mercadopago');
 
 
-const publications = async (req, res) => {
+const publications = async(req, res) => {
     const offset = req.params.offset
     const category = req.params.category
 
@@ -28,13 +30,13 @@ const publications = async (req, res) => {
     })
     if (publications) {
         res.json(publications);
-    }else{
+    } else {
         res.json({ error: 'not found' })
     }
 
 }
 
-const publication = async (req, res) => {
+const publication = async(req, res) => {
     const id = req.params.id
 
     const publication = await Publication.findByPk(id)
@@ -46,7 +48,7 @@ const publication = async (req, res) => {
     }
 }
 
-const user = async (req, res) => {
+const user = async(req, res) => {
     const id = req.params.id;
 
     const user = await User.findByPk(id);
@@ -59,7 +61,7 @@ const user = async (req, res) => {
 
 }
 
-const debts = async (req, res) => {
+const debts = async(req, res) => {
     const id = req.params.id;
 
     let debts = await User.findAll({ include: [{ model: Financial, where: { id: id } }], raw: true })
@@ -72,10 +74,56 @@ const debts = async (req, res) => {
 
 }
 
+const checkout = async(req, res) => {
+    const id = req.params.id;
+
+    const checkout = await Checkout.findAll({
+        where: {
+            financialId: id
+        }
+    })
+
+    res.json(checkout)
+
+}
+
+const not = async (req, res) => { //em produção deve ser POST
+    const id = req.query.id;
+
+    const filtro = {
+        "order.id": id
+    }
+
+    const data = await MercadoPago.payment.search({
+        qs: filtro
+    })
+
+    const status = data.body.results[0].status
+    const external_reference = data.body.results[0].external_reference
+    const transaction_amount = data.body.results[0].transaction_amount
+
+    try{
+        const checkout = await Checkout.findOne({ where: { identification: external_reference } })
+        if(checkout.status == "approved"){
+            res.send("ok")
+            return
+        }
+        await Checkout.update({ status },{ where: { identification: external_reference } })
+        await Financial.update({ status, value: transaction_amount },{ where: { id: checkout.financialId} })
+    }catch(err){
+        res.send("erro")
+    }
+
+    res.send("ok")
+}
+
+
 
 module.exports = {
     publications,
     publication,
     user,
-    debts
+    debts,
+    checkout,
+    not
 }

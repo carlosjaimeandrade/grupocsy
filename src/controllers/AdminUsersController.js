@@ -64,7 +64,7 @@ const createUsers = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-
+    
     const id = req.params.id;
 
     if (!id) {

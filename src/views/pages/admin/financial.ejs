@@ -30,12 +30,11 @@
                             <select name="status" id="">
                             <option value="">Todos registros</option>
                             <option <%= query.status=="pendente" ?" selected" :""%>  value="pendente">Pendente</option>
-                            <option <%= query.status=="aprovado" ?" selected" :""%>  value="aprovado">Aprovado</option>
-                            <option <%= query.status=="cancelado" ?" selected" :""%> value="cancelado">Cancelado</option>
+                            <option <%= query.status=="approved" ?" selected" :""%>  value="approved">Aprovado</option>
                         </select>
                         </div>
                         <div>
-                            <input value="<%= query.charge %>" name="charge" type="text">
+                            <input value="<%= query.charge %>" placeholder="Nome do débito" name="charge" type="text">
                             <button><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar débito</button>
@@ -102,7 +101,33 @@
                     </div>
                 </div>
             </div>
-        </form>                      
+        </form>      
+        <!-- modal de log -->
+        <div new-modal-log class="new-modal-container">
+            <i close-log class="fa-solid fa-xmark modal-modal-close"></i>
+            <div class="new-modal-content">
+                <div class="new-modal-header">
+                    <h2>Histórico de operações </h2>
+                </div>
+                <div class="new-modal-main">
+                    <div class="list-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Identificação</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Criação</th>
+                                </tr>
+                            </thead>
+                            <tbody new-modal-import-log >
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- listagem dos dados -->
         <div id="financeiro" class="list-container">
             <div class="list-content">
@@ -124,7 +149,7 @@
                         <tr>
                             <td><%= debt['financials.charge'] %></td>
                             <td><%= debt['financials.value'].toLocaleString() %></td>
-                            <td><%= `${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
+                            <td><%= `${debt['financials.dueDate'].split('-')[2]}/${debt['financials.dueDate'].split('-')[1]}/${debt['financials.dueDate'].split('-')[0]}` %></td>
                             <td><%= debt.name %></td>
                             <td>
                                 <div class="status_<%= debt['financials.status'] %>">
@@ -135,8 +160,9 @@
                                 <div class="more-option-container">
                                     <i class="fas fa-ellipsis-v btn-option"></i>
                                     <div class="more-option">
-                                        <button onclick="newModalEdit(`<%= debt['financials.id'] %>`)">Editar</button>
-                                        <button id="<%= debt['financials.id'] %>" modal-del-btn>Excluir</button>
+                                        <% if(debt['financials.status'] != "approved") { %><button onclick="newModalEdit(`<%= debt['financials.id'] %>`)">Editar</button> <% } %>
+                                        <button onclick="logCheckout(`<%= debt['financials.id'] %>`)">Histórico</button>
+                                        <% if(debt['financials.status'] != "approved") { %><button id="<%= debt['financials.id'] %>" modal-del-btn>Excluir</button><% } %>
                                     </div>
                                 </div>
                             </td>
@@ -145,7 +171,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> 
         <!--  mensagem  -->
         <% if(message !="" ) {%>
             <div class="alert alert-<%= type %>">
@@ -159,6 +185,7 @@
 
 <script src="/lib/tinymce/tinymce.min.js"></script>
 <script src="/js/modalNew.js "></script>
+<script src="/js/logCheckout.js "></script>
 <script src="/js/modalDel.js"></script>
 <script src="/js/loading.js"></script>
 <script src="/js/Alert.js"></script>

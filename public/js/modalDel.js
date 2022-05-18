@@ -9,15 +9,11 @@ window.onload = () => {
         modal_delete_container.style.display = "none"
     }
 
-<<<<<<< HEAD
-    modal_del_btn.forEach(btn => {        
-=======
     modal_del_btn.forEach(btn => {
->>>>>>> b059fa22962865ab6904bd4935b31950bef00a34
         btn.onclick = event => {
             let id = event.target.id
-            btn_del.onclick = () => {
-                window.location.href = `${modal}/delete/${id}`
+            btn_del.onclick = () => {                
+                window.location.href = `${modal}/delete/${id}`                                
             }
             modal_delete_container.style.display = modal_delete_container.style.display == 'flex' ? "none" : 'flex'
         }

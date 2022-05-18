@@ -18,23 +18,24 @@
                 <div class="action-content">
                     <div class="action-info">
                         <span>
-                            10 registros
+                            <%= debts.length %> registros
                         </span>
                     </div>
                     <div class="action-press">
+                        <% if(Object.keys(query).length> 0){%>
                             <span onclick="window.location.href='/cliente/debitos'" class="clear-search">
                                 <ion-icon name="close-circle-outline"></ion-icon>
                             </span>
+                        <% }%>
                         <div>
                             <select name="status" id="">
                             <option value="">Todos registros</option>
-                            <option value="pendente">Pendente</option>
-                            <option value="aprovado">Aprovado</option>
-                            <option value="cancelado">Cancelado</option>
+                            <option <%= query.status=="pendente" ?" selected" :""%>  value="pendente">Pendente</option>
+                            <option <%= query.status=="approved" ?" selected" :""%>  value="approved">Aprovado</option>
                         </select>
                         </div>
                         <div>
-                            <input value="" name="charge" type="text">
+                            <input value="<%= query.charge %>" placeholder="Nome do débito" name="charge" type="text">
                             <button><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Solicitar débito</button>
@@ -42,7 +43,6 @@
                 </div>
             </div>
         </form>
-
         <!-- modal de view -->
         <form method="post">
             <div new-modal-edit class="new-modal-container">
@@ -60,7 +60,6 @@
                 </div>
             </div>
         </form>   
-
         <!-- modal de solicitação de debitos -->
         <form method="post">
             <div new-modal class="new-modal-container">
@@ -69,35 +68,36 @@
                     <div class="new-modal-header">
                         <h2>Nova solicitação de pagamento</h2>
                         <div class="btn-modal">
-                            <button publicar onclick="loading(event)">Publicar</button>
+                            <button publicar onclick="loading(event)">Solicitar</button>
                         </div>
                     </div>
                     <div class="new-modal-main">
                         <div class="entry-content">
                             <div class="entry-value entry-bd-2">
                                 <i class="fa-solid fa-file-signature"></i>
-                                <input required type="text" name="title" placeholder="Título">
-                            </div>
-                            <div class="entry-value entry-bd-2"><i class="fa-solid fa-table-list"></i>
-                                <select name="category" id="">
-                                <option value="">Categoria</option>
-                                <option value="blog">Blog</option>
-                                <option value="empreendimentos">Empreendimentos</option>
-                                <option value="projetos-futuros">Projetos
-                                    futuros</option>
-                            </select>
+                                <input required type="text" name="local" placeholder="Local da obra">
                             </div>
                             <div class="entry-value entry-bd-2">
-                                <i class="fa-solid fa-image"></i>
-                                <label class="upload-file" for="image">Carregar... <span log-arq></span></label>
-                                <input oninput="onLoadFile(event)" class="display-none" required id="image" type="file" name="file" accept=".png,.jpeg,.jpg">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <input required type="text" name="descricao" placeholder="Descrição da cobraça">
+                            </div>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <input type="text" name="obs" placeholder="Observaçõs">
+                            </div>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-location-pin"></i>
+                                <input type="text" name="endereco" placeholder="Endereço">
+                            </div>
+                            <div class="entry-value entry-bd-2">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <input required type="text" name="valor" placeholder="Valor combinado da cobrança" onKeyUp="mascaraMoeda(this, event)">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-
         <!-- listagem dos dados -->
         <div id="financeiro" class="list-container">
             <div class="list-content">
@@ -107,30 +107,36 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>teste</th>
-                            <th>teste</th>
-                            <th></th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Vencimento</th>
+                            <th>Valor</th>
+                            <th>Juros atraso dia (0,02%)</th>
+                            <th>Multa atraso (2,00%)</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>
-                                <div class="status_pendente">
-                                    <p>pendente</p>
-                                </div>   
-                            </td>
-                            <td>
-                                <div class="more-option-container">
-                                    <i class="fas fa-ellipsis-v btn-option"></i>
-                                    <div class="more-option">
-                                        <button onclick="newModalEdit(`teste`)">Editar</button>
-                                        <button id="teste" modal-del-btn>Excluir</button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        <% debts.forEach(debt=>{%>
+                            <tr>
+                                <td><%= debt.charge %></td>
+                                <td><%= debt.description %></td>
+                                <td><%= `${debt.dueDate.split('-')[2]}/${debt.dueDate.split('-')[1]}/${debt.dueDate.split('-')[0]}` %></td>
+                                <td><%= debt.value.toLocaleString()  %></td>
+                                <td><%= debt.status == "approved" ? "-" : debt.juros.toLocaleString() %> </td>
+                                <td><%= debt.status == "approved" ? "-" : debt.multa.toLocaleString() %> </td>
+                                <td>
+                                    <div>
+                                        <p><%= debt.status == "approved" ? "pago" : "pendente" %></p>
+                                    </div>   
+                                </td>
+                                <td>
+                                    <% if(debt.status != "approved"){ %>
+                                        <a class="pay-btn" href="/cliente/debitos/checkout/<%= debt.id %>"><i class="fa-regular fa-credit-card"></i></a>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }) %>
                     </tbody>
                 </table>
             </div>

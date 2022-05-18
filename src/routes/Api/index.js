@@ -12,4 +12,8 @@ routes.get('/api/user/:id', userAuth.auth, levelAdminAuth.auth, ApiController.us
 
 routes.get('/api/debts/:id', userAuth.auth, levelAdminAuth.auth, ApiController.debts);
 
+routes.get('/api/checkout/:id', userAuth.auth, levelAdminAuth.auth, ApiController.checkout);
+
+routes.get('/api/not/', ApiController.not);
+
 module.exports = routes;

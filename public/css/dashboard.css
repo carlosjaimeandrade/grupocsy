@@ -417,6 +417,13 @@ main {
     padding-top: 0.5rem;
 }
 
+
+#users .btn-export-users {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
 @media (min-width: 768px) and (max-width: 1080px) {
     .dashboard-cards .dashboard-card-Container {
         grid-template-columns: repeat(2, 6fr);

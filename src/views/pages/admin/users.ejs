@@ -27,6 +27,10 @@
                                 <input name="title" type="text">
                                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
+                            <button btn-export class="btn-export-users">
+                                <ion-icon name="document-outline"></ion-icon>
+                                EXPORTAR
+                            </button>
                             <button onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar usuário</button>
                         </div>
                     </div>
@@ -193,7 +197,6 @@
                                             <div class="more-option-container">
                                                 <i class="fas fa-ellipsis-v btn-option"></i>
                                                 <div class="more-option">
-                                                    <button btn-export>ASQUII</button>
                                                     <button onclick="newModalEdit(`<%= user.id %>`)">Editar</button>
                                                     <button id="<%= user.id %>" modal-del-btn>Excluir</button>
                                                 </div>
@@ -220,10 +223,8 @@
 
             document.querySelector('[btn-export]').addEventListener('click', () => {
 
-                alert('export');
-
                 TableToExcel.convert(document.querySelector("table"), {
-                    name: "table1.xlsx",
+                    name: "usuarios.xlsx",
                     sheet: {
                         name: "Sheet 1"
                     }
@@ -239,9 +240,9 @@
         <script src="/js/modalNew.js "></script>
         <script src="/js/loading.js"></script>
         <script src="/js/Alert.js"></script>
-        <script src="/js/modalEditUsers.js"></script>
-        <script src="/js/loginCreate.js"></script>
+        <script src="/js/modalEditUsers.js"></script>        
         <script src="/js/modalDel.js"></script>
         <script src="/js/mask.js"></script>
-        <script src="/js/login.js"></script>        
+        <script src="/js/login.js"></script>
         <script type="text/javascript" src="/js/tableToExcel.js"></script>
+        <script src="/js/loginCreate.js"></script>

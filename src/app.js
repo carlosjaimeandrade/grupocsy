@@ -10,7 +10,7 @@ const flash = require('connect-flash');
 const MercadoPago = require('mercadopago');
 
 MercadoPago.configure({
-    sandbox: true, //modo de s desenvolvimento
+    sandbox: true, //modo de  desenvolvimento
     access_token: 'TEST-3070807880521704-050923-ba8d0e5193b516cba5ea51dd35e461e2-839874758'
 });
 
@@ -20,6 +20,7 @@ require('dotenv').config();
 const User = require('./models/User.js')
 const Publication = require('./models/Publication.js')
 const Financial = require('./models/Financial.js')
+const Checkout = require('./models/Checkout.js')
 
 const HomeRoutes = require('./routes/home')
 const LoginRoutes = require('./routes/login')
@@ -38,6 +39,10 @@ const AdminFinancialRoutes = require('./routes/adminFinancial');
 const ApiRoutes = require('./routes/api');
 const ClientDebtsRoutes = require('./routes/clientDebts');
 const AdminConfigurationRoutes = require('./routes/adminConfiguration');
+const ClientBudgetRoutes = require('./routes/clientBudget')
+
+
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -52,6 +57,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(cors());
 app.use(session({ secret: '6594637210271734-032312-aa00cfef0f5', resave: true, saveUninitialized: true }))
+app.use(cookieParser());
+
 app.use(flash());
 
 //rotas
@@ -72,5 +79,6 @@ app.use(AdminFinancialRoutes)
 app.use(ApiRoutes)
 app.use(AdminConfigurationRoutes)
 app.use(ClientDebtsRoutes)
+app.use(ClientBudgetRoutes)
 
 module.exports = app;
