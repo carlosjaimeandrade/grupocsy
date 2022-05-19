@@ -424,6 +424,18 @@ main {
     align-items: center;
 }
 
+#users .list-title {
+    display: flex;
+    gap: 0.9rem;    
+    align-items: center;
+    justify-content: space-between;
+}
+
+#users .list-title button {
+    padding: .2rem;
+    font-size: .8rem;
+}
+
 @media (min-width: 768px) and (max-width: 1080px) {
     .dashboard-cards .dashboard-card-Container {
         grid-template-columns: repeat(2, 6fr);
