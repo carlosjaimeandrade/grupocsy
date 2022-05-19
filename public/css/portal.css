@@ -14,6 +14,15 @@
 
 .list-title {
     padding-bottom: 10px;
+    display: flex;
+    gap: 0.9rem;    
+    align-items: center;
+    justify-content: space-between;
+}
+.list-title i {
+    font-size: 1.2rem;
+    color: #b6aeae;
+    cursor: pointer;
 }
 
 .list-title h4 {
