@@ -1,5 +1,8 @@
+
 window.onload = async() => {
+    console.log('ola')
     const import_city = document.querySelector('[import-city]')
+  
     const ufs = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/")
     ufs_json = await ufs.json();
     ufs_json.forEach(uf => {

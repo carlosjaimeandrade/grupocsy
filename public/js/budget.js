@@ -151,7 +151,7 @@ function simulationValue(m2_total,details_total){
         valueEnd = valueEnd + (percentualDetails * details_total)
     }
 
-    simulation_import.innerHTML = `O valor da sua simulação é ${valueEnd.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} <br> <a href="/cliente/orcamento"><ion-icon name="close-circle-outline"></ion-icon> limpar</a>` 
+    simulation_import.innerHTML = `<span>O valor da sua simulação é ${valueEnd.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} <br> <a href="/cliente/orcamento"><ion-icon name="close-circle-outline"></ion-icon></a></span>` 
     
     sendEmail(m2_total,details_total,valueEnd)
 
