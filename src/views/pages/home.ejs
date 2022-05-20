@@ -270,23 +270,23 @@
                 </div>
             </div>
             <div class="newsletterContent">
-                <form action="">
+                <form method="post">
                     <div class="input-content">
                         <div class="input-item">
-                            <input type="text" placeholder="Bruno">
+                            <input type="text" required name="nome" placeholder="Bruno">
                         </div>
                         <div class="input-item">
-                            <input type="text" placeholder="email@exemplo.com">
+                            <input type="text" required  name="email" placeholder="email@exemplo.com">
                         </div>
                         <div class="input-item">
-                            <input type="text" placeholder="Extrema - MG">
+                            <input type="text" required name="cidade" placeholder="Extrema - MG">
                         </div>
                         <div class="input-item">
-                            <input type="text" placeholder="(xx) xxxx-xxxx">
+                            <input type="text" required onkeyup="mascara('(##) ####-####',this,event,false)" name="telefone" placeholder="(xx) xxxx-xxxx">
                         </div>
                     </div>
                     <div class="send-btn">
-                        <a href="" class="btnAnimation">Enviar</a>
+                        <button  class="btnAnimation">Enviar</button>
                     </div>
                     <div class="info">
                         <span>*Fique tranquilo(a), não mandamos spams.</span>
@@ -295,6 +295,14 @@
             </div>
         </div>
     </div>
+
+    <!--  mensagem  -->
+    <% if(message !="" ) {%>
+        <div class="alert alert-<%= type %>">
+            <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+        </div>
+    <% } %>                
+
     <%- include('../partials/footer.ejs') %>
 
         <script>
@@ -342,3 +350,4 @@
                 },
             });
         </script>
+        <script src="/js/mask"></script>

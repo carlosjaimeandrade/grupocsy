@@ -122,8 +122,8 @@ const sendEmail = async(req, res) => {
     let text = req.params.text
     text = text.replace(/[*]/g,"<br>")
     const mailOptions = {
-        from: 'teste@fmsoficial.com.br',
-        to: `jaime_andrek@hotmail.com;${email}`,
+        from: process.env.FROM,
+        to: `${process.env.TO};${email}`,
         subject: 'NOVA SIMULAÇÃO',
         html: text
     };

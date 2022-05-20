@@ -132,8 +132,8 @@ const solicitation = async(req, res) => {
     }
 
     const mailOptions = {
-        from: 'teste@fmsoficial.com.br',
-        to: 'jaime_andrek@hotmail.com',
+        from: process.env.FROM,
+        to:  process.env.TO,
         subject: 'NOVA SOLICITAÇÃO DE DÉBITO',
         html: contato_info
     };

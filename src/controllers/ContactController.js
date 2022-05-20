@@ -20,8 +20,8 @@ const sendEmail = (req, res) => {
     }
 
     const mailOptions = {
-        from: 'teste@fmsoficial.com.br',
-        to: 'jaime_andrek@hotmail.com',
+        from: process.env.FROM,
+        to:  process.env.TO,
         subject: 'NOVO CONTATO - FALE CONOSCO',
         html: contato_info
     };

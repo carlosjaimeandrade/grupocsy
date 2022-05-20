@@ -133,8 +133,9 @@
             <div class="list-content">
                 <div class="list-title">
                     <h4>Todas os débitos cadastradas</h4>
+                    <i btn-export class="fa-solid fa-file-excel"></i>
                 </div>
-                <table>
+                <table id="table" >
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -156,7 +157,7 @@
                                     <p><%= debt['financials.status'] %></p>
                                 </div>   
                             </td>
-                            <td>
+                            <td data-exclude="true" >
                                 <div class="more-option-container">
                                     <i class="fas fa-ellipsis-v btn-option"></i>
                                     <div class="more-option">
@@ -182,7 +183,9 @@
     </main>
     
 <%- include('../admin/partials/footer.ejs') %>
-
+<script src="/js/modalExport.js"></script>
+<script type="text/javascript" src="/js/tableToExcel.js"></script>
+<script src="/js/excel.js"></script>
 <script src="/lib/tinymce/tinymce.min.js"></script>
 <script src="/js/modalNew.js "></script>
 <script src="/js/logCheckout.js "></script>

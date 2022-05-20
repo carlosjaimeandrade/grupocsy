@@ -18,7 +18,6 @@ const showFinancial = async(req, res) => {
         ]
     })
 
- 
     const query = search.query(req.query)
     if (query) {
         try {

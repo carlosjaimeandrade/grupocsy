@@ -69,25 +69,25 @@
                         </div>
                         <div class="formContact" data-aos="zoom-in">
                             <div class="formContactContainer">                                
-                                <form action="">                                   
+                                <form method="post">                                   
                                     <div class="inputContent">
                                         <div class="contactDesc">
                                             <p>Conversse agora com uma especialista</p>
                                         </div>
                                         <div class="input-item">
-                                            <input type="text" placeholder="Bruno">
+                                            <input required type="text" name="nome" placeholder="Bruno">
                                         </div>
                                         <div class="input-item">
-                                            <input type="text" placeholder="email@exemplo.com">
+                                            <input required type="text" name="email" placeholder="email@exemplo.com">
                                         </div>
                                         <div class="input-item">
-                                            <input type="text" placeholder="Extrema - MG">
+                                            <input required type="text" name="cidade" placeholder="Extrema - MG">
                                         </div>
                                         <div class="input-item">
-                                            <input type="text" placeholder="(xx) xxxx-xxxx">
+                                            <input required type="text" name="telefone"  onkeyup="mascara('(##) ####-####',this,event,false)" placeholder="(xx) xxxx-xxxx">
                                         </div>
                                         <div class="send-btn">
-                                            <a href="" class="btnAnimation">Enviar</a>
+                                            <button class="btnAnimation">Enviar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -103,6 +103,14 @@
                 </div>
             </div>
         </div>
+
+        <!--  mensagem  -->
+        <% if(message !="" ) {%>
+            <div class="alert alert-<%= type %>">
+                <span><%= message %></span> <i onclick="closeAlert(event)" class="fa-solid fa-xmark"></i>
+            </div>
+        <% } %>     
+
     </section>
     <%- include('../partials/footer.ejs') %>
         <script>
@@ -117,3 +125,5 @@
                 loop: true
             });
         </script>
+
+<script src="/js/mask"></script>

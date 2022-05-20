@@ -9,12 +9,20 @@
     background-color: #fff;
     border-radius: 3px;
     padding: 20px;
-    max-height: 400px;
-    overflow: auto;
+ 
 }
 
 .list-title {
     padding-bottom: 10px;
+    display: flex;
+    gap: 0.9rem;    
+    align-items: center;
+    justify-content: space-between;
+}
+.list-title i {
+    font-size: 1.2rem;
+    color: #b6aeae;
+    cursor: pointer;
 }
 
 .list-title h4 {
@@ -449,19 +457,21 @@
     color: #2A303A;
 }
 
-.simulation-import{
+.simulation-import span{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    padding-top: 12px;
+    margin-top: 26px;
+    color: #2A303A;
+    font-weight: bold;
 }
 .simulation-import a{
     color: #2A303A;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5px
+    margin-left: 4px;
+
 }
 
 

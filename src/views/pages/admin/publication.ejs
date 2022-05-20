@@ -100,11 +100,12 @@
                         <div class="list-content">
                             <div class="list-title">
                                 <h4>Todas as publicações cadastradas</h4>
+                                <i btn-export class="fa-solid fa-file-excel"></i>
                             </div>
-                            <table>
+                            <table id="table">
                                 <thead>
                                     <tr>
-                                        <th>Imagem</th>
+                                        <th data-exclude="true" >Imagem</th>
                                         <th>Categoria</th>
                                         <th>Título</th>
                                         <th></th>
@@ -113,7 +114,7 @@
                                 <tbody>
                                     <% publications.forEach(publication=>{%>
                                         <tr>
-                                            <td>
+                                            <td data-exclude="true" >
                                                 <div class="list-img">
                                                     <div class="client-img">
                                                         <img src="/upload/publication/<%= publication.id %>/<%= publication.nameImage %>" alt="">
@@ -126,7 +127,7 @@
                                             <td>
                                                 <%= publication.title %>
                                             </td>
-                                            <td class="teste">
+                                            <td data-exclude="true" class="teste">
                                                 <div class="more-option-container">
                                                     <i class="fas fa-ellipsis-v btn-option"></i>
                                                     <div class="more-option">
@@ -152,6 +153,9 @@
 
     <%- include('../admin/partials/footer.ejs') %>
 
+        <script src="/js/modalExport.js"></script>
+        <script type="text/javascript" src="/js/tableToExcel.js"></script>
+        <script src="/js/excel.js"></script>
         <script src="/lib/tinymce/tinymce.min.js"></script>
         <script src="/js/tinymceConfig.js"></script>
         <script src="/js/modalNew.js"></script>
