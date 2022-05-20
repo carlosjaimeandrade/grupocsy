@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-window.onload = async () => {
-=======
+
 
 window.onload = async() => {
    
->>>>>>> df51063a373c425d51092fadf3b55292cfab7185
     const import_city = document.querySelector('[import-city]')
   
     const ufs = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/")
