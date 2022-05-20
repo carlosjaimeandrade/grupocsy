@@ -1,16 +1,52 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs")
-const transporter = require("../help/transporter")
+const transporter = require("../help/transporter");
+let Sequelize, { Op } = require("sequelize");
 
 const showUsers = async (req, res) => {
 
-    const users = await User.findAll({ raw: true });
+    const searchAll = [];
+    const { status, level, search } = req.query;
+
+    let users = await User.findAll({ raw: true });    
+
+    if (req.query) {
+        users = await User.findAll(
+            {
+                where: {
+                    [Op.and]: [
+
+                        status && { status: status },
+                        level && { level: level },
+                        search &&
+                        {
+                            [Op.or]: [
+                                {
+                                    email: { [Op.substring]: search },
+                                },
+                                {
+                                    name: { [Op.substring]: search },
+                                },
+                                {
+                                    cpf: { [Op.substring]: search }
+                                }
+                            ]
+                        },
+
+                    ],
+                }
+            });
+    }
+
+
+    console.log(req.query);
 
     res.render('pages/admin/users', {
         message: req.flash('message'),
         type: req.flash('type'),
-        users: users
-    })
+        users: users,
+        query: req.query
+    });
 }
 
 const createUsers = async (req, res) => {
@@ -64,7 +100,7 @@ const createUsers = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    
+
     const id = req.params.id;
 
     if (!id) {

@@ -10,27 +10,44 @@
                     </div>
                 </div>
                 <!-- Filtros e btns-->
-                <div class="action-container">
-                    <div class="action-content">
-                        <div class="action-info">
-                            <span>
-                                <%= users.length %> usuarios
-                            </span>
-                        </div>
-                        <div class="action-press">
-                            <div>
-                                <select name="" id="">
-                                    <option value="">Todos registros</option>
-                                </select>
+                <form action="" method="get">
+                    <div class="action-container">
+                        <div class="action-content">
+                            <div class="action-info">
+                                <span>
+                                    <%= users.length %> usuarios
+                                </span>
                             </div>
-                            <div>
-                                <input name="title" type="text">
-                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </div>                            
-                            <button onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar usuário</button>
+                            <div class="action-press">
+                                <% if(Object.keys(query).length> 0){%>
+                                    <span onclick="window.location.href='/admin/usuarios'" class="clear-search">                                        
+                                        <ion-icon name="close-circle-outline"></ion-icon>
+                                    </span>
+                                <% }%>
+                                <div>
+                                    <select name="status">
+                                        <option value="">Todos registros</option>
+                                        <option <%= query.status == '0' ? "selected" : "" %> value="0">Inativo</option>
+                                        <option <%= query.status == '1' ? "selected" : "" %> value="1">Ativo</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select name="level">
+                                        <option value="">Todos registros</option>
+                                        <option <%=query.level=='0' ?" selected" :""%> value="0">Cliente</option>
+                                        <option <%=query.level=='1' ?" selected" :""%> value="1">Admin</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input name="search" type="text" value="<%= query.search %>" placeholder="Busque por nome" class="input-search">
+                                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <button type="button" onclick="newModal()"><i class="fa-solid fa-plus"></i> Criar
+                                    usuário</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <!-- modal de nova criação -->
                 <form action="" method="post">
                     <div new-modal nancial class="new-modal-container">
@@ -222,10 +239,12 @@
         <script src="/js/modalNew.js "></script>
         <script src="/js/loading.js"></script>
         <script src="/js/Alert.js"></script>
-        <script src="/js/modalEditUsers.js"></script>        
+        <script src="/js/modalEditUsers.js"></script>
+        <script src="/js/loginCreate.js"></script>
         <script src="/js/modalDel.js"></script>
         <script src="/js/mask.js"></script>
         <script src="/js/login.js"></script>
+        <script type="text/javascript" src="/js/tableToExcel.js"></script>
         <script type="text/javascript" src="/js/tableToExcel.js"></script>
         <script src="/js/loginCreate.js"></script>
         <script src="/js/excel.js"></script>
