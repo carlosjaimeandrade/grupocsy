@@ -40,7 +40,7 @@
                         <ion-icon name="logo-apple-ar"></ion-icon>
                         <div class="desc-cards">
                             <p>Total Projetos</p>
-                            <span><%= projetos.length %></span>
+                            <span><%= projetos.length <= 9 ? `0${projetos.length}` : projetos.length %> </span>
                         </div>
                     </div>
                 </div>
