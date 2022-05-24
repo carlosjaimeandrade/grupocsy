@@ -16,7 +16,7 @@
                         <ion-icon name="wallet-outline"></ion-icon>
                         <div class="desc-cards">
                             <p>Total faturado</p>
-                            <span>R$1.000,00</span>
+                            <span><%= financials[0].total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); %></span>
                         </div>
                     </div>
                     <!-- card-item -->
@@ -40,7 +40,7 @@
                         <ion-icon name="logo-apple-ar"></ion-icon>
                         <div class="desc-cards">
                             <p>Total Projetos</p>
-                            <span>00</span>
+                            <span><%= projetos.length %></span>
                         </div>
                     </div>
                 </div>
